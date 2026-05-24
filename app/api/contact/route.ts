@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { SITE_CONFIG } from '@/lib/constants'
+import { pushLeadToGoogleSheets } from '@/lib/googleSheets'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -129,6 +130,26 @@ export async function POST(req: NextRequest) {
           },
         }),
       })
+    }
+
+    // ── Save to Google Sheets (optional webhook) ────────────────
+    try {
+      await pushLeadToGoogleSheets({
+        formType: 'contact',
+        timestamp: new Date().toISOString(),
+        name,
+        phone,
+        email,
+        company: company || '',
+        eventType,
+        city,
+        eventDate: eventDate || '',
+        guestCount: guestCount || '',
+        services: servicesList,
+        message: message || '',
+      })
+    } catch (sheetsErr) {
+      console.error('Google Sheets sync error (contact):', sheetsErr)
     }
 
     return NextResponse.json({ success: true })
