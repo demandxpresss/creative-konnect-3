@@ -1,9 +1,9 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
-import { blogPost }       from './schemas/blogPost'
-import { siteSettings }   from './schemas/siteSettings'
-import { author, serviceCategory, subService, galleryItem, testimonial } from './schemas/index'
+import { blogPost } from './sanity/schemas/blogPost'
+import { siteSettings } from './sanity/schemas/siteSettings'
+import { author, serviceCategory, subService, galleryItem, testimonial } from './sanity/schemas'
 
 export default defineConfig({
   name:      'creative-konnect',

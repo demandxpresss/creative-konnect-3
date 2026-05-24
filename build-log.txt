@@ -1,0 +1,302 @@
+
+> creative-konnect@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.5
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+
+Failed to compile.
+
+./app/about/page.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/api/contact/route.ts
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/api/quote/route.ts
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/blog/[slug]/page.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/blog/loading.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/blog/page.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/contact/page.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/gallery/loading.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/gallery/page.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/hire/[citySlug]/[serviceSlug]/page.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/layout.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/loading.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/not-found.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/opengraph-image.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/page.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/privacy/page.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/robots.ts
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/services/[serviceSlug]/[subServiceSlug]/page.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/services/[serviceSlug]/page.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/services/loading.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/services/page.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/sitemap.ts
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./app/studio/[[...tool]]/page.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/layout/Footer.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/layout/Navbar.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/BlogSection.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/ClientLogos.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/CtaBanner.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/GallerySection.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/HeroSection.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/MapSection.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/ReelsSection.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/ServicesGrid.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/StatsBar.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/TestimonialsSection.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/TickerStrip.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/TrustBar.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/sections/index.ts
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/AnimatedSection.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/AnnouncementBar.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/BlogFilter.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/Breadcrumb.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/ContactForm.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/CookieBanner.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/EventTypeGrid.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/FaqAccordion.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/GalleryClient.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/GalleryReelsClient.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/GoogleMap.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/ImageWithFallback.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/QuoteModal.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/ReelCard.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/RelatedPosts.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/RichText.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/ScrollProgressBar.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/ScrollToTop.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/SectionHeader.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/ServiceCard.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/ShareButtons.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/Skeletons.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/StatCard.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/StickyCtaBar.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/SubServiceQuoteButton.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/WhatsAppWidget.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./components/ui/index.ts
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./lib/analytics.tsx
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./lib/constants.ts
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./lib/data.ts
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./lib/hooks.ts
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./lib/sanity.ts
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./lib/seo.ts
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+./lib/utils.ts
+1:1  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
+1:1  Error: Definition for rule '@typescript-eslint/no-unused-vars' was not found.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
