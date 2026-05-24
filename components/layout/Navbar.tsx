@@ -1,10 +1,13 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import Image from 'next/image'
 import { SERVICES, SUB_SERVICES, SITE_CONFIG } from '@/lib/constants'
-import { QuoteModal } from '@/components/ui/QuoteModal'
 import { Menu, X, ChevronDown } from 'lucide-react'
+
+const QuoteModal = dynamic(() => import('@/components/ui/QuoteModal').then((m) => m.QuoteModal), {
+  ssr: false,
+})
 
 export function Navbar() {
   const [megaOpen, setMegaOpen]       = useState(false)

@@ -18,7 +18,7 @@ export function MapSection() {
           <div className="bg-ck-ghost border border-[#dceaf5] rounded-card p-4 space-y-4">
             {[
               { label: 'Address',   val: SITE_CONFIG.address,  sub: null },
-              { label: 'Phone',     val: SITE_CONFIG.phone[0], sub: SITE_CONFIG.phone[1] },
+              { label: 'Phone',     val: SITE_CONFIG.phone[0], sub: null },
               { label: 'Email',     val: SITE_CONFIG.email,    sub: null },
               { label: 'WhatsApp',  val: 'Chat with us instantly', sub: null, green: true },
             ].map(row => (

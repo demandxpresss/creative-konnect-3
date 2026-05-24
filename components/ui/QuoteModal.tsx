@@ -102,7 +102,7 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
                     value={form.phone}
                     onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
                     className="form-input"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 84322 58944"
                   />
                 </div>
                 <div>

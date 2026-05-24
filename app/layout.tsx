@@ -1,12 +1,14 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import './globals.css'
 import { Navbar }         from '@/components/layout/Navbar'
 import { Footer }         from '@/components/layout/Footer'
-import { WhatsAppWidget } from '@/components/ui/WhatsAppWidget'
-import { CookieBanner }   from '@/components/ui/CookieBanner'
-import { ScrollToTop }    from '@/components/ui/ScrollToTop'
-import { Analytics }      from '@/lib/analytics'
 import { SITE_CONFIG }    from '@/lib/constants'
+
+const Analytics = dynamic(() => import('@/lib/analytics').then((m) => m.Analytics), { ssr: false })
+const WhatsAppWidget = dynamic(() => import('@/components/ui/WhatsAppWidget').then((m) => m.WhatsAppWidget), { ssr: false })
+const ScrollToTop = dynamic(() => import('@/components/ui/ScrollToTop').then((m) => m.ScrollToTop), { ssr: false })
+const CookieBanner = dynamic(() => import('@/components/ui/CookieBanner').then((m) => m.CookieBanner), { ssr: false })
 
 export const metadata: Metadata = {
   title: {

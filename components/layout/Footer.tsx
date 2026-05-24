@@ -104,9 +104,9 @@ export function Footer() {
             <div className="space-y-3">
               <div>
                 <div className="text-[9px] text-[#4a7090] uppercase tracking-[1px] mb-1">📞 Phone & WhatsApp</div>
-                <a href={`tel:+918432258944`}
+                <a href={`tel:${SITE_CONFIG.phone[0].replace(/\s/g, '')}`}
                   className="block text-xs font-semibold text-[#c8dce9] hover:text-white transition-colors">
-                  +91 84322 58944
+                  {SITE_CONFIG.phone[0]}
                 </a>
                 {SITE_CONFIG.phone.map(p => (
                   <a key={p} href={`tel:${p.replace(/\s/g, '')}`}

@@ -1,9 +1,7 @@
-'use client'
-import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { QuoteModal } from '@/components/ui/QuoteModal'
 import { SERVICES } from '@/lib/constants'
+import { HeroCtaButtons } from '@/components/sections/HeroCtaButtons'
 
 const TILE_COLORS: Record<string, string> = {
   'photo-video-booths':  '#1A7FD4',
@@ -32,7 +30,6 @@ const TILE_IMAGES: Record<string, string> = {
 }
 
 export function HeroSection() {
-  const [quoteOpen, setQuoteOpen] = useState(false)
   const topServices = SERVICES.slice(0, 4)
 
   return (
@@ -57,14 +54,7 @@ export function HeroSection() {
             we build the moments that define your event.
           </p>
 
-          <div className="flex flex-wrap gap-3">
-            <button onClick={() => setQuoteOpen(true)} className="btn-primary">
-              Explore Services
-            </button>
-            <Link href="/gallery" className="btn-ghost">
-              View Gallery
-            </Link>
-          </div>
+          <HeroCtaButtons />
         </div>
 
         {/* Right: service tiles grid with photos */}
@@ -81,6 +71,9 @@ export function HeroSection() {
                   src={TILE_IMAGES[s.slug]}
                   alt={s.name}
                   fill
+                  priority={i === 0}
+                  fetchPriority={i === 0 ? 'high' : 'auto'}
+                  loading={i === 0 ? 'eager' : 'lazy'}
                   sizes="(max-width: 1024px) 50vw, 25vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -115,7 +108,6 @@ export function HeroSection() {
         </div>
       </section>
 
-      <QuoteModal isOpen={quoteOpen} onClose={() => setQuoteOpen(false)} />
     </>
   )
 }

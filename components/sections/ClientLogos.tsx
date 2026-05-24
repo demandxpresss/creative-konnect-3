@@ -1,5 +1,3 @@
-'use client'
-
 const CLIENTS = [
   { name: 'TCS',      src: '/logos-tcs.svg' },
   { name: 'ACG',      src: '/logos-acg.svg' },

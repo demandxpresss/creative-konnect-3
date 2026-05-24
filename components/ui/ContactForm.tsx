@@ -70,7 +70,7 @@ export function ContactForm() {
             Phone / WhatsApp <span className="text-ck-blue">*</span>
           </label>
           <input required value={form.phone} onChange={e => set('phone', e.target.value)}
-            className="form-input" placeholder="+91 98765 43210" />
+            className="form-input" placeholder="+91 84322 58944" />
         </div>
       </div>
 

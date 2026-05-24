@@ -65,7 +65,7 @@ export default function ContactPage() {
 
           <div className="card p-4 mb-4 space-y-4">
             {[
-              { label: 'Phone',     val: SITE_CONFIG.phone[0],  sub: SITE_CONFIG.phone[1],  icon: '📞', green: false, href: `tel:${SITE_CONFIG.phone[0].replace(/\s/g, '')}` },
+              { label: 'Phone',     val: SITE_CONFIG.phone[0],  sub: null,                  icon: '📞', green: false, href: `tel:${SITE_CONFIG.phone[0].replace(/\s/g, '')}` },
               { label: 'WhatsApp', val: 'Chat with us now',      sub: 'Fastest response',    icon: '💬', green: true,  href: `https://wa.me/${SITE_CONFIG.whatsapp}` },
               { label: 'Email',     val: SITE_CONFIG.email,     sub: 'We reply within 2 hrs', icon: '✉️', green: false, href: `mailto:${SITE_CONFIG.email}` },
               { label: 'Office',    val: SITE_CONFIG.address,   sub: 'We serve pan India with ❤️', icon: '📍', green: false, href: null },
