@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Logo ticker marquee ───────────────────── */
+@keyframes marquee-ltr {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+.animate-marquee-ltr {
+  animation: marquee-ltr 30s linear infinite;
+}
+
+/* ── Service ticker strip ───────────────────── */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@layer base {
+  :root {
+    --ck-navy:     #0D1F2E;
+    --ck-deep:     #1A3A5C;
+    --ck-blue:     #1A7FD4;
+    --ck-electric: #2AACEE;
+    --ck-sky:      #E8F4FD;
+    --ck-ghost:    #F7FAFE;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    background-color: #F7FAFE;
+    color: #1A3A5C;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+}
+
+@layer components {
+  /* ── Buttons ───────────────────────── */
+  .btn-primary {
+    @apply bg-ck-blue text-white font-bold text-sm px-6 py-3 rounded-[7px]
+           hover:bg-[#1568b0] transition-colors duration-150 cursor-pointer
+           inline-flex items-center gap-2 whitespace-nowrap;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-[#8aacbe] font-medium text-sm px-6 py-3 rounded-[7px]
+           border border-[#1e3a52] hover:bg-[#111e2b] hover:text-white
+           transition-colors duration-150 cursor-pointer inline-flex items-center gap-2;
+  }
+
+  .btn-wa {
+    @apply bg-brand-wa text-white font-bold text-sm px-6 py-3 rounded-[7px]
+           hover:bg-[#1db954] transition-colors duration-150 cursor-pointer
+           inline-flex items-center gap-2 whitespace-nowrap;
+  }
+
+  .btn-white {
+    @apply bg-white text-ck-blue font-bold text-sm px-6 py-3 rounded-[7px]
+           hover:bg-ck-sky transition-colors duration-150 cursor-pointer
+           inline-flex items-center gap-2 whitespace-nowrap;
+  }
+
+  /* ── Cards ─────────────────────────── */
+  .card {
+    @apply bg-white border border-[#dceaf5] rounded-card overflow-hidden;
+  }
+
+  .card-dark {
+    @apply bg-[rgba(255,255,255,0.04)] border border-[#1e3a52] rounded-card overflow-hidden;
+  }
+
+  /* ── Section layout ────────────────── */
+  .section-light  { @apply py-10 px-8 bg-white; }
+  .section-ghost  { @apply py-10 px-8 bg-ck-ghost; }
+  .section-dark   { @apply py-10 px-8 bg-ck-navy; }
+
+  /* ── Eye-brow labels ───────────────── */
+  .eyebrow {
+    @apply text-[10px] font-bold tracking-[2px] uppercase text-ck-blue mb-1;
+  }
+
+  .eyebrow-light {
+    @apply text-[10px] font-bold tracking-[2px] uppercase text-ck-electric mb-1;
+  }
+
+  /* ── Form inputs ───────────────────── */
+  .form-input {
+    @apply w-full bg-ck-ghost border border-[#dceaf5] rounded-[8px] px-3 py-2.5
+           text-xs text-ck-deep font-medium outline-none
+           focus:border-ck-blue focus:bg-white transition-colors duration-150;
+  }
+
+  .form-select {
+    @apply w-full bg-ck-ghost border border-[#dceaf5] rounded-[8px] px-3 py-2.5
+           text-xs text-ck-deep font-medium outline-none cursor-pointer
+           focus:border-ck-blue transition-colors duration-150;
+  }
+
+  /* ── Badge/pill ────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1 bg-ck-sky text-ck-blue
+           text-[9px] font-bold px-2.5 py-0.5 rounded-full
+           tracking-wide uppercase;
+  }
+
+  .badge-new {
+    @apply bg-ck-electric text-white text-[8px] font-bold
+           px-2 py-0.5 rounded-full tracking-wide uppercase;
+  }
+
+  /* ── Ticker / marquee ──────────────── */
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 30s linear infinite;
+  }
+
+  .ticker-track:hover { animation-play-state: paused; }
+
+  /* ── Play button ───────────────────── */
+  .play-btn {
+    @apply w-10 h-10 rounded-full bg-white/20 border-2 border-white/35
+           flex items-center justify-center cursor-pointer
+           hover:bg-ck-blue/50 transition-colors duration-150;
+  }
+
+  /* ── Reel card ─────────────────────── */
+  .reel-tag {
+    @apply inline-block bg-ck-electric/25 text-ck-electric
+           text-[8px] font-bold px-2 py-0.5 rounded-full mb-1.5
+           tracking-wider uppercase;
+  }
+
+  /* ── FAQ item ──────────────────────── */
+  .faq-item {
+    @apply border border-[#dceaf5] rounded-card overflow-hidden mb-2;
+  }
+
+  /* ── Trust pill ────────────────────── */
+  .trust-pill {
+    @apply flex items-center gap-2 bg-ck-ghost border border-[#dceaf5]
+           rounded-[8px] px-3.5 py-2.5;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c0d8ee; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #1A7FD4; }
