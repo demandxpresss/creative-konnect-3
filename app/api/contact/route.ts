@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from:    'Creative Konnect Website <noreply@creativekonnect.com>',
       to:      [SITE_CONFIG.email],
-      replyTo: email,
+      reply_to: email,
       subject: `📋 New Contact Form — ${name} | ${eventType} in ${city}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;">

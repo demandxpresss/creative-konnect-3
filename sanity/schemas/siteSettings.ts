@@ -5,7 +5,6 @@ export const siteSettings = defineType({
   title: 'Site Settings',
   type:  'document',
   // Only one doc allowed
-  __experimental_actions: ['update', 'publish'],
   fields: [
     defineField({ name: 'googleRating',      title: 'Google Rating',       type: 'string' }),
     defineField({ name: 'googleReviewCount', title: 'Review Count',        type: 'string' }),

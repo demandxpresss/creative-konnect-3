@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from:    'Creative Konnect Website <noreply@creativekonnect.com>',
       to:      [SITE_CONFIG.email],
-      replyTo: email || undefined,
+      reply_to: email || undefined,
       subject: `New Quote Request — ${eventType || 'Event'} in ${city || 'India'}`,
       html: `
         <div style="font-family: Plus Jakarta Sans, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;">
