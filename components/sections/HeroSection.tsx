@@ -17,6 +17,7 @@ const HERO_TILES = [
     label: 'Photo Booth',
     href: '/services/photo-video-booths',
     sub: 'Ring · Mirror · AI · 360',
+    badge: 'Instant Sharing',
     image: '/images/hero-photo-booth.jpeg',
     position: 'center 35%',
   },
@@ -25,6 +26,7 @@ const HERO_TILES = [
     label: 'Video Booth',
     href: '/services/photo-video-booths',
     sub: '360 · Glambot · Reels',
+    badge: 'Social Reels',
     image: '/images/hero-video-booth.jpeg',
     position: 'center 30%',
   },
@@ -33,6 +35,7 @@ const HERO_TILES = [
     label: 'AI & Tech Experiences',
     href: '/services/ai-tech-experiences',
     sub: 'Celebrity AI · AR Mind Reader',
+    badge: 'AI-Powered',
     image: '/images/hero-ai-booth.jpg',
     position: 'center center',
   },
@@ -41,6 +44,7 @@ const HERO_TILES = [
     label: 'VR & Games',
     href: '/services/games',
     sub: 'VR · Car Sim · Touch Screen',
+    badge: 'Interactive Fun',
     image: '/images/hero-gaming.jpg',
     position: 'center center',
   },
@@ -49,6 +53,7 @@ const HERO_TILES = [
     label: 'Event Registration Platform',
     href: '/services/registration',
     sub: 'Fast check-ins · badge & flow',
+    badge: 'Fast Check-In',
     image: '/images/hero-event-registration.jpg',
     position: 'center center',
   },
@@ -57,6 +62,7 @@ const HERO_TILES = [
     label: 'Giveaways',
     href: '/services/merch-giveaways',
     sub: 'Magnets · Bobbleheads · Tags',
+    badge: 'Custom Merch',
     image: '/images/hero-merch.jpg',
     position: 'center center',
   },
@@ -104,6 +110,7 @@ export function HeroSection() {
                 priority={i === 0}
                 fetchPriority={i === 0 ? 'high' : 'auto'}
                 loading={i === 0 ? 'eager' : 'lazy'}
+                quality={90}
                 sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 style={{ objectPosition: tile.position }}
@@ -113,12 +120,7 @@ export function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
               {/* Badges */}
-              {i === 0 && (
-                <span className="absolute top-3 right-3 badge-new z-10">Popular</span>
-              )}
-              {i === 1 && (
-                <span className="absolute top-3 right-3 badge-new z-10">AI</span>
-              )}
+              <span className="absolute top-3 right-3 badge-new z-10">{tile.badge}</span>
 
               {/* Text content */}
               <div className="relative z-10 p-5">

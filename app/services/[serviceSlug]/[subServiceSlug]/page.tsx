@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { SERVICES, SUB_SERVICES, SITE_CONFIG, EVENT_TYPES } from '@/lib/constants'
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { CtaBanner }           from '@/components/sections/CtaBanner'
 import { FaqAccordion }        from '@/components/ui/FaqAccordion'
 import { SubServiceQuoteButton } from '@/components/ui/SubServiceQuoteButton'
+import { getProductMedia } from '@/lib/product-images'
 import { StickyCtaBar }        from '@/components/ui/StickyCtaBar'
 
 interface Props { params: { serviceSlug: string; subServiceSlug: string } }
@@ -72,6 +74,7 @@ export default function SubServicePage({ params }: Props) {
   const service = SERVICES.find(s => s.slug === params.serviceSlug)
   const sub     = SUB_SERVICES[params.serviceSlug]?.find(s => s.slug === params.subServiceSlug)
   if (!service || !sub) notFound()
+  const media = getProductMedia(params.serviceSlug, params.subServiceSlug)
 
   const productSchema = {
     '@context': 'https://schema.org',
@@ -97,8 +100,8 @@ export default function SubServicePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
 
       {/* Hero */}
-      <div className="bg-ck-navy border-b-[3px] border-ck-blue px-8 py-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="bg-ck-navy border-b-[3px] border-ck-blue px-8 py-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
           {/* Left */}
           <div>
             <div className="text-xs text-[#4a7090] mb-3">
@@ -126,8 +129,19 @@ export default function SubServicePage({ params }: Props) {
           </div>
 
           {/* Right: demo video + stats */}
-          <div className="flex flex-col gap-3">
-            <div className="relative rounded-card overflow-hidden h-40 bg-gradient-to-br from-ck-blue to-ck-navy cursor-pointer border border-[#1e3a52]">
+          <div className="flex flex-col gap-3 w-full max-w-[520px] lg:ml-auto">
+            <div className="relative rounded-card overflow-hidden h-32 sm:h-36 cursor-pointer border border-[#1e3a52]">
+              <Image
+                src={media.hero}
+                alt={sub.name}
+                fill
+                priority
+                quality={90}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+                style={{ objectPosition: 'center 22%' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
               <PlayIcon />
               <div className="absolute bottom-3 left-3 text-xs font-semibold text-white/60">{sub.name} Demo Reel</div>
               <div className="absolute bottom-3 right-3 bg-black/60 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">2:34</div>
@@ -169,14 +183,23 @@ export default function SubServicePage({ params }: Props) {
           <h2 className="text-[20px] font-black text-white tracking-tight mb-1">{sub.name} Reels &amp; Gallery</h2>
           <p className="text-xs text-[#4a7090] mb-5">Real footage from actual events across India.</p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-            {['Corporate · Hyderabad','Wedding · Mumbai','Brand Activation · Delhi','Award Night · Pune'].map((label, i) => (
-              <div key={i} className={`relative rounded-card overflow-hidden cursor-pointer ${i === 0 ? 'md:col-span-2' : ''}`} style={{ minHeight: 140 }}>
-                <div className={`absolute inset-0 bg-gradient-to-br ${i % 2 === 0 ? 'from-ck-blue to-ck-navy' : 'from-ck-electric to-ck-deep'}`} />
+            {media.gallery.slice(0, 4).map((src, i) => (
+              <div key={src} className={`relative rounded-card overflow-hidden cursor-pointer ${i === 0 ? 'md:col-span-2' : ''}`} style={{ minHeight: 140 }}>
+                <Image
+                  src={src}
+                  alt={`${sub.name} gallery image ${i + 1}`}
+                  fill
+                  quality={88}
+                  sizes={i === 0 ? '(max-width: 1024px) 100vw, 50vw' : '(max-width: 1024px) 50vw, 25vw'}
+                  className="object-cover"
+                  style={{ objectPosition: i === 0 ? 'center 22%' : 'center center' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
                 <PlayIcon />
                 <div className="absolute inset-0 flex flex-col justify-end p-3">
                   <span className="reel-tag">{sub.name.toUpperCase()}</span>
-                  <p className="text-xs font-bold text-white">{label}</p>
-                  {i === 0 && <p className="text-[10px] text-white/40">1.2M views</p>}
+                  <p className="text-xs font-bold text-white">{sub.name} {i + 1}</p>
+                  {i === 0 && <p className="text-[10px] text-white/40">Real event photo</p>}
                 </div>
               </div>
             ))}

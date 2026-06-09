@@ -12,6 +12,8 @@ export type ReelTag =
   | 'Magazine Cover'
   | 'AI Booth'
   | 'AI & Tech'
+  | 'Guest Engagement'
+  | 'Merch & Giveaways'
   | 'Games'
 
 export interface GalleryReel {
@@ -22,7 +24,8 @@ export interface GalleryReel {
 
 const TAGS: ReelTag[] = [
   'All', 'Photo Booth', 'Ring Booth', 'Mirror Booth', '360 Booth',
-  'Glambot', 'Strip Booth', 'Magazine Cover', 'AI Booth', 'AI & Tech', 'Games',
+  'Glambot', 'Strip Booth', 'Magazine Cover', 'AI Booth', 'AI & Tech',
+  'Guest Engagement', 'Merch & Giveaways', 'Games',
 ]
 
 const TAG_EMOJI: Record<ReelTag, string> = {
@@ -36,6 +39,8 @@ const TAG_EMOJI: Record<ReelTag, string> = {
   'Magazine Cover':'📰',
   'AI Booth':      '🤖',
   'AI & Tech':     '🌐',
+  'Guest Engagement': '🎙️',
+  'Merch & Giveaways': '🎁',
   'Games':         '🎮',
 }
 

@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { SERVICES, SUB_SERVICES, SITE_CONFIG, EVENT_TYPES } from '@/lib/constants'
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 import { FaqAccordion } from '@/components/ui/FaqAccordion'
+import { getProductMedia } from '@/lib/product-images'
 
 interface Props { params: { serviceSlug: string } }
 
@@ -49,6 +51,15 @@ const DEFAULT_BENEFITS = [
   { title: 'Quick Turnaround', desc: 'Quote within 2 hours, confirmation within 24 hours.' },
   { title: 'Pan India', desc: 'Available across 15+ cities. We travel for large events.' },
 ]
+
+const SERVICE_TAGS: Record<string, string[]> = {
+  'photo-video-booths': ['Instant Sharing', 'Custom Branding', 'On-Site Operator'],
+  'ai-tech-experiences': ['AI-Powered', 'Interactive Tech', 'Brandable Experience'],
+  'games': ['Crowd Magnet', 'Interactive Play', 'Team Engagement'],
+  'merch-giveaways': ['Custom Merch', 'Brand Recall', 'Take-Home Gifts'],
+  'guest-engagement': ['Guest Interaction', 'Story Capture', 'Memorable Moments'],
+  'registration': ['Fast Check-In', 'Lead Capture', 'Digital Flow'],
+}
 
 const DEFAULT_FAQS = [
   { q: 'How far in advance should I book?',           a: 'We recommend booking at least 2 weeks in advance for standard events, and 4-6 weeks for large corporate events or weddings. However, we can accommodate last-minute bookings subject to availability.' },
@@ -145,10 +156,18 @@ export default function ServiceCategoryPage({ params }: Props) {
                 href={`/services/${params.serviceSlug}/${sub.slug}`}
                 className="card group hover:border-ck-blue hover:-translate-y-0.5 transition-all duration-150"
               >
-                <div className={`h-24 relative bg-gradient-to-br ${i % 3 === 0 ? 'from-ck-blue to-ck-navy' : i % 3 === 1 ? 'from-ck-electric to-ck-deep' : 'from-ck-deep to-ck-navy'}`}>
+                <div className="h-28 sm:h-32 relative overflow-hidden bg-[#f8fbfe]">
+                  <Image
+                    src={getProductMedia(params.serviceSlug, sub.slug).hero}
+                    alt={sub.name}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    className="object-contain"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   {i === 0 && <span className="absolute top-2 right-2 badge-new">Top Pick</span>}
                   {i === 1 && <span className="absolute top-2 right-2 badge-new">Popular</span>}
-                  <div className="absolute bottom-2 left-3 text-[8px] text-white/50 font-bold uppercase tracking-wider">
+                  <div className="absolute bottom-2 left-3 text-[8px] text-white/75 font-bold uppercase tracking-wider drop-shadow">
                     {sub.name}
                   </div>
                 </div>
@@ -160,7 +179,7 @@ export default function ServiceCategoryPage({ params }: Props) {
                     Fully branded · Instant sharing · On-site operator included
                   </p>
                   <div className="flex flex-wrap gap-1 mb-3">
-                    {EVENT_TYPES.slice(0, 3).map(et => (
+                    {(SERVICE_TAGS[params.serviceSlug] || EVENT_TYPES.slice(0, 3)).map(et => (
                       <span key={et} className="badge">{et}</span>
                     ))}
                   </div>
