@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { SITE_CONFIG, SERVICES } from '@/lib/constants'
+import { SITE_CONFIG, SERVICES, CITIES } from '@/lib/constants'
+import { Wrench, Building2, MapPin, Mail, Phone, MapPinned } from 'lucide-react'
 
 function FacebookIcon() {
   return (
@@ -70,7 +71,9 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <div className="text-[10px] font-bold text-ck-electric uppercase tracking-[2px] mb-3">🛠️ Services</div>
+            <div className="flex items-center gap-1.5 text-[10px] font-bold text-ck-electric uppercase tracking-[2px] mb-3">
+              <Wrench size={12} /> Services
+            </div>
             {SERVICES.map(s => (
               <Link key={s.slug} href={`/services/${s.slug}`}
                 className="block text-xs text-[#6a98b5] hover:text-white mb-2 transition-colors">
@@ -81,7 +84,9 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <div className="text-[10px] font-bold text-ck-electric uppercase tracking-[2px] mb-3">🏢 Company</div>
+            <div className="flex items-center gap-1.5 text-[10px] font-bold text-ck-electric uppercase tracking-[2px] mb-3">
+              <Building2 size={12} /> Company
+            </div>
             {[
               { href: '/about',   label: 'About Us' },
               { href: '/gallery', label: 'Gallery' },
@@ -93,37 +98,45 @@ export function Footer() {
               </Link>
             ))}
             <div className="mt-5">
-              <div className="text-[10px] font-bold text-ck-electric uppercase tracking-[2px] mb-2">🗺️ We Serve</div>
-              <p className="text-xs text-[#6a98b5]">We serve pan India with ❤️</p>
+              <div className="flex items-center gap-1.5 text-[10px] font-bold text-ck-electric uppercase tracking-[2px] mb-2">
+                <MapPinned size={12} /> We Serve
+              </div>
+              <p className="text-xs text-[#6a98b5] leading-relaxed">
+                {CITIES.slice(0, 8).join(' · ')} &amp; more
+              </p>
             </div>
           </div>
 
           {/* Contact */}
           <div className="col-span-2 sm:col-span-1">
-            <div className="text-[10px] font-bold text-ck-electric uppercase tracking-[2px] mb-3">📬 Contact</div>
+            <div className="flex items-center gap-1.5 text-[10px] font-bold text-ck-electric uppercase tracking-[2px] mb-3">
+              <Mail size={12} /> Contact
+            </div>
             <div className="space-y-3">
               <div>
-                <div className="text-[9px] text-[#4a7090] uppercase tracking-[1px] mb-1">📞 Phone & WhatsApp</div>
-                <a href={`tel:${SITE_CONFIG.phone[0].replace(/\s/g, '')}`}
-                  className="block text-xs font-semibold text-[#c8dce9] hover:text-white transition-colors">
-                  {SITE_CONFIG.phone[0]}
-                </a>
+                <div className="flex items-center gap-1 text-[9px] text-[#4a7090] uppercase tracking-[1px] mb-1">
+                  <Phone size={10} /> Phone &amp; WhatsApp
+                </div>
                 {SITE_CONFIG.phone.map(p => (
                   <a key={p} href={`tel:${p.replace(/\s/g, '')}`}
-                    className="block text-xs text-[#6a98b5] hover:text-white transition-colors mt-0.5">
+                    className="block text-xs font-semibold text-[#c8dce9] hover:text-white transition-colors mt-0.5">
                     {p}
                   </a>
                 ))}
               </div>
               <div>
-                <div className="text-[9px] text-[#4a7090] uppercase tracking-[1px] mb-1">✉️ Email</div>
+                <div className="flex items-center gap-1 text-[9px] text-[#4a7090] uppercase tracking-[1px] mb-1">
+                  <Mail size={10} /> Email
+                </div>
                 <a href={`mailto:${SITE_CONFIG.email}`}
                   className="text-xs font-semibold text-[#c8dce9] hover:text-white transition-colors">
                   {SITE_CONFIG.email}
                 </a>
               </div>
               <div>
-                <div className="text-[9px] text-[#4a7090] uppercase tracking-[1px] mb-1">📍 Office</div>
+                <div className="flex items-center gap-1 text-[9px] text-[#4a7090] uppercase tracking-[1px] mb-1">
+                  <MapPin size={10} /> Office
+                </div>
                 <div className="text-xs text-[#6a98b5] leading-relaxed">{SITE_CONFIG.address}</div>
               </div>
             </div>

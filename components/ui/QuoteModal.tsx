@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { X, CheckCircle } from 'lucide-react'
-import { CITIES, EVENT_TYPES, SITE_CONFIG } from '@/lib/constants'
+import { CITIES, EVENT_TYPES, ACTIVITIES, DURATION_OPTIONS, SITE_CONFIG } from '@/lib/constants'
 
 interface QuoteModalProps {
   isOpen: boolean
@@ -12,12 +12,21 @@ interface QuoteModalProps {
 export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading]     = useState(false)
-  const [form, setForm]           = useState({ name: '', phone: '', city: '', eventType: '', eventDate: '' })
+  const [form, setForm]           = useState({ name: '', phone: '', city: '', eventType: '', eventDate: '', duration: '', activities: [] as string[] })
 
   // Reset on open
   useEffect(() => {
-    if (isOpen) { setSubmitted(false); setForm({ name: '', phone: '', city: '', eventType: '', eventDate: '' }) }
+    if (isOpen) { setSubmitted(false); setForm({ name: '', phone: '', city: '', eventType: '', eventDate: '', duration: '', activities: [] }) }
   }, [isOpen])
+
+  const toggleActivity = (activity: string) => {
+    setForm(f => ({
+      ...f,
+      activities: f.activities.includes(activity)
+        ? f.activities.filter(a => a !== activity)
+        : [...f.activities, activity],
+    }))
+  }
 
   // Close on Escape
   useEffect(() => {
@@ -71,7 +80,7 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
           <h2 className="text-lg font-black text-white leading-tight">
             Get a Free Quote<br />for Your Event
           </h2>
-          <p className="text-xs text-[#5a8aaa] mt-1.5">Fill in 4 quick fields — we respond within 2 hours.</p>
+          <p className="text-xs text-[#5a8aaa] mt-1.5">Fill in a few quick fields — we respond within 2 hours.</p>
         </div>
 
         {!submitted ? (
@@ -137,17 +146,58 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
                 </select>
               </div>
 
-              {/* Date (optional) */}
+              {/* Date + Duration */}
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
+                    Event Date <span className="text-[10px] text-[#aac0d0] font-normal">(optional)</span>
+                  </label>
+                  <input
+                    value={form.eventDate}
+                    onChange={e => setForm(f => ({ ...f, eventDate: e.target.value }))}
+                    className="form-input"
+                    placeholder="e.g. 15 March 2025"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
+                    Duration <span className="text-[10px] text-[#aac0d0] font-normal">(optional)</span>
+                  </label>
+                  <select
+                    value={form.duration}
+                    onChange={e => setForm(f => ({ ...f, duration: e.target.value }))}
+                    className="form-select"
+                  >
+                    <option value="">Select duration</option>
+                    {DURATION_OPTIONS.map(d => <option key={d}>{d}</option>)}
+                  </select>
+                </div>
+              </div>
+
+              {/* Activities (multi-select) */}
               <div>
                 <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
-                  Event Date <span className="text-[10px] text-[#aac0d0] font-normal">(optional)</span>
+                  Activities <span className="text-[10px] text-[#aac0d0] font-normal">(optional, select any)</span>
                 </label>
-                <input
-                  value={form.eventDate}
-                  onChange={e => setForm(f => ({ ...f, eventDate: e.target.value }))}
-                  className="form-input"
-                  placeholder="e.g. 15 March 2025"
-                />
+                <div className="flex flex-wrap gap-1.5">
+                  {ACTIVITIES.map(a => {
+                    const active = form.activities.includes(a)
+                    return (
+                      <button
+                        key={a}
+                        type="button"
+                        onClick={() => toggleActivity(a)}
+                        className={`text-[10.5px] font-semibold px-2.5 py-1.5 rounded-full border transition-colors ${
+                          active
+                            ? 'bg-ck-blue border-ck-blue text-white'
+                            : 'bg-white border-[#dceaf5] text-[#5a7a92] hover:border-ck-blue hover:text-ck-blue'
+                        }`}
+                      >
+                        {a}
+                      </button>
+                    )
+                  })}
+                </div>
               </div>
 
               {/* Trust pills */}

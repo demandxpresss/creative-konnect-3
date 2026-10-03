@@ -10,18 +10,19 @@ export const metadata: Metadata = {
 }
 
 const STATS = [
-  { num: '500+', label: '🎉 Events Delivered' },
-  { num: '15+',  label: '🗺️ Cities Covered' },
-  { num: '5.0★', label: '⭐ Google Rating' },
-  { num: '50+',  label: '🤝 Brand Partners' },
+  { num: '1500+', label: '🎉 Events Delivered' },
+  { num: '25+',   label: '🗺️ Cities Covered' },
+  { num: '5.0★',  label: '⭐ Google Rating' },
+  { num: '50+',   label: '🤝 Brand Partners' },
 ]
 
 const TIMELINE = [
-  { year: '2018', title: 'Founded 🚀',   desc: 'First 360 booth launched in Pune. First 10 events delivered.',      current: false },
-  { year: '2019', title: 'Expanded 📈',  desc: 'Added Mirror Booth, Glambot & GIF stations. Grew to 3 cities.',          current: false },
-  { year: '2021', title: 'AI & VR 🤖',   desc: 'Launched AI Celebrity Booth & VR Games. 100+ events milestone.',         current: false },
-  { year: '2023', title: 'Pan India 🇮🇳', desc: 'Reached 10 cities. AR Mind Reader & Mosaic Wall launched.',             current: false },
-  { year: '2025', title: '500+ Events ✨', desc: '15+ cities, 50+ brand partners, 5.0★ Google rating.',                  current: true  },
+  { year: '2018', title: 'Founded 🚀',     desc: 'Launched with a Single Photobooth in Pune. First 10 events delivered.',             current: false },
+  { year: '2019', title: 'Expanded 📈',    desc: 'Added Guest Registration & 360 Booth. Grew to 5 cities.',                            current: false },
+  { year: '2021', title: 'AI & VR 🤖',     desc: 'Launched VR Games & Touch Screen Games. 100+ events milestone.',                     current: false },
+  { year: '2023', title: 'AI & Tech 🤖',   desc: 'Launched AI Photobooth, AR Activities & Customized Games.',                          current: false },
+  { year: '2024', title: 'Glambot 🎬',     desc: 'Launched Glambot. 500+ events milestone.',                                           current: false },
+  { year: '2025', title: '1500+ Events ✨', desc: 'Launched Live Photo Magnet & Luggage Tag activity. 25+ cities.',                     current: true  },
 ]
 
 const WHY = [
@@ -92,14 +93,14 @@ export default function AboutPage() {
               Founded in Pune
             </span>
             <div className="text-base font-black text-white">Started with one booth.<br />Built a movement.</div>
-            <div className="text-xs text-white/50 mt-1">From a single 360 booth to India's most trusted event tech company.</div>
+            <div className="text-xs text-white/50 mt-1">From a single Photobooth to India's most trusted event tech company.</div>
           </div>
 
           <div>
             <div className="eyebrow mb-1">Our Story</div>
             <h2 className="text-[20px] font-black text-ck-deep tracking-tight mb-4">How Creative Konnect Began</h2>
             <p className="text-sm text-[#5a7a92] leading-relaxed mb-3">
-              Creative Konnect was founded in 2018 in Pune with a single 360 video booth
+              Creative Konnect was founded in 2018 in Pune with a single Photobooth
               and a belief that every event deserves a moment guests will share and remember forever.
             </p>
             <p className="text-sm text-[#5a7a92] leading-relaxed mb-4">

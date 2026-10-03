@@ -1,20 +1,21 @@
 import Link from 'next/link'
-import { SERVICES, SUB_SERVICES } from '@/lib/constants'
+import { SERVICES } from '@/lib/constants'
+import { Camera, Bot, Gamepad2, Gift, Mic, ClipboardList } from 'lucide-react'
 
-const SERVICE_ICONS: Record<string, string> = {
-  'photo-video-booths':  '📸',
-  'ai-tech-experiences': '🤖',
-  'games':               '🎮',
-  'merch-giveaways':     '🎁',
-  'guest-engagement':    '🎙️',
-  'registration':        '📋',
+const SERVICE_ICONS: Record<string, any> = {
+  'photo-video-booths':  Camera,
+  'ai-tech-experiences': Bot,
+  'games':               Gamepad2,
+  'merch-giveaways':     Gift,
+  'guest-engagement':    Mic,
+  'registration':        ClipboardList,
 }
 
 const SERVICE_DESC: Record<string, string> = {
-  'photo-video-booths':  '360 video, mirror, glambot, GIF & more — 9 booth types.',
-  'ai-tech-experiences': 'Celebrity AI, AR mind reader, mosaic wall & slingshot.',
+  'photo-video-booths':  'Glambot, mirror, ring booth, GIF & more — fully branded, instant sharing.',
+  'ai-tech-experiences': 'AI photobooth, mosaic wall, AR mind reader & digital sling shot.',
   'games':               'VR stations, car simulator, touch screen games & buzzer.',
-  'merch-giveaways':     'Fridge magnets, bag tags and custom bobble heads.',
+  'merch-giveaways':     'Fridge magnets, bag tags, bobble heads & laser engraving.',
   'guest-engagement':    'Audio & video guestbooks for lasting memories.',
   'registration':        'Customised apps, games & event registration solutions.',
 }
@@ -35,15 +36,15 @@ export function ServicesGrid() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {SERVICES.map(s => {
-            const subs = SUB_SERVICES[s.slug] || []
+            const Icon = SERVICE_ICONS[s.slug]
             return (
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}`}
                 className="card p-5 group hover:border-ck-blue hover:-translate-y-0.5 transition-all duration-150"
               >
-                <div className="w-10 h-10 rounded-[8px] bg-ck-sky flex items-center justify-center mb-3 text-xl">
-                  {SERVICE_ICONS[s.slug]}
+                <div className="w-10 h-10 rounded-[8px] bg-ck-sky flex items-center justify-center mb-3">
+                  <Icon size={19} className="text-ck-blue" strokeWidth={2.1} />
                 </div>
                 <h3 className="text-sm font-bold text-ck-deep mb-1.5 group-hover:text-ck-blue transition-colors">
                   {s.name}
@@ -52,7 +53,7 @@ export function ServicesGrid() {
                   {SERVICE_DESC[s.slug]}
                 </p>
                 <div className="text-[10px] font-bold text-ck-blue">
-                  {subs.length} {subs.length === 1 ? 'option' : 'options'} →
+                  Explore →
                 </div>
               </Link>
             )

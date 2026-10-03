@@ -11,8 +11,10 @@ export async function POST(req: NextRequest) {
     const {
       name, phone, email, company,
       eventType, city, eventDate, guestCount,
+      duration, activities,
       services, message, service,
     } = body
+    const activitiesStr = Array.isArray(activities) ? activities.join(', ') : (activities || '')
 
     // ── 1. Send email notification via Resend ─────────────────────
     await resend.emails.send({
@@ -41,6 +43,8 @@ export async function POST(req: NextRequest) {
                 ['Event Type',    eventType    || '—'],
                 ['City',          city         || '—'],
                 ['Event Date',    eventDate    || '—'],
+                ['Duration',      duration     || '—'],
+                ['Activities',    activitiesStr || '—'],
                 ['Guest Count',   guestCount   || '—'],
                 ['Service',       service || (Array.isArray(services) ? services.join(', ') : '—')],
                 ['Message',       message      || '—'],
@@ -106,31 +110,40 @@ export async function POST(req: NextRequest) {
     }
 
     // ── 3. Save to Notion database ────────────────────────────────
+    // Wrapped in its own try/catch: if 'Duration' / 'Activities' columns
+    // don't exist yet in the Notion database, this fails without breaking
+    // the email notification that already went out above.
     if (process.env.NOTION_API_KEY && process.env.NOTION_DATABASE_ID) {
-      await fetch('https://api.notion.com/v1/pages', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${process.env.NOTION_API_KEY}`,
-          'Content-Type': 'application/json',
-          'Notion-Version': '2022-06-28',
-        },
-        body: JSON.stringify({
-          parent: { database_id: process.env.NOTION_DATABASE_ID },
-          properties: {
-            Name:        { title:  [{ text: { content: name || 'Unknown' } }] },
-            Phone:       { phone_number: phone || '' },
-            Email:       { email: email || '' },
-            Company:     { rich_text: [{ text: { content: company || '' } }] },
-            'Event Type':{ select: { name: eventType || 'Unknown' } },
-            City:        { select: { name: city || 'Unknown' } },
-            'Event Date':{ rich_text: [{ text: { content: eventDate || '' } }] },
-            'Guest Count':{ rich_text: [{ text: { content: guestCount || '' } }] },
-            Services:    { rich_text: [{ text: { content: Array.isArray(services) ? services.join(', ') : (service || '') } }] },
-            Message:     { rich_text: [{ text: { content: message || '' } }] },
-            Status:      { select: { name: 'New Lead' } },
+      try {
+        await fetch('https://api.notion.com/v1/pages', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${process.env.NOTION_API_KEY}`,
+            'Content-Type': 'application/json',
+            'Notion-Version': '2022-06-28',
           },
-        }),
-      })
+          body: JSON.stringify({
+            parent: { database_id: process.env.NOTION_DATABASE_ID },
+            properties: {
+              Name:        { title:  [{ text: { content: name || 'Unknown' } }] },
+              Phone:       { phone_number: phone || '' },
+              Email:       { email: email || '' },
+              Company:     { rich_text: [{ text: { content: company || '' } }] },
+              'Event Type':{ select: { name: eventType || 'Unknown' } },
+              City:        { select: { name: city || 'Unknown' } },
+              'Event Date':{ rich_text: [{ text: { content: eventDate || '' } }] },
+              Duration:    { rich_text: [{ text: { content: duration || '' } }] },
+              Activities:  { rich_text: [{ text: { content: activitiesStr } }] },
+              'Guest Count':{ rich_text: [{ text: { content: guestCount || '' } }] },
+              Services:    { rich_text: [{ text: { content: Array.isArray(services) ? services.join(', ') : (service || '') } }] },
+              Message:     { rich_text: [{ text: { content: message || '' } }] },
+              Status:      { select: { name: 'New Lead' } },
+            },
+          }),
+        })
+      } catch (notionErr) {
+        console.error('Notion sync error (quote):', notionErr)
+      }
     }
 
     // ── Save to Google Sheets (optional webhook) ────────────────
@@ -145,6 +158,8 @@ export async function POST(req: NextRequest) {
         eventType: eventType || '',
         city: city || '',
         eventDate: eventDate || '',
+        duration: duration || '',
+        activities: activitiesStr,
         guestCount: guestCount || '',
         service: service || '',
         services: Array.isArray(services) ? services.join(', ') : (services || ''),

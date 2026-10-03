@@ -93,7 +93,7 @@ export function Navbar() {
                       <div className="text-[9px] font-bold text-[#7aaccc] uppercase tracking-[2px] mt-3 mb-3">
                         AI & Tech
                       </div>
-                      {(SUB_SERVICES['ai-tech-experiences'] || []).slice(0, 3).map(s => (
+                      {(SUB_SERVICES['ai-tech-experiences'] || []).map(s => (
                         <Link
                           key={s.slug}
                           href={`/services/ai-tech-experiences/${s.slug}`}

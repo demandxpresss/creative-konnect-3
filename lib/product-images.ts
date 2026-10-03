@@ -78,6 +78,13 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/360-video-booth.jpg`,
     ],
   },
+  'single-photobooth': {
+    hero: `${ROOT}/360-video-booth.jpg`,
+    gallery: [
+      `${ROOT}/360-video-booth.jpg`,
+      `${ROOT}/360-video-booth.jpg`,
+    ],
+  },
   'glambot': {
     hero: `${ROOT}/glambot.png`,
     gallery: [
@@ -131,6 +138,27 @@ const subserviceMedia: Record<string, MediaSet> = {
     gallery: [
       `${ROOT}/ar-mind-reader.jpg`,
       `${ROOT}/ar-mind-reader.jpg`,
+    ],
+  },
+  'digital-sling-shot': {
+    hero: `${ROOT}/ar-mind-reader.jpg`,
+    gallery: [
+      `${ROOT}/ar-mind-reader.jpg`,
+      `${ROOT}/ar-mind-reader.jpg`,
+    ],
+  },
+  'ai-photobooth': {
+    hero: `${ROOT}/ai-celebrity.jpg`,
+    gallery: [
+      `${ROOT}/ai-celebrity.jpg`,
+      `${ROOT}/ai-starter-pack.jpg`,
+    ],
+  },
+  'laser-engraving': {
+    hero: `${ROOT}/bobble-head.jpg`,
+    gallery: [
+      `${ROOT}/bobble-head.jpg`,
+      `${ROOT}/bad-tags.jpg`,
     ],
   },
   'mosaic-wall': {

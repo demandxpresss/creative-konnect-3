@@ -9,8 +9,9 @@ export const SITE_CONFIG = {
   address: 'Japonica B, Warje, Aditya Garden City, Warje, Pune, Maharashtra 411058',
   googleRating: '5.0',
   googleReviewCount: '22',
-  eventsCount: '500+',
-  citiesCount: '15+',
+  eventsCount: '1000+',
+  citiesCount: '25+',
+  activitiesCount: '30+',
   socialLinks: {
     instagram: 'https://www.instagram.com/creative_konnect/',
     facebook:  'https://www.facebook.com/creativekonnect/',
@@ -38,6 +39,28 @@ export const EVENT_TYPES = [
   'Virtual Event',
 ]
 
+export const ACTIVITIES = [
+  'Ring Booth',
+  'Mirror Booth',
+  'Glambot',
+  'AI Photobooth',
+  'VR Games',
+  'Touch Screen Games',
+  'Mosaic Wall',
+  'AR Mind Reader',
+  'Digital Sling Shot',
+  'Fridge Magnets',
+  'Bobble Heads',
+  'Audio / Video Guest Book',
+]
+
+export const DURATION_OPTIONS = [
+  'Up to 2 hrs',
+  '3–4 hrs',
+  '5–6 hrs (Full Day)',
+  'Multi-day Event',
+]
+
 export const SERVICES = [
   { name: 'Photo & Video Booths', slug: 'photo-video-booths' },
   { name: 'AI & Tech Experiences', slug: 'ai-tech-experiences' },
@@ -51,7 +74,7 @@ export const SUB_SERVICES: Record<string, { name: string; slug: string }[]> = {
   'photo-video-booths': [
     { name: 'Ring Booth',         slug: 'ring-booth' },
     { name: 'Mirror Booth',       slug: 'mirror-booth' },
-    { name: '360 Video Booth',    slug: '360-video-booth' },
+    { name: 'Single Photobooth',  slug: 'single-photobooth' },
     { name: 'Glambot',            slug: 'glambot' },
     { name: 'AI Booths',          slug: 'ai-booths' },
     { name: 'Green Screen / VFX', slug: 'green-screen-vfx' },
@@ -60,12 +83,10 @@ export const SUB_SERVICES: Record<string, { name: string; slug: string }[]> = {
     { name: 'Strip Photobooth',   slug: 'strip-photobooth' },
   ],
   'ai-tech-experiences': [
-    { name: 'AI Celebrity Booth', slug: 'ai-celebrity-booth' },
-    { name: 'AI Starter Pack',    slug: 'ai-starter-pack' },
-    { name: 'AI 360 Booth',       slug: 'ai-360-booth' },
-    { name: 'AR Mind Reader',     slug: 'ar-mind-reader' },
-    { name: 'Sling Shot',         slug: 'sling-shot' },
-    { name: 'Mosaic Wall',        slug: 'mosaic-wall' },
+    { name: 'AI Photobooth',       slug: 'ai-photobooth' },
+    { name: 'Mosaic Wall',         slug: 'mosaic-wall' },
+    { name: 'Digital Sling Shot',  slug: 'digital-sling-shot' },
+    { name: 'AR Mind Reader',      slug: 'ar-mind-reader' },
   ],
   'games': [
     { name: 'VR Games',           slug: 'vr-games' },
@@ -78,6 +99,7 @@ export const SUB_SERVICES: Record<string, { name: string; slug: string }[]> = {
     { name: 'Fridge Magnets',     slug: 'fridge-magnets' },
     { name: 'Bag Tags',           slug: 'bag-tags' },
     { name: 'Bobble Heads',       slug: 'bobble-heads' },
+    { name: 'Laser Engraving',    slug: 'laser-engraving' },
   ],
   'guest-engagement': [
     { name: 'Audio Guest Book',   slug: 'audio-guest-book' },

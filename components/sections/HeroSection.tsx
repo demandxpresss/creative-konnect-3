@@ -16,7 +16,7 @@ const HERO_TILES = [
     slug: 'photo-video-booths',
     label: 'Photo Booth',
     href: '/services/photo-video-booths',
-    sub: 'Ring · Mirror · AI · 360',
+    sub: 'Ring · Mirror · AI',
     badge: 'Instant Sharing',
     image: '/images/hero-photo-booth.jpeg',
     position: 'center 35%',
@@ -25,7 +25,7 @@ const HERO_TILES = [
     slug: 'photo-video-booths',
     label: 'Video Booth',
     href: '/services/photo-video-booths',
-    sub: '360 · Glambot · Reels',
+    sub: 'Glambot · AI Video · Reels',
     badge: 'Social Reels',
     image: '/images/hero-video-booth.jpeg',
     position: 'center 30%',
@@ -34,7 +34,7 @@ const HERO_TILES = [
     slug: 'ai-tech-experiences',
     label: 'AI & Tech Experiences',
     href: '/services/ai-tech-experiences',
-    sub: 'Celebrity AI · AR Mind Reader',
+    sub: 'AI Photo · Mosaic Wall · AR Mind Reader',
     badge: 'AI-Powered',
     image: '/images/hero-ai-booth.jpg',
     position: 'center center',
@@ -87,8 +87,8 @@ export function HeroSection() {
           </h1>
 
           <p className="text-sm text-[#6a98b5] leading-[1.75] max-w-[380px] mb-7">
-            From 360 video booths and AI celebrity experiences to VR games and custom merch —
-            we build the moments that define your event.
+            From immersive photo booth experiences and interactive games to personalized
+            giveaways and custom applications — we create experiences that make every event unforgettable.
           </p>
 
           <HeroCtaButtons />

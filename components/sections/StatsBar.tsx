@@ -1,10 +1,10 @@
 import { SITE_CONFIG } from '@/lib/constants'
 
 const STATS = [
-  { num: SITE_CONFIG.eventsCount, label: 'Events Delivered' },
-  { num: '12+',                   label: 'Booth & Tech Types' },
-  { num: SITE_CONFIG.citiesCount, label: 'Cities Across India' },
-  { num: `${SITE_CONFIG.googleRating}★`, label: 'Google Rating' },
+  { num: SITE_CONFIG.eventsCount,     label: 'Events Delivered' },
+  { num: SITE_CONFIG.activitiesCount, label: 'Engagement Activities' },
+  { num: SITE_CONFIG.citiesCount,     label: 'Cities Covered Across India' },
+  { num: `${SITE_CONFIG.googleRating}★`, label: 'Higher Customer Satisfaction' },
 ]
 
 export function StatsBar() {

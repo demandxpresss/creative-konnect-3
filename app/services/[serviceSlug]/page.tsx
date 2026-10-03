@@ -111,15 +111,15 @@ export default function ServiceCategoryPage({ params }: Props) {
               {service.name}
             </h1>
             <p className="text-sm text-[#6a98b5] leading-relaxed">
-              {subServices.length} booth types to capture, share and celebrate every moment.
-              From 360° viral videos to Hollywood-style Glambot — we have the perfect option for every event.
+              A full range of options to capture, share and celebrate every moment.
+              From Glambot to Hollywood-style video — we have the perfect fit for every event.
             </p>
           </div>
           <div className="flex gap-3 flex-shrink-0">
             {[
-              { num: `${subServices.length}`, label: 'Options' },
-              { num: '360°', label: 'Video' },
+              { num: '100%', label: 'Branded' },
               { num: 'AI', label: 'Powered' },
+              { num: '2-Hr', label: 'Quote' },
             ].map(s => (
               <div key={s.label} className="bg-ck-blue/12 border border-ck-electric/20 rounded-[8px] p-3.5 text-center min-w-[72px]">
                 <div className="text-xl font-black text-ck-electric">{s.num}</div>
