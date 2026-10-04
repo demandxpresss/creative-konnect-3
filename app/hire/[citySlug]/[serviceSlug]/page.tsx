@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { CITIES, SERVICES, SUB_SERVICES, SITE_CONFIG } from '@/lib/constants'
+import { CITIES, SERVICES, SUB_SERVICES, SITE_CONFIG, PUNE_AREAS } from '@/lib/constants'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 import { FaqAccordion } from '@/components/ui/FaqAccordion'
 import { SubServiceQuoteButton } from '@/components/ui/SubServiceQuoteButton'
@@ -219,6 +219,30 @@ export default function SeoPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Pune neighbourhood pages — only exist for top-level services */}
+      {city === 'Pune' && SERVICES.some(s => s.slug === params.serviceSlug) && (
+        <section className="section-ghost">
+          <div className="max-w-7xl mx-auto">
+            <div className="eyebrow mb-1">Pune Neighbourhoods</div>
+            <h2 className="text-[20px] font-black text-ck-deep tracking-tight mb-4">
+              {service.name} By Area in Pune
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {PUNE_AREAS.map(a => (
+                <Link
+                  key={a.slug}
+                  href={`/hire/pune/${a.slug}/${params.serviceSlug}`}
+                  className="flex items-center gap-2 bg-white border border-[#c0d8ee] rounded-[7px] px-3.5 py-2 text-xs font-semibold text-ck-deep hover:border-ck-blue hover:text-ck-blue transition-colors"
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-ck-blue" />
+                  {service.name} in {a.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Internal links: other cities */}
       <section className="section-light">

@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { SITE_CONFIG, CITIES, SERVICES, SUB_SERVICES } from '@/lib/constants'
+import { SITE_CONFIG, CITIES, SERVICES, SUB_SERVICES, PUNE_AREAS } from '@/lib/constants'
 
 function toCitySlug(city: string) {
   return city.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
@@ -55,6 +55,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified:    now,
         changeFrequency: 'monthly' as const,
         priority:        0.65,
+      }))
+    ),
+
+    // ── Programmatic SEO: Pune neighbourhood × top-level service ────
+    ...PUNE_AREAS.flatMap(area =>
+      SERVICES.map(s => ({
+        url:             `${base}/hire/pune/${area.slug}/${s.slug}`,
+        lastModified:    now,
+        changeFrequency: 'monthly' as const,
+        priority:        0.7,
       }))
     ),
   ]

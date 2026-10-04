@@ -70,6 +70,63 @@ export const SERVICES = [
   { name: 'Registration', slug: 'registration' },
 ]
 
+// Pune neighbourhoods — Creative Konnect's home city, so these get their own
+// hyper-local landing pages (area × top-level service) rather than riding on
+// the generic city page. Each blurb is genuinely area-specific so the pages
+// don't read as the same content with a name swapped in.
+export const PUNE_AREAS = [
+  {
+    name: 'Koregaon Park',
+    slug: 'koregaon-park',
+    blurb: "Pune's upscale hospitality and party belt, dense with restaurants, lounges and banquet lawns — a natural fit for weddings, sangeets and brand parties.",
+  },
+  {
+    name: 'Viman Nagar',
+    slug: 'viman-nagar',
+    blurb: 'Close to Pune airport and Phoenix Marketcity, with a mix of corporate offices and residential societies that regularly host launches and family celebrations.',
+  },
+  {
+    name: 'Hinjewadi',
+    slug: 'hinjewadi',
+    blurb: "Home to the Rajiv Gandhi IT Park and some of Pune's largest IT campuses — our most-booked area for corporate town halls, product launches and office parties.",
+  },
+  {
+    name: 'PCMC',
+    slug: 'pcmc',
+    blurb: 'The Pimpri-Chinchwad industrial belt, with a strong base of manufacturing and auto-sector companies that run large-scale corporate and employee-engagement events.',
+  },
+  {
+    name: 'Baner',
+    slug: 'baner',
+    blurb: "A fast-growing corporate and residential corridor on Pune's west side, popular for office celebrations, housing-society events and brand activations.",
+  },
+  {
+    name: 'Wakad',
+    slug: 'wakad',
+    blurb: 'A dense residential hub next to the Hinjewadi IT corridor, where we regularly set up for housing-society events, birthdays and mid-size corporate gatherings.',
+  },
+  {
+    name: 'Kothrud',
+    slug: 'kothrud',
+    blurb: "One of Pune's oldest, most established residential and educational neighbourhoods — a regular stop for college fests and community celebrations.",
+  },
+  {
+    name: 'Mundhwa',
+    slug: 'mundhwa',
+    blurb: "Close to Pune's Kharadi–EON IT corridor and several riverside banquet venues, mixing corporate bookings with wedding and reception events.",
+  },
+  {
+    name: 'NIBM Road',
+    slug: 'nibm',
+    blurb: 'An upscale residential and banquet-hall stretch in south Pune, popular for weddings, sangeets and private celebrations.',
+  },
+  {
+    name: 'Salunkhe Vihar',
+    slug: 'salunkhe-vihar',
+    blurb: 'A well-settled residential pocket near NIBM Road, where we most often set up for housing-society functions and family events.',
+  },
+]
+
 export const SUB_SERVICES: Record<string, { name: string; slug: string }[]> = {
   'photo-video-booths': [
     { name: 'Ring Booth',         slug: 'ring-booth' },
