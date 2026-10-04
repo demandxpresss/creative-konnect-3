@@ -30,13 +30,16 @@ const config: Config = {
         'display-xl': ['52px', { lineHeight: '1.0', letterSpacing: '-2px', fontWeight: '800' }],
         'display-lg': ['38px', { lineHeight: '1.05', letterSpacing: '-1px', fontWeight: '800' }],
         'display-md': ['28px', { lineHeight: '1.1', letterSpacing: '-0.5px', fontWeight: '800' }],
+        // Slightly roomier body scale site-wide (was 12px/14px defaults)
+        xs: ['13px', { lineHeight: '1.65' }],
+        sm: ['14.5px', { lineHeight: '1.65' }],
       },
       borderRadius: {
         'card': '10px',
         'card-lg': '12px',
       },
       boxShadow: {
-        'card':  '0 2px 12px rgba(26,58,92,0.06)',
+        'card':  '0 8px 24px rgba(26,58,92,0.1)',
         'popup': '0 24px 64px rgba(13,31,46,0.3)',
       },
       animation: {

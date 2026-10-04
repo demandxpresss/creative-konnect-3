@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SITE_CONFIG } from '@/lib/constants'
 import { CtaBanner } from '@/components/sections/CtaBanner'
+import { Target, Lightbulb, Sparkles, Globe2, Heart } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'About Us — Creative Konnect | Event Engagement Solutions India',
@@ -26,9 +27,9 @@ const TIMELINE = [
 ]
 
 const WHY = [
-  { emoji: '🎯', title: 'We Obsess Over Details',  desc: 'From branded overlays to exact booth positioning — every detail is planned. Your guests will notice the difference.' },
-  { emoji: '💡', title: 'Technology Meets Warmth', desc: 'We bring the most advanced event tech, but our team ensures every guest feels personally attended to.' },
-  { emoji: '🎪', title: 'Full-Service, No Stress', desc: 'One call covers everything — equipment, branding, setup, operator, social sharing and breakdown. You focus on your event.' },
+  { Icon: Target,    title: 'We Obsess Over Details',  desc: 'From branded overlays to exact booth positioning — every detail is planned. Your guests will notice the difference.' },
+  { Icon: Lightbulb, title: 'Technology Meets Warmth', desc: 'We bring the most advanced event tech, but our team ensures every guest feels personally attended to.' },
+  { Icon: Sparkles,  title: 'Full-Service, No Stress', desc: 'One call covers everything — equipment, branding, setup, operator, social sharing and breakdown. You focus on your event.' },
 ]
 
 const organizationSchema = {
@@ -49,7 +50,7 @@ export default function AboutPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
 
       {/* Hero */}
-      <div className="bg-ck-navy border-b-[3px] border-ck-blue px-8 py-12">
+      <div className="bg-ck-navy border-b-[3px] border-ck-blue px-5 sm:px-8 lg:px-10 py-12 sm:py-16">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
             <div className="text-xs text-[#5a8aaa] mb-3">
@@ -127,7 +128,9 @@ export default function AboutPage() {
           <h2 className="text-[20px] font-black text-ck-deep tracking-tight mb-5">Mission, Vision &amp; Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-ck-navy border border-ck-blue rounded-card-lg p-5">
-              <div className="w-9 h-9 rounded-[8px] bg-ck-blue/20 flex items-center justify-center mb-3 text-lg">🎯</div>
+              <div className="w-9 h-9 rounded-[8px] bg-ck-blue/20 flex items-center justify-center mb-3">
+                <Target size={17} className="text-ck-electric" strokeWidth={2.1} />
+              </div>
               <div className="text-sm font-black text-white mb-2">Our Mission</div>
               <p className="text-xs text-[#6a98b5] leading-relaxed">
                 To create immersive event experiences that make every guest feel special — and give
@@ -136,7 +139,9 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="bg-ck-blue rounded-card-lg p-5">
-              <div className="w-9 h-9 rounded-[8px] bg-white/20 flex items-center justify-center mb-3 text-lg">🌐</div>
+              <div className="w-9 h-9 rounded-[8px] bg-white/20 flex items-center justify-center mb-3">
+                <Globe2 size={17} className="text-white" strokeWidth={2.1} />
+              </div>
               <div className="text-sm font-black text-white mb-2">Our Vision</div>
               <p className="text-xs text-white/80 leading-relaxed">
                 To be the most trusted event engagement partner across every city in India —
@@ -144,7 +149,9 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="card p-5">
-              <div className="w-9 h-9 rounded-[8px] bg-ck-sky flex items-center justify-center mb-3 text-lg">❤️</div>
+              <div className="w-9 h-9 rounded-[8px] bg-ck-sky flex items-center justify-center mb-3">
+                <Heart size={17} className="text-ck-blue" strokeWidth={2.1} />
+              </div>
               <div className="text-sm font-black text-ck-deep mb-2">Our Values</div>
               <div className="space-y-1.5">
                 {['Guest-first always', 'Flawless execution', 'Transparent pricing', 'Creative courage', 'On-time, every time', 'Technology with a human touch'].map(v => (
@@ -185,7 +192,9 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {WHY.map(w => (
               <div key={w.title} className="card p-5">
-                <div className="text-[36px] leading-none mb-3">{w.emoji}</div>
+                <div className="w-11 h-11 rounded-[9px] bg-ck-sky flex items-center justify-center mb-4">
+                  <w.Icon size={21} className="text-ck-blue" strokeWidth={2.1} />
+                </div>
                 <h3 className="text-sm font-bold text-ck-deep mb-2">{w.title}</h3>
                 <p className="text-xs text-[#5a7a92] leading-relaxed">{w.desc}</p>
               </div>

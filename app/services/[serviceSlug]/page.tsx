@@ -99,7 +99,7 @@ export default function ServiceCategoryPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
 
       {/* Hero */}
-      <div className="bg-ck-navy border-b-[3px] border-ck-blue px-8 py-12">
+      <div className="bg-ck-navy border-b-[3px] border-ck-blue px-5 sm:px-8 lg:px-10 py-12 sm:py-16">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-6">
           <div className="max-w-[520px]">
             <div className="text-xs text-[#4a7090] mb-3">

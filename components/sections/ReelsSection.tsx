@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const REELS = [
   { id: 'CZuwZBDPBq4', label: 'Digital Mosaic' },
-  { id: 'syoRDA0fqYo', label: '360 Video Booth' },
+  { id: 'syoRDA0fqYo', label: 'Single Photobooth' },
   { id: 'mLJMWAZ-15c', label: 'Magazine Cover Photobooth' },
   { id: 'rE5tv4550tU', label: 'Glambot' },
   { id: 'vicb2UkNnAs', label: 'Strip Photobooth' },

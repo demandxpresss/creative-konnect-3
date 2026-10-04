@@ -78,7 +78,8 @@
 
   /* ── Cards ─────────────────────────── */
   .card {
-    @apply bg-white border border-[#dceaf5] rounded-card overflow-hidden;
+    @apply bg-white border border-[#dceaf5] rounded-card overflow-hidden
+           transition-all duration-200 hover:shadow-card hover:-translate-y-0.5;
   }
 
   .card-dark {
@@ -86,9 +87,9 @@
   }
 
   /* ── Section layout ────────────────── */
-  .section-light  { @apply py-10 px-8 bg-white; }
-  .section-ghost  { @apply py-10 px-8 bg-ck-ghost; }
-  .section-dark   { @apply py-10 px-8 bg-ck-navy; }
+  .section-light  { @apply py-14 sm:py-20 lg:py-24 px-5 sm:px-8 lg:px-10 bg-white; }
+  .section-ghost  { @apply py-14 sm:py-20 lg:py-24 px-5 sm:px-8 lg:px-10 bg-ck-ghost; }
+  .section-dark   { @apply py-14 sm:py-20 lg:py-24 px-5 sm:px-8 lg:px-10 bg-ck-navy; }
 
   /* ── Eye-brow labels ───────────────── */
   .eyebrow {

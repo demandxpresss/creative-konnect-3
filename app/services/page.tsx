@@ -27,7 +27,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <div className="bg-ck-navy border-b-[3px] border-ck-blue px-8 py-12">
+      <div className="bg-ck-navy border-b-[3px] border-ck-blue px-5 sm:px-8 lg:px-10 py-12 sm:py-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-xs text-[#4a7090] mb-3">
             <Link href="/" className="hover:text-ck-electric transition-colors">Home</Link>

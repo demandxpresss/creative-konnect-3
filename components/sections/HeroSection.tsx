@@ -73,7 +73,7 @@ export function HeroSection() {
     <>
       <section className="bg-ck-navy grid grid-cols-1 lg:grid-cols-2 border-b-[3px] border-ck-blue">
         {/* Left: headline */}
-        <div className="px-8 py-14 flex flex-col justify-center">
+        <div className="px-6 sm:px-10 lg:px-14 py-14 sm:py-16 lg:py-20 flex flex-col justify-center">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-5 h-0.5 bg-ck-electric" />
             <span className="eyebrow-light">Event Engagement Solutions</span>
