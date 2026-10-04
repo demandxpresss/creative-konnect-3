@@ -8,6 +8,7 @@ import { CtaBanner }           from '@/components/sections/CtaBanner'
 import { FaqAccordion }        from '@/components/ui/FaqAccordion'
 import { SubServiceQuoteButton } from '@/components/ui/SubServiceQuoteButton'
 import { getProductMedia } from '@/lib/product-images'
+import { getSubServiceContent } from '@/lib/sub-service-content'
 import { StickyCtaBar }        from '@/components/ui/StickyCtaBar'
 
 interface Props { params: { serviceSlug: string; subServiceSlug: string } }
@@ -26,19 +27,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const sub = SUB_SERVICES[params.serviceSlug]?.find(s => s.slug === params.subServiceSlug)
   const svc = SERVICES.find(s => s.slug === params.serviceSlug)
   if (!sub || !svc) return {}
+  const content = getSubServiceContent(sub.slug)
   return {
     title: `${sub.name} Hire India | ${svc.name} | Creative Konnect`,
-    description: `Book ${sub.name} for your event across India. Fully branded, on-site operator, instant social sharing. Get a free quote in 2 hours.`,
+    description: `${content.tagline}. Book ${sub.name} for your event across India — fully branded, on-site operator included. Get a free quote in 2 hours.`,
     alternates: { canonical: `${SITE_CONFIG.url}/services/${params.serviceSlug}/${params.subServiceSlug}` },
   }
 }
 
 const USE_CASES = [
-  { emoji: '💍', title: 'Weddings & Sangeets',     desc: 'Create memorable slow-mo reels of guests. Perfect content for wedding hashtags.' },
-  { emoji: '🏢', title: 'Corporate Events',         desc: 'Brand-overlaid content with company logo. Great for launches, town halls and team days.' },
+  { emoji: '💍', title: 'Weddings & Sangeets',     desc: 'A memorable, shareable moment for guests. Perfect content for your wedding hashtag.' },
+  { emoji: '🏢', title: 'Corporate Events',         desc: 'Branded with your company logo. Great for launches, town halls and team days.' },
   { emoji: '🎯', title: 'Brand Activations',        desc: 'Drive social impressions with branded content. Guests become organic brand ambassadors.' },
-  { emoji: '🏆', title: 'Award Nights & Galas',     desc: 'Red-carpet style captures for winners and attendees. Elevates your event\'s prestige.' },
-  { emoji: '🎓', title: 'College Fests',             desc: 'High-energy shareable content for students. Drives massive organic reach on social.' },
+  { emoji: '🏆', title: 'Award Nights & Galas',     desc: 'An elevated, premium moment for winners and attendees that lifts your event\'s prestige.' },
+  { emoji: '🎓', title: 'College Fests',             desc: 'High-energy, shareable fun for students. Drives massive organic reach on social.' },
   { emoji: '🎪', title: 'BTL & Exhibitions',         desc: 'Draw crowds to your stall and generate leads while guests enjoy the experience.' },
 ]
 
@@ -75,12 +77,13 @@ export default function SubServicePage({ params }: Props) {
   const sub     = SUB_SERVICES[params.serviceSlug]?.find(s => s.slug === params.subServiceSlug)
   if (!service || !sub) notFound()
   const media = getProductMedia(params.serviceSlug, params.subServiceSlug)
+  const content = getSubServiceContent(sub.slug)
 
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: sub.name,
-    description: `Hire ${sub.name} for your event in India.`,
+    description: content.tagline,
     brand: { '@type': 'Brand', name: SITE_CONFIG.name },
     offers: {
       '@type': 'Offer',
@@ -117,8 +120,7 @@ export default function SubServicePage({ params }: Props) {
               {sub.name}<br /><span className="text-ck-electric">Hire in India</span>
             </h1>
             <p className="text-sm text-[#6a98b5] leading-relaxed mb-5">
-              Slow-motion, full-surround video capture that guests instantly share on Instagram &amp; WhatsApp.
-              The most viral content generator at any event.
+              {content.intro}
             </p>
             <div className="flex flex-wrap gap-3">
               <SubServiceQuoteButton service={sub.name} />
@@ -147,7 +149,7 @@ export default function SubServicePage({ params }: Props) {
               <div className="absolute bottom-3 right-3 bg-black/60 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">2:34</div>
             </div>
             <div className="grid grid-cols-3 gap-2.5">
-              {[{ n: '360°', l: 'Video Capture' }, { n: '4K', l: 'Resolution' }, { n: '30s', l: 'Share Time' }].map(s => (
+              {content.stats.map(s => (
                 <div key={s.l} className="bg-ck-blue/12 border border-ck-electric/20 rounded-[8px] p-3 text-center">
                   <div className="text-lg font-black text-ck-electric">{s.n}</div>
                   <div className="text-[9px] text-[#4a7090] mt-1">{s.l}</div>

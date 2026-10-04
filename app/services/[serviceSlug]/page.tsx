@@ -7,6 +7,7 @@ import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 import { FaqAccordion } from '@/components/ui/FaqAccordion'
 import { getProductMedia } from '@/lib/product-images'
+import { getSubServiceContent } from '@/lib/sub-service-content'
 
 interface Props { params: { serviceSlug: string } }
 
@@ -175,8 +176,8 @@ export default function ServiceCategoryPage({ params }: Props) {
                   <h3 className="text-sm font-bold text-ck-deep mb-1.5 group-hover:text-ck-blue transition-colors">
                     {sub.name}
                   </h3>
-                  <p className="text-[11px] text-[#7aaccc] leading-relaxed mb-3">
-                    Fully branded · Instant sharing · On-site operator included
+                  <p className="text-[11px] text-[#7aaccc] leading-relaxed mb-3 line-clamp-2">
+                    {getSubServiceContent(sub.slug).tagline}
                   </p>
                   <div className="flex flex-wrap gap-1 mb-3">
                     {(SERVICE_TAGS[params.serviceSlug] || EVENT_TYPES.slice(0, 3)).map(et => (
