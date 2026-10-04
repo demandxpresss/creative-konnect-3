@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   name: 'Creative Konnect',
   tagline: 'Event Engagement Solutions',
-  url: 'https://www.creativekonnect.com',
+  url: 'https://www.creative-konnect.com',
   description: 'India\'s leading event engagement company — 360 video booths, AI experiences, VR games, custom merch and more for every event.',
   phone: ['+91 84322 58944'],
   whatsapp: '918432258944',

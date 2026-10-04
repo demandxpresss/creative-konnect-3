@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
 
     // ── Email to team ─────────────────────────────────────────────
     await resend.emails.send({
-      from:    'Creative Konnect Website <noreply@creativekonnect.com>',
+      from:    'Creative Konnect Website <noreply@creative-konnect.com>',
       to:      [SITE_CONFIG.email],
       reply_to: email,
       subject: `📋 New Contact Form — ${name} | ${eventType} in ${city}`,
@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
 
     // ── Confirmation to client ────────────────────────────────────
     await resend.emails.send({
-      from:    'Creative Konnect <hello@creativekonnect.com>',
+      from:    'Creative Konnect <hello@creative-konnect.com>',
       to:      [email],
       subject: `Got your message! We'll reply within 2 hours — Creative Konnect`,
       html: `

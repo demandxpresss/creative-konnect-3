@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
 
     // ── 1. Send email notification via Resend ─────────────────────
     await resend.emails.send({
-      from:    'Creative Konnect Website <noreply@creativekonnect.com>',
+      from:    'Creative Konnect Website <noreply@creative-konnect.com>',
       to:      [SITE_CONFIG.email],
       reply_to: email || undefined,
       subject: `New Quote Request — ${eventType || 'Event'} in ${city || 'India'}`,
@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
     // ── 2. Send confirmation email to client ──────────────────────
     if (email) {
       await resend.emails.send({
-        from:    'Creative Konnect <hello@creativekonnect.com>',
+        from:    'Creative Konnect <hello@creative-konnect.com>',
         to:      [email],
         subject: `We've received your quote request! — Creative Konnect`,
         html: `
