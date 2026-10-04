@@ -8,6 +8,8 @@ export type SheetPayload = {
   eventType?: string
   city?: string
   eventDate?: string
+  duration?: string
+  activities?: string
   guestCount?: string
   service?: string
   services?: string
