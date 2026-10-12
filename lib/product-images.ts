@@ -80,6 +80,8 @@ const subserviceMedia: Record<string, MediaSet> = {
       { src: `${ROOT}/ring-booth-slider/ring-booth-hero-4.jpg`, alt: 'College fest attendees posing at the Ring Booth photo booth' },
       { src: `${ROOT}/ring-booth-slider/ring-booth-hero-5.jpg`, alt: 'Guest taking a selfie at a branded Ring Booth activation' },
     ],
+    // No dedicated "Ring Booth" reel exists in the channel's 60-video library yet (checked every
+    // video's real title) — gallery stays photo-only until a Ring Booth-specific video is filmed.
   },
   'mirror-booth': {
     hero: `${ROOT}/mirror-booth.jpg`,
@@ -87,6 +89,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/mirror-booth.jpg`,
       `${ROOT}/mirror-booth.jpg`,
     ],
+    reelId: 'TZ7DMvKk2-c', // "Mirror Photobooth" — real event footage from our YouTube channel
   },
   '360-video-booth': {
     hero: `${ROOT}/360-video-booth.jpg`,
@@ -101,6 +104,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/360-video-booth.jpg`,
       `${ROOT}/360-video-booth.jpg`,
     ],
+    reelId: 'HPAM-EcY3h4', // "Introducing Multi Exposure Photobooth!" — closest real footage to this product
   },
   'glambot': {
     hero: `${ROOT}/glambot.png`,
@@ -108,6 +112,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/glambot.png`,
       `${ROOT}/glambot.png`,
     ],
+    reelId: 'rE5tv4550tU', // "Glambot" — real event footage
   },
   'strip-photobooth': {
     hero: `${ROOT}/ring-booth.jpg`,
@@ -115,6 +120,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/ring-booth.jpg`,
       `${ROOT}/ring-booth.jpg`,
     ],
+    reelId: 'vicb2UkNnAs', // "Strip Photobooth" — real event footage
   },
   'ai-booths': {
     hero: `${ROOT}/ai-celebrity.jpg`,
@@ -122,6 +128,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/ai-celebrity.jpg`,
       `${ROOT}/ai-celebrity.jpg`,
     ],
+    reelId: 'YFgZo7l7U5U', // "AI Photobooth" — real event footage
   },
   'ai-starter-pack': {
     hero: `${ROOT}/ai-starter-pack.jpg`,
@@ -149,6 +156,7 @@ const subserviceMedia: Record<string, MediaSet> = {
     gallery: [
       `${ROOT}/ar-mind-reader.jpg`,
     ],
+    reelId: 'bHOecjhRU4g', // "Unlock your guests' thoughts with our AR Mind Reader activity!" — real footage, exact match
   },
   'sling-shot': {
     hero: `${ROOT}/ar-mind-reader.jpg`,
@@ -170,6 +178,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/ai-celebrity.jpg`,
       `${ROOT}/ai-starter-pack.jpg`,
     ],
+    reelId: 'cMXRsJV_dis', // "Transform into a Bollywood icon with our AI photobooth" — real footage
   },
   'laser-engraving': {
     hero: `${ROOT}/bobble-head.jpg`,
@@ -177,6 +186,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/bobble-head.jpg`,
       `${ROOT}/bad-tags.jpg`,
     ],
+    // No dedicated Laser Engraving reel in the channel yet — photo gallery only until we film one.
   },
   'mosaic-wall': {
     hero: `${ROOT}/ai-360.png`,
@@ -184,6 +194,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/ai-360.png`,
       `${ROOT}/ai-360.png`,
     ],
+    reelId: 'bOZX-vdwUL4', // "Mosaic Wall" — real event footage
   },
   'vr-games': {
     hero: `${ROOT}/vr-games.jpg`,
@@ -191,6 +202,15 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/vr-games.jpg`,
       `${ROOT}/vr-games.jpg`,
     ],
+    reelId: 'HBXgc5ttWxQ', // "VR Games" — real event footage
+  },
+  'car-simulator': {
+    hero: `${ROOT}/vr-games.jpg`,
+    gallery: [
+      `${ROOT}/vr-games.jpg`,
+      `${ROOT}/touch-screen-games.jpg`,
+    ],
+    reelId: 'twC_Ibx11T8', // "Car Simulator Game" — real event footage
   },
   'touch-screen-games': {
     hero: `${ROOT}/touch-screen-games.jpg`,
@@ -198,6 +218,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/touch-screen-games.jpg`,
       `${ROOT}/touch-screen-games.jpg`,
     ],
+    reelId: '-sCF9nZMYpQ', // "Our Touch Screen Gaming Kiosk is certainly the kids favourite" — real footage
   },
   'catch-the-baton': {
     hero: `${ROOT}/catch-the-baton.png`,
@@ -205,6 +226,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/catch-the-baton.png`,
       `${ROOT}/catch-the-baton.png`,
     ],
+    reelId: 'XlcLGnF9CBE', // "Sharpen your reflexes with our 'Catch the Baton' challenge!!" — exact match
   },
   'buzzer-pro': {
     hero: `${ROOT}/buzzer-pro.jpg`,
@@ -212,6 +234,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/buzzer-pro.jpg`,
       `${ROOT}/buzzer-pro.jpg`,
     ],
+    reelId: 'MCu8yX8oVWs', // "Buzzer Pro Game" — real event footage
   },
   'fridge-magnets': {
     hero: `${ROOT}/live-photo-magnet.jpg`,
@@ -219,12 +242,14 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/live-photo-magnet.jpg`,
       `${ROOT}/live-photo-magnet.jpg`,
     ],
+    reelId: 'KfFxeQUR2eg', // "Introducing fridge magnet — the trending giveaway activity" — exact match
   },
   'bag-tags': {
     hero: `${ROOT}/bad-tags.jpg`,
     gallery: [
       `${ROOT}/bad-tags.jpg`,
     ],
+    reelId: '_3leh0uRZS8', // "Bag Tags" — real event footage
   },
   'bobble-heads': {
     hero: `${ROOT}/bobble-head.jpg`,
@@ -232,6 +257,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/bobble-head.jpg`,
       `${ROOT}/bobble-head.jpg`,
     ],
+    reelId: 'oDI77z8zqqk', // "Bobble Head" — real event footage
   },
   'video-guest-book': {
     hero: `${ROOT}/video-guest-book.jpg`,
@@ -239,6 +265,15 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/video-guest-book.jpg`,
       `${ROOT}/video-guest-book.jpg`,
     ],
+    reelId: 'jH-QbMVPwF0', // "Video Guestbook" — real event footage
+  },
+  'audio-guest-book': {
+    hero: `${ROOT}/video-guest-book.jpg`,
+    gallery: [
+      `${ROOT}/video-guest-book.jpg`,
+      `${ROOT}/video-guest-book.jpg`,
+    ],
+    reelId: 'NZaDTHgk0mE', // "Audio Guest Book" — real event footage
   },
   'virtual-photobooth': {
     hero: `${ROOT}/mirror-booth.jpg`,
@@ -246,6 +281,7 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/mirror-booth.jpg`,
       `${ROOT}/mirror-booth.jpg`,
     ],
+    // Still in development per Krishna — intentionally no reel or new hero images yet.
   },
   'green-screen-vfx': {
     hero: `${ROOT}/vfx-booth.png`,
@@ -253,12 +289,14 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/vfx-booth.png`,
       `${ROOT}/vfx-booth.png`,
     ],
+    reelId: 'xkPuXdHPhMs', // "Chroma Booth" — real event footage
   },
   'gif-boomerang': {
     hero: `${ROOT}/boomerang-gif.jpg`,
     gallery: [
       `${ROOT}/boomerang-gif.jpg`,
     ],
+    reelId: 'jtv2PpIN1D0', // "Boomerang & Gif Booth" — exact match
   },
 }
 

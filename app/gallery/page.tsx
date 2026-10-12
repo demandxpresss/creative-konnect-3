@@ -14,7 +14,10 @@ export const metadata: Metadata = {
 // ALL reels — edit 'tag' and 'label' here to update categorisation.
 // Tags: 'Photo Booth' | 'Ring Booth' | 'Mirror Booth' | '360 Booth' |
 //       'Glambot' | 'Strip Booth' | 'Magazine Cover' | 'AI Booth' |
-//       'AI & Tech' | 'Guest Engagement' | 'Merch & Giveaways' | 'Games'
+//       'AI & Tech' | 'Green Screen / VFX' | 'GIF & Boomerang' |
+//       'Guest Engagement' | 'Merch & Giveaways' | 'Games'
+// Note: no dedicated "Ring Booth" video exists in the channel yet (checked every
+// video's real YouTube title) — the 'Ring Booth' tag has 0 videos until one is filmed.
 // ─────────────────────────────────────────────────────────────────────────────
 const REELS: GalleryReel[] = [
   // ── Known / confirmed labels ────────────────────────────────────────────
@@ -27,36 +30,35 @@ const REELS: GalleryReel[] = [
   { id: 'mLJMWAZ-15c',    label: 'Magazine Cover Booth',    tag: 'Magazine Cover'  },
   { id: 'syoRDA0fqYo',    label: '360 Video Booth',         tag: '360 Booth'       },
 
-  // ── Needs label update — currently set to 'Photo Booth' ────────────────
-  // To update: change 'tag' to the correct service type and update 'label'
-  { id: '4MHXXkzsXuQ',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'Rb7iXoH2jQA',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'qcbio3ssrFI',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'KfFxeQUR2eg',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: '-sCF9nZMYpQ',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'cMXRsJV_dis',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'bLLP8P-1VxA',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: '4xWcGVJXCKo',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'mMfWxJOlrFw',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'gifRl8MXFWs',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'XlcLGnF9CBE',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'DKZ9vX02MlE',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'bHOecjhRU4g',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'HPAM-EcY3h4',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'EMtf1tWwlH4',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: '9LUcL64xrCM',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'jtv2PpIN1D0',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'xkPuXdHPhMs',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'bRUXi0Ux5Ak',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'alKi3_CWMkk',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'CO1dUMvVG0o',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'r4C9DbwwpWw',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'f4om07PkM-s',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'IYhtXnzK_ZA',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'sT5V26qOK00',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'yssXDnpJx98',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: 'U8NQGCNtg9Y',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
-  { id: '4MpECKgx2DA',    label: 'Creative Konnect',        tag: 'Photo Booth'     },
+  // ── Relabelled from each video's real YouTube title (fetched via oEmbed) ───
+  { id: '4MHXXkzsXuQ',    label: 'Car Simulator',           tag: 'Games'           },
+  { id: 'Rb7iXoH2jQA',    label: 'Glambot — Wild West Theme', tag: 'Glambot'       },
+  { id: 'qcbio3ssrFI',    label: 'Live Photo Magnets',      tag: 'Merch & Giveaways' },
+  { id: 'KfFxeQUR2eg',    label: 'Fridge Magnet',           tag: 'Merch & Giveaways' },
+  { id: '-sCF9nZMYpQ',    label: 'Touch Screen Gaming Kiosk', tag: 'Games'         },
+  { id: 'cMXRsJV_dis',    label: 'AI Bollywood Photobooth', tag: 'AI Booth'        },
+  { id: 'bLLP8P-1VxA',    label: 'Needle Drop Guessing Game', tag: 'Games'         },
+  { id: '4xWcGVJXCKo',    label: 'Glambot',                 tag: 'Glambot'         },
+  { id: 'mMfWxJOlrFw',    label: 'Ghibli AI Photobooth',    tag: 'AI Booth'        },
+  { id: 'gifRl8MXFWs',    label: '360 Video Booth',         tag: '360 Booth'       },
+  { id: 'XlcLGnF9CBE',    label: 'Catch the Baton',         tag: 'Games'           },
+  { id: 'DKZ9vX02MlE',    label: 'Multi Activity Setup',    tag: 'Games'           },
+  { id: 'bHOecjhRU4g',    label: 'AR Mind Reader',          tag: 'AI & Tech'       },
+  { id: 'HPAM-EcY3h4',    label: 'Multi Exposure Photobooth', tag: 'Photo Booth'   },
+  { id: 'EMtf1tWwlH4',    label: 'VR Games',                tag: 'Games'           },
+  { id: '9LUcL64xrCM',    label: 'Touch Screen Games',      tag: 'Games'           },
+  { id: 'jtv2PpIN1D0',    label: 'Boomerang & GIF Booth',   tag: 'GIF & Boomerang' },
+  { id: 'xkPuXdHPhMs',    label: 'Chroma / Green Screen Booth', tag: 'Green Screen / VFX' },
+  { id: 'bRUXi0Ux5Ak',    label: 'Chroma / Green Screen Booth', tag: 'Green Screen / VFX' },
+  { id: 'alKi3_CWMkk',    label: '360 Video Booth',         tag: '360 Booth'       },
+  { id: 'CO1dUMvVG0o',    label: '360 Video Booth',         tag: '360 Booth'       },
+  { id: 'r4C9DbwwpWw',    label: 'Boomerang & GIF Booth',   tag: 'GIF & Boomerang' },
+  { id: 'f4om07PkM-s',    label: 'VFX Booth',               tag: 'Green Screen / VFX' },
+  { id: 'IYhtXnzK_ZA',    label: 'VFX Booth',               tag: 'Green Screen / VFX' },
+  { id: 'sT5V26qOK00',    label: 'VFX Booth',               tag: 'Green Screen / VFX' },
+  { id: 'yssXDnpJx98',    label: '360 Video Booth',         tag: '360 Booth'       },
+  { id: 'U8NQGCNtg9Y',    label: '360 Video Booth',         tag: '360 Booth'       },
+  { id: '4MpECKgx2DA',    label: 'VFX Booth',               tag: 'Green Screen / VFX' },
 
   // ── Added from Google Sheet ────────────────────────────────────────────
   { id: 'XS6ktWGYJS0',    label: 'Mirror Booth',            tag: 'Mirror Booth'    },

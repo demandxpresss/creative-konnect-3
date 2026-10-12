@@ -12,6 +12,8 @@ import { getSubServiceContent } from '@/lib/sub-service-content'
 import { StickyCtaBar }        from '@/components/ui/StickyCtaBar'
 import { HeroImageSlider }     from '@/components/ui/HeroImageSlider'
 import { ReelOrPhotoTile }     from '@/components/ui/ReelOrPhotoTile'
+import { WhyChooseUsSteps, type WhyStep } from '@/components/ui/WhyChooseUsSteps'
+import { ClientLogos }         from '@/components/sections/ClientLogos'
 
 interface Props { params: { serviceSlug: string; subServiceSlug: string } }
 
@@ -55,13 +57,11 @@ const DEFAULT_FAQS = [
   { question: 'What does the price include?',                   answer: 'All quotes include equipment, branding design, on-site operator, setup and breakdown. Fully transparent — no hidden costs.' },
 ]
 
-const CLIENT_LOGOS = ['TATA','GOOGLE','HDFC','AMAZON','NIKE','HYATT']
-
-const WHY_CK = [
-  { title: '500+ Events Delivered', desc: 'From 50-guest dinners to 10,000-person conferences across India.' },
-  { title: 'On-Time, Every Time',   desc: 'Dedicated operator arrives 2 hours before your event. Zero delays.' },
-  { title: '100% Custom Branded',   desc: 'Every element designed to your brand in 48 hours.' },
-  { title: '24/7 Support',          desc: 'WhatsApp support before, during, and after your event.' },
+const WHY_CK: WhyStep[] = [
+  { title: '500+ Events Delivered', desc: 'From 50-guest dinners to 10,000-person conferences across India.', icon: 'events',  accent: '#2AACEE' },
+  { title: 'On-Time, Every Time',   desc: 'Dedicated operator arrives 2 hours before your event. Zero delays.', icon: 'clock',   accent: '#F5A623' },
+  { title: '100% Custom Branded',   desc: 'Every element designed to your brand in 48 hours.',                  icon: 'brush',   accent: '#2DD4BF' },
+  { title: '24/7 Support',          desc: 'WhatsApp support before, during, and after your event.',             icon: 'headset', accent: '#FF6B6B' },
 ]
 
 const TRUST_BADGES = ['500+ Events Completed','4.9★ Google Rating','ISO Certified Equipment','Insured & Licensed','Pan India Coverage','2-Hour Quote Response']
@@ -223,25 +223,16 @@ export default function SubServicePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Why CK + trust + client logos */}
+      {/* Why CK — step-by-step process, each step with its own icon + accent color */}
       <section className="section-dark" style={{ paddingTop: 0 }}>
         <div className="max-w-7xl mx-auto">
           <div className="eyebrow-light mb-1">Why Choose Us</div>
-          <h2 className="text-[20px] font-black text-white tracking-tight mb-5">Why Creative Konnect?</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-            {WHY_CK.map((w, i) => (
-              <div key={i} className="card-dark rounded-card p-4">
-                <div className="w-8 h-8 rounded-[7px] bg-ck-blue/20 flex items-center justify-center mb-3">
-                  <span className="text-ck-electric font-black text-xs">{i + 1}</span>
-                </div>
-                <h3 className="text-xs font-bold text-white mb-1.5">{w.title}</h3>
-                <p className="text-[11px] text-[#4a7090] leading-relaxed">{w.desc}</p>
-              </div>
-            ))}
-          </div>
+          <h2 className="text-[20px] font-black text-white tracking-tight mb-7">Why Creative Konnect?</h2>
+
+          <WhyChooseUsSteps steps={WHY_CK} />
 
           {/* Trust badges */}
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-2 mt-9">
             {TRUST_BADGES.map(b => (
               <div key={b} className="flex items-center gap-2 bg-white/5 border border-[#1e3a52] rounded-[7px] px-3 py-2">
                 <div className="w-4 h-4 rounded-full bg-ck-electric/20 flex items-center justify-center flex-shrink-0">
@@ -251,18 +242,11 @@ export default function SubServicePage({ params }: Props) {
               </div>
             ))}
           </div>
-
-          {/* Client logos */}
-          <div className="eyebrow-light mb-3">Brands That Trust Us</div>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2.5">
-            {CLIENT_LOGOS.map(c => (
-              <div key={c} className="bg-white/5 border border-[#1e3a52] rounded-[7px] h-12 flex items-center justify-center">
-                <span className="text-[11px] font-bold text-[#2a4a60]">{c}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
+
+      {/* Real client logos — same marquee used on the homepage */}
+      <ClientLogos />
 
       {/* Testimonials */}
       <TestimonialsSection />
