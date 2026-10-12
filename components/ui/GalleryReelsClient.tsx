@@ -46,6 +46,7 @@ const TAG_EMOJI: Record<ReelTag, string> = {
 
 export function GalleryReelsClient({ reels }: { reels: GalleryReel[] }) {
   const [activeTag, setActiveTag] = useState<ReelTag>('All')
+  const [activeReels, setActiveReels] = useState<Record<string, boolean>>({})
   const tagScrollRef = useRef<HTMLDivElement>(null)
 
   const filtered = activeTag === 'All'
@@ -119,14 +120,37 @@ export function GalleryReelsClient({ reels }: { reels: GalleryReel[] }) {
                   className="rounded-xl overflow-hidden border border-[#dceaf5] bg-[#0a1520] w-full"
                   style={{ aspectRatio: '9/16' }}
                 >
-                  <iframe
-                    src={`https://www.youtube.com/embed/${reel.id}?rel=0&modestbranding=1&playsinline=1&controls=1`}
-                    title={reel.label}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    loading="lazy"
-                    style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
-                  />
+                  {activeReels[reel.id] ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${reel.id}?rel=0&modestbranding=1&playsinline=1&autoplay=1&controls=1`}
+                      title={reel.label}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+                    />
+                  ) : (
+                    <button
+                      type="button"
+                      aria-label={`Play ${reel.label}`}
+                      onClick={() => setActiveReels(prev => ({ ...prev, [reel.id]: true }))}
+                      className="relative w-full h-full group"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={`https://i.ytimg.com/vi/${reel.id}/hqdefault.jpg`}
+                        alt={reel.label}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-colors" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="w-9 h-9 rounded-full bg-black/55 border border-white/40 text-white flex items-center justify-center text-sm">
+                          ▶
+                        </span>
+                      </div>
+                    </button>
+                  )}
                 </div>
                 {/* Label + tag */}
                 <div>

@@ -157,13 +157,13 @@ export default function ServiceCategoryPage({ params }: Props) {
                 href={`/services/${params.serviceSlug}/${sub.slug}`}
                 className="card group hover:border-ck-blue hover:-translate-y-0.5 transition-all duration-150"
               >
-                <div className="h-28 sm:h-32 relative overflow-hidden bg-[#f8fbfe]">
+                <div className="h-44 sm:h-48 relative overflow-hidden bg-[#f8fbfe]">
                   <Image
                     src={getProductMedia(params.serviceSlug, sub.slug).hero}
                     alt={sub.name}
                     fill
                     sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="object-contain"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   {i === 0 && <span className="absolute top-2 right-2 badge-new">Top Pick</span>}
