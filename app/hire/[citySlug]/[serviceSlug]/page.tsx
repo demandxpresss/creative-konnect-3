@@ -47,6 +47,10 @@ function findServiceBySlug(slug: string) {
 export async function generateStaticParams() {
   const params: { citySlug: string; serviceSlug: string }[] = []
   CITIES.forEach(city => {
+    // Pune has its own literal /hire/pune/[serviceSlug] route (needed because Pune also
+    // has the /hire/pune/[areaSlug]/[serviceSlug] neighbourhood routes as siblings) — skip
+    // it here so we don't build 31 pages that a static folder shadows and makes unreachable.
+    if (city === 'Pune') return
     // Generate for all sub-services (most valuable for SEO)
     Object.entries(SUB_SERVICES).forEach(([, subs]) => {
       subs.forEach(sub => {
