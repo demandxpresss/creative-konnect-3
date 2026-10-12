@@ -1,6 +1,14 @@
 type MediaSet = {
   hero: string
   gallery: string[]
+  /** Optional: when present, the sub-service hero shows a sliding carousel of these
+   *  images instead of a single static photo. Each needs its own descriptive alt text
+   *  (image SEO — distinct, keyworded alt per slide beats one generic alt repeated). */
+  heroSlides?: { src: string; alt: string }[]
+  /** Optional: a real YouTube video ID for the "Reels & Gallery" section. When unset,
+   *  that section shows plain photos — no fake play-button overlay on something that
+   *  isn't actually a video. */
+  reelId?: string
 }
 
 const ROOT = '/images/products'
@@ -58,10 +66,19 @@ const serviceDefaults: Record<string, MediaSet> = {
 
 const subserviceMedia: Record<string, MediaSet> = {
   'ring-booth': {
-    hero: `${ROOT}/ring-booth.jpg`,
+    hero: `${ROOT}/ring-booth-slider/ring-booth-hero-1.jpg`,
     gallery: [
-      `${ROOT}/ring-booth.jpg`,
-      `${ROOT}/ring-booth.jpg`,
+      `${ROOT}/ring-booth-slider/ring-booth-hero-2.jpg`,
+      `${ROOT}/ring-booth-slider/ring-booth-hero-3.jpg`,
+      `${ROOT}/ring-booth-slider/ring-booth-hero-4.jpg`,
+      `${ROOT}/ring-booth-slider/ring-booth-hero-5.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/ring-booth-slider/ring-booth-hero-1.jpg`, alt: 'Ring Booth photo booth with illuminated ring light and branded backdrop' },
+      { src: `${ROOT}/ring-booth-slider/ring-booth-hero-2.jpg`, alt: 'Wedding guests using the Ring Booth photo booth at an evening reception' },
+      { src: `${ROOT}/ring-booth-slider/ring-booth-hero-3.jpg`, alt: 'Ring Booth photo booth set up for a corporate conference activation' },
+      { src: `${ROOT}/ring-booth-slider/ring-booth-hero-4.jpg`, alt: 'College fest attendees posing at the Ring Booth photo booth' },
+      { src: `${ROOT}/ring-booth-slider/ring-booth-hero-5.jpg`, alt: 'Guest taking a selfie at a branded Ring Booth activation' },
     ],
   },
   'mirror-booth': {

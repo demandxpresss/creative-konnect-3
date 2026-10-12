@@ -10,6 +10,8 @@ import { SubServiceQuoteButton } from '@/components/ui/SubServiceQuoteButton'
 import { getProductMedia } from '@/lib/product-images'
 import { getSubServiceContent } from '@/lib/sub-service-content'
 import { StickyCtaBar }        from '@/components/ui/StickyCtaBar'
+import { HeroImageSlider }     from '@/components/ui/HeroImageSlider'
+import { ReelOrPhotoTile }     from '@/components/ui/ReelOrPhotoTile'
 
 interface Props { params: { serviceSlug: string; subServiceSlug: string } }
 
@@ -130,24 +132,28 @@ export default function SubServicePage({ params }: Props) {
             </div>
           </div>
 
-          {/* Right: demo video + stats */}
+          {/* Right: hero image(s) + stats */}
           <div className="flex flex-col gap-3 w-full max-w-[520px] lg:ml-auto">
-            <div className="relative rounded-card overflow-hidden h-32 sm:h-36 cursor-pointer border border-[#1e3a52]">
-              <Image
-                src={media.hero}
-                alt={sub.name}
-                fill
-                priority
-                quality={90}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-                style={{ objectPosition: 'center 22%' }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-              <PlayIcon />
-              <div className="absolute bottom-3 left-3 text-xs font-semibold text-white/60">{sub.name} Demo Reel</div>
-              <div className="absolute bottom-3 right-3 bg-black/60 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">2:34</div>
-            </div>
+            {media.heroSlides && media.heroSlides.length > 0 ? (
+              <HeroImageSlider slides={media.heroSlides} label={sub.name} />
+            ) : (
+              <div className="relative rounded-card overflow-hidden h-32 sm:h-36 cursor-pointer border border-[#1e3a52]">
+                <Image
+                  src={media.hero}
+                  alt={sub.name}
+                  fill
+                  priority
+                  quality={90}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                  style={{ objectPosition: 'center 22%' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+                <PlayIcon />
+                <div className="absolute bottom-3 left-3 text-xs font-semibold text-white/60">{sub.name} Demo Reel</div>
+                <div className="absolute bottom-3 right-3 bg-black/60 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">2:34</div>
+              </div>
+            )}
             <div className="grid grid-cols-3 gap-2.5">
               {content.stats.map(s => (
                 <div key={s.l} className="bg-ck-blue/12 border border-ck-electric/20 rounded-[8px] p-3 text-center">
@@ -178,31 +184,39 @@ export default function SubServicePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Reels gallery */}
+      {/* Reels & gallery — a real clickable video when we have one (media.reelId),
+          plain photo tiles otherwise. No more decorative play buttons over static
+          images that do nothing when clicked. */}
       <section className="section-dark">
         <div className="max-w-7xl mx-auto">
           <div className="eyebrow-light mb-1">See It In Action</div>
-          <h2 className="text-[20px] font-black text-white tracking-tight mb-1">{sub.name} Reels &amp; Gallery</h2>
+          <h2 className="text-[20px] font-black text-white tracking-tight mb-1">
+            {media.reelId ? `${sub.name} Reels & Gallery` : `${sub.name} Gallery`}
+          </h2>
           <p className="text-xs text-[#4a7090] mb-5">Real footage from actual events across India.</p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-            {media.gallery.slice(0, 4).map((src, i) => (
-              <div key={src} className={`relative rounded-card overflow-hidden cursor-pointer ${i === 0 ? 'md:col-span-2' : ''}`} style={{ minHeight: 140 }}>
+            {media.reelId && (
+              <ReelOrPhotoTile
+                youtubeId={media.reelId}
+                label={`${sub.name} Demo Reel`}
+                className="md:col-span-2"
+              />
+            )}
+            {media.gallery.slice(0, media.reelId ? 3 : 4).map((src, i) => (
+              <div
+                key={src}
+                className={`relative rounded-card overflow-hidden ${!media.reelId && i === 0 ? 'md:col-span-2' : ''}`}
+                style={{ minHeight: 140 }}
+              >
                 <Image
                   src={src}
-                  alt={`${sub.name} gallery image ${i + 1}`}
+                  alt={`${sub.name} at a real event`}
                   fill
                   quality={88}
-                  sizes={i === 0 ? '(max-width: 1024px) 100vw, 50vw' : '(max-width: 1024px) 50vw, 25vw'}
+                  sizes={!media.reelId && i === 0 ? '(max-width: 1024px) 100vw, 50vw' : '(max-width: 1024px) 50vw, 25vw'}
                   className="object-cover"
-                  style={{ objectPosition: i === 0 ? 'center 22%' : 'center center' }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-                <PlayIcon />
-                <div className="absolute inset-0 flex flex-col justify-end p-3">
-                  <span className="reel-tag">{sub.name.toUpperCase()}</span>
-                  <p className="text-xs font-bold text-white">{sub.name} {i + 1}</p>
-                  {i === 0 && <p className="text-[10px] text-white/40">Real event photo</p>}
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-transparent pointer-events-none" />
               </div>
             ))}
           </div>
