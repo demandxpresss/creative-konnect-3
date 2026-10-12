@@ -9,25 +9,31 @@
 // This file gives that exact 2-segment shape a real page, by reusing the generic city
 // page's logic with citySlug hardcoded to "pune" — so the content, metadata and internal
 // links stay identical to how Pune behaves for every other city×service URL.
+//
+// Folder is named [areaSlug] (not [serviceSlug]) because Next.js requires every dynamic
+// segment at the same position in the route tree to share one param name — and the
+// sibling route app/hire/pune/[areaSlug]/[serviceSlug]/page.tsx already claims "areaSlug"
+// at this exact position. The value it holds here is actually a service slug; see the
+// rename below.
 import type { Metadata } from 'next'
 import { SERVICES, SUB_SERVICES } from '@/lib/constants'
 import CityServicePage, { generateMetadata as baseGenerateMetadata } from '../../[citySlug]/[serviceSlug]/page'
 
 interface Props {
-  params: { serviceSlug: string }
+  params: { areaSlug: string } // actually a serviceSlug — see comment above
 }
 
 export async function generateStaticParams() {
-  const slugs: { serviceSlug: string }[] = []
-  SERVICES.forEach(s => slugs.push({ serviceSlug: s.slug }))
-  Object.values(SUB_SERVICES).forEach(subs => subs.forEach(sub => slugs.push({ serviceSlug: sub.slug })))
+  const slugs: { areaSlug: string }[] = []
+  SERVICES.forEach(s => slugs.push({ areaSlug: s.slug }))
+  Object.values(SUB_SERVICES).forEach(subs => subs.forEach(sub => slugs.push({ areaSlug: sub.slug })))
   return slugs
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return baseGenerateMetadata({ params: { citySlug: 'pune', serviceSlug: params.serviceSlug } })
+  return baseGenerateMetadata({ params: { citySlug: 'pune', serviceSlug: params.areaSlug } })
 }
 
 export default function PuneServicePage({ params }: Props) {
-  return <CityServicePage params={{ citySlug: 'pune', serviceSlug: params.serviceSlug }} />
+  return <CityServicePage params={{ citySlug: 'pune', serviceSlug: params.areaSlug }} />
 }
