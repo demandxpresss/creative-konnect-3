@@ -41,11 +41,11 @@ const serviceDefaults: Record<string, MediaSet> = {
     ],
   },
   'merch-giveaways': {
-    hero: `${ROOT}/live-photo-magnet.jpg`,
+    hero: `${ROOT}/bag-tags-slider/bag-tags-hero-1.jpg`,
     gallery: [
-      `${ROOT}/bad-tags.jpg`,
-      `${ROOT}/bobble-head.jpg`,
-      `${ROOT}/bobble-head.jpg`,
+      `${ROOT}/bobble-heads-slider/bobble-heads-hero-1.jpg`,
+      `${ROOT}/laser-engraving-slider/laser-engraving-hero-1.jpg`,
+      `${ROOT}/fridge-magnets-slider/fridge-magnets-hero-1.jpg`,
     ],
   },
   'guest-engagement': {
@@ -144,8 +144,18 @@ const subserviceMedia: Record<string, MediaSet> = {
     reelIds: ['cMXRsJV_dis', 'mMfWxJOlrFw'], // "AI Bollywood Photobooth" + "Ghibli AI Photobooth"
   },
   'laser-engraving': {
-    hero: `${ROOT}/bobble-head.jpg`,
-    gallery: [`${ROOT}/bobble-head.jpg`],
+    hero: `${ROOT}/laser-engraving-slider/laser-engraving-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/laser-engraving-slider/laser-engraving-hero-2.jpg`,
+      `${ROOT}/laser-engraving-slider/laser-engraving-hero-3.jpg`,
+      `${ROOT}/laser-engraving-slider/laser-engraving-hero-4.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/laser-engraving-slider/laser-engraving-hero-1.jpg`, alt: 'Live Laser Engraving station personalizing pens, bottles and wallets at a corporate conference' },
+      { src: `${ROOT}/laser-engraving-slider/laser-engraving-hero-2.jpg`, alt: 'Wedding guests receiving laser-engraved keepsakes with names and initials' },
+      { src: `${ROOT}/laser-engraving-slider/laser-engraving-hero-3.jpg`, alt: 'Laser Engraving booth personalizing bottles and notebooks at an exhibition' },
+      { src: `${ROOT}/laser-engraving-slider/laser-engraving-hero-4.jpg`, alt: 'College fest students getting their keychains laser engraved on the spot' },
+    ],
     // No dedicated Laser Engraving reel in the channel yet.
   },
   'mosaic-wall': {
@@ -237,18 +247,50 @@ const subserviceMedia: Record<string, MediaSet> = {
     reelIds: ['MCu8yX8oVWs', 'SqMTk9xMY78'], // "Buzzer Pro Game" — real event footage
   },
   'fridge-magnets': {
-    hero: `${ROOT}/live-photo-magnet.jpg`,
-    gallery: [`${ROOT}/live-photo-magnet.jpg`],
+    hero: `${ROOT}/fridge-magnets-slider/fridge-magnets-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/fridge-magnets-slider/fridge-magnets-hero-2.jpg`,
+      `${ROOT}/fridge-magnets-slider/fridge-magnets-hero-3.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/fridge-magnets-slider/fridge-magnets-hero-1.jpg`, alt: 'Guests getting custom fridge magnets printed live at a corporate event' },
+      { src: `${ROOT}/fridge-magnets-slider/fridge-magnets-hero-2.jpg`, alt: 'College fest students collecting their custom fridge magnet photos' },
+      { src: `${ROOT}/fridge-magnets-slider/fridge-magnets-hero-3.jpg`, alt: 'Corporate team members with their custom fridge magnet keepsakes' },
+    ],
     reelIds: ['KfFxeQUR2eg', 'qcbio3ssrFI'], // "Fridge Magnet" + "Live Photo Magnets"
   },
   'bag-tags': {
-    hero: `${ROOT}/bad-tags.jpg`,
-    gallery: [`${ROOT}/bad-tags.jpg`],
+    hero: `${ROOT}/bag-tags-slider/bag-tags-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/bag-tags-slider/bag-tags-hero-2.jpg`,
+      `${ROOT}/bag-tags-slider/bag-tags-hero-3.jpg`,
+      `${ROOT}/bag-tags-slider/bag-tags-hero-4.jpg`,
+      `${ROOT}/bag-tags-slider/bag-tags-hero-5.jpg`,
+      `${ROOT}/bag-tags-slider/bag-tags-hero-6.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/bag-tags-slider/bag-tags-hero-1.jpg`, alt: 'College fest students holding their custom printed bag tags' },
+      { src: `${ROOT}/bag-tags-slider/bag-tags-hero-2.jpg`, alt: 'Guest receiving a custom bag tag at an exhibition booth' },
+      { src: `${ROOT}/bag-tags-slider/bag-tags-hero-3.jpg`, alt: 'Wedding couple with personalized bag tags as a keepsake favor' },
+      { src: `${ROOT}/bag-tags-slider/bag-tags-hero-4.jpg`, alt: 'Guest getting a custom bag tag printed at a corporate conference' },
+      { src: `${ROOT}/bag-tags-slider/bag-tags-hero-5.jpg`, alt: 'School students holding custom bag tags on Annual Day' },
+      { src: `${ROOT}/bag-tags-slider/bag-tags-hero-6.jpg`, alt: 'Family with custom bag tags at a birthday party' },
+    ],
     reelIds: ['_3leh0uRZS8', 'RyhjuhBYKsQ'], // "Bag Tags" — real event footage
   },
   'bobble-heads': {
-    hero: `${ROOT}/bobble-head.jpg`,
-    gallery: [`${ROOT}/bobble-head.jpg`],
+    hero: `${ROOT}/bobble-heads-slider/bobble-heads-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/bobble-heads-slider/bobble-heads-hero-2.jpg`,
+      `${ROOT}/bobble-heads-slider/bobble-heads-hero-3.jpg`,
+      `${ROOT}/bobble-heads-slider/bobble-heads-hero-4.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/bobble-heads-slider/bobble-heads-hero-1.jpg`, alt: 'Custom Bobble Heads 2D and 3D figurines displayed at a corporate conference' },
+      { src: `${ROOT}/bobble-heads-slider/bobble-heads-hero-2.jpg`, alt: 'Wedding couple holding their custom bobble head figurines' },
+      { src: `${ROOT}/bobble-heads-slider/bobble-heads-hero-3.jpg`, alt: 'Kids with their custom bobble head figurines at a birthday party' },
+      { src: `${ROOT}/bobble-heads-slider/bobble-heads-hero-4.jpg`, alt: 'Corporate guests receiving custom bobble heads at a leadership summit' },
+    ],
     reelIds: ['oDI77z8zqqk', 'ZXdF4nlDa78'], // "Bobble Head" — real event footage
   },
   'video-guest-book': {
