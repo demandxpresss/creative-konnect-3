@@ -57,11 +57,11 @@ const serviceDefaults: Record<string, MediaSet> = {
     ],
   },
   'registration': {
-    hero: `${ROOT}/visitor-registration.jpg`,
+    hero: `${ROOT}/registration-category/registration-hero-1.jpg`,
     gallery: [
-      `${ROOT}/visitor-registration.jpg`,
-      `${ROOT}/visitor-registration.jpg`,
-      `${ROOT}/visitor-registration.jpg`,
+      `${ROOT}/registration-category/registration-hero-2.jpg`,
+      `${ROOT}/registration-category/registration-hero-3.jpg`,
+      `${ROOT}/customized-games-applications-slider/customized-games-applications-hero-1.jpg`,
     ],
   },
 }
@@ -340,8 +340,20 @@ const subserviceMedia: Record<string, MediaSet> = {
     reelIds: ['jtv2PpIN1D0', 'r4C9DbwwpWw'], // "Boomerang & Gif Booth" — real event footage
   },
   'customized-games-applications': {
-    hero: `${ROOT}/visitor-registration.jpg`,
-    gallery: [`${ROOT}/visitor-registration.jpg`],
+    hero: `${ROOT}/customized-games-applications-slider/customized-games-applications-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/customized-games-applications-slider/customized-games-applications-hero-2.jpg`,
+      `${ROOT}/customized-games-applications-slider/customized-games-applications-hero-3.jpg`,
+      `${ROOT}/customized-games-applications-slider/customized-games-applications-hero-4.jpg`,
+      `${ROOT}/customized-games-applications-slider/customized-games-applications-hero-5.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/customized-games-applications-slider/customized-games-applications-hero-1.jpg`, alt: 'Guests playing a branded puzzle game on a Customized Games touchscreen at a corporate event' },
+      { src: `${ROOT}/customized-games-applications-slider/customized-games-applications-hero-2.jpg`, alt: 'Wedding couple playing a custom Match & Win game on a branded touchscreen' },
+      { src: `${ROOT}/customized-games-applications-slider/customized-games-applications-hero-3.jpg`, alt: 'Guests completing a branded puzzle game at an exhibition booth' },
+      { src: `${ROOT}/customized-games-applications-slider/customized-games-applications-hero-4.jpg`, alt: 'College fest students playing a branded match game to win prizes' },
+      { src: `${ROOT}/customized-games-applications-slider/customized-games-applications-hero-5.jpg`, alt: 'School students playing a custom quiz game at a school fest' },
+    ],
     // No dedicated reel for this one — it's a software/app product, not a physical activation.
   },
 }
