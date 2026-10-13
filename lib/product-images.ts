@@ -162,28 +162,78 @@ const subserviceMedia: Record<string, MediaSet> = {
     reelIds: ['bOZX-vdwUL4', '6SUfbuCp1qw', 'CZuwZBDPBq4'], // "Mosaic Wall" + "Digital Mosaic"
   },
   'vr-games': {
-    hero: `${ROOT}/vr-games.jpg`,
-    gallery: [`${ROOT}/vr-games.jpg`],
+    hero: `${ROOT}/vr-games-slider/vr-games-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/vr-games-slider/vr-games-hero-2.jpg`,
+      `${ROOT}/vr-games-slider/vr-games-hero-3.jpg`,
+      `${ROOT}/vr-games-slider/vr-games-hero-4.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/vr-games-slider/vr-games-hero-1.jpg`, alt: 'Guest playing an immersive VR shooter game at a corporate exhibition' },
+      { src: `${ROOT}/vr-games-slider/vr-games-hero-2.jpg`, alt: 'Kid playing VR Games at a birthday party, friends cheering' },
+      { src: `${ROOT}/vr-games-slider/vr-games-hero-3.jpg`, alt: 'Guest navigating a VR adventure game at a college fest' },
+      { src: `${ROOT}/vr-games-slider/vr-games-hero-4.jpg`, alt: 'Attendee playing VR Games at a corporate conference booth' },
+    ],
     reelIds: ['HBXgc5ttWxQ', 'EMtf1tWwlH4'], // "VR Games" — real event footage, 2 clips
   },
   'car-simulator': {
-    hero: `${ROOT}/vr-games.jpg`,
-    gallery: [`${ROOT}/touch-screen-games.jpg`],
+    hero: `${ROOT}/car-simulator-slider/car-simulator-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/car-simulator-slider/car-simulator-hero-2.jpg`,
+      `${ROOT}/car-simulator-slider/car-simulator-hero-3.jpg`,
+      `${ROOT}/car-simulator-slider/car-simulator-hero-4.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/car-simulator-slider/car-simulator-hero-1.jpg`, alt: 'Guests racing on the Car Simulator rig at a brand activation event' },
+      { src: `${ROOT}/car-simulator-slider/car-simulator-hero-2.jpg`, alt: 'Guest driving the Car Simulator at a corporate conference' },
+      { src: `${ROOT}/car-simulator-slider/car-simulator-hero-3.jpg`, alt: 'Bachelor party group cheering at the Car Simulator racing rig' },
+      { src: `${ROOT}/car-simulator-slider/car-simulator-hero-4.jpg`, alt: 'College fest students racing on the Car Simulator' },
+    ],
     reelIds: ['twC_Ibx11T8', 'NiM3p7E3SOs', '4MHXXkzsXuQ'], // "Car Simulator Game" — real event footage
   },
   'touch-screen-games': {
-    hero: `${ROOT}/touch-screen-games.jpg`,
-    gallery: [`${ROOT}/touch-screen-games.jpg`],
+    hero: `${ROOT}/touch-screen-games-slider/touch-screen-games-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/touch-screen-games-slider/touch-screen-games-hero-2.jpg`,
+      `${ROOT}/touch-screen-games-slider/touch-screen-games-hero-3.jpg`,
+      `${ROOT}/touch-screen-games-slider/touch-screen-games-hero-4.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/touch-screen-games-slider/touch-screen-games-hero-1.jpg`, alt: 'Corporate guests playing a Ludo game on the large Touch Screen Games table' },
+      { src: `${ROOT}/touch-screen-games-slider/touch-screen-games-hero-2.jpg`, alt: 'Attendees playing a puzzle game on the Touch Screen Games kiosk at an exhibition' },
+      { src: `${ROOT}/touch-screen-games-slider/touch-screen-games-hero-3.jpg`, alt: 'Family playing Monopoly on the Touch Screen Games table at an evening event' },
+      { src: `${ROOT}/touch-screen-games-slider/touch-screen-games-hero-4.jpg`, alt: 'Kids playing a bubble-pop game on the Touch Screen Games table' },
+    ],
     reelIds: ['-sCF9nZMYpQ', '9LUcL64xrCM'], // "Touch Screen Gaming Kiosk" / "Touch Screen Games"
   },
   'catch-the-baton': {
-    hero: `${ROOT}/catch-the-baton.png`,
-    gallery: [`${ROOT}/catch-the-baton.png`],
+    hero: `${ROOT}/catch-the-baton-slider/catch-the-baton-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/catch-the-baton-slider/catch-the-baton-hero-2.jpg`,
+      `${ROOT}/catch-the-baton-slider/catch-the-baton-hero-3.jpg`,
+      `${ROOT}/catch-the-baton-slider/catch-the-baton-hero-4.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/catch-the-baton-slider/catch-the-baton-hero-1.jpg`, alt: 'Guest reaching to catch the baton at a corporate exhibition booth' },
+      { src: `${ROOT}/catch-the-baton-slider/catch-the-baton-hero-2.jpg`, alt: 'Guest playing Catch The Baton at an outdoor evening event, friends cheering' },
+      { src: `${ROOT}/catch-the-baton-slider/catch-the-baton-hero-3.jpg`, alt: 'Guest playing Catch The Baton at a corporate conference' },
+      { src: `${ROOT}/catch-the-baton-slider/catch-the-baton-hero-4.jpg`, alt: 'Kid playing Catch The Baton at a birthday party' },
+    ],
     reelIds: ['XlcLGnF9CBE'], // "Sharpen your reflexes with our 'Catch the Baton' challenge!!" — exact match
   },
   'buzzer-pro': {
-    hero: `${ROOT}/buzzer-pro.jpg`,
-    gallery: [`${ROOT}/buzzer-pro.jpg`],
+    hero: `${ROOT}/buzzer-pro-slider/buzzer-pro-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/buzzer-pro-slider/buzzer-pro-hero-2.jpg`,
+      `${ROOT}/buzzer-pro-slider/buzzer-pro-hero-3.jpg`,
+      `${ROOT}/buzzer-pro-slider/buzzer-pro-hero-4.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/buzzer-pro-slider/buzzer-pro-hero-1.jpg`, alt: 'Wedding guests playing Buzzer Pro, bride and groom buzzing in' },
+      { src: `${ROOT}/buzzer-pro-slider/buzzer-pro-hero-2.jpg`, alt: 'Girls vs boys Buzzer Pro quiz game at an outdoor event' },
+      { src: `${ROOT}/buzzer-pro-slider/buzzer-pro-hero-3.jpg`, alt: 'Guests playing Buzzer Pro at a corporate networking event' },
+      { src: `${ROOT}/buzzer-pro-slider/buzzer-pro-hero-4.jpg`, alt: 'School students playing Buzzer Pro in a quiz competition' },
+    ],
     reelIds: ['MCu8yX8oVWs', 'SqMTk9xMY78'], // "Buzzer Pro Game" — real event footage
   },
   'fridge-magnets': {
