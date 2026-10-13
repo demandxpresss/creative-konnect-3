@@ -146,7 +146,7 @@ export default function SubServicePage({ params }: Props) {
             {media.heroSlides && media.heroSlides.length > 0 ? (
               <HeroImageSlider slides={media.heroSlides} label={sub.name} />
             ) : (
-              <div className="relative rounded-card overflow-hidden h-32 sm:h-36 cursor-pointer border border-[#1e3a52]">
+              <div className="relative rounded-card overflow-hidden aspect-video cursor-pointer border border-[#1e3a52]">
                 <Image
                   src={media.hero}
                   alt={sub.name}
@@ -155,7 +155,6 @@ export default function SubServicePage({ params }: Props) {
                   quality={90}
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
-                  style={{ objectPosition: 'center 22%' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
                 <PlayIcon />

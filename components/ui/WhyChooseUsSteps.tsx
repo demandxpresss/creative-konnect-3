@@ -56,7 +56,7 @@ export function WhyChooseUsSteps({ steps }: { steps: WhyStep[] }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8">
         {steps.map((step, i) => (
-          <div key={step.title} className="relative flex lg:flex-col gap-4 lg:gap-0">
+          <div key={step.title} className="relative flex lg:flex-col lg:items-center gap-4 lg:gap-0">
             <div className="relative flex-shrink-0 lg:mb-4">
               <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center relative z-10 shadow-lg"
@@ -75,7 +75,7 @@ export function WhyChooseUsSteps({ steps }: { steps: WhyStep[] }) {
                 {i + 1}
               </div>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 lg:text-center">
               <h3 className="text-sm font-bold text-white mb-1.5">{step.title}</h3>
               <p className="text-[11px] text-[#7a9ab5] leading-relaxed">{step.desc}</p>
             </div>

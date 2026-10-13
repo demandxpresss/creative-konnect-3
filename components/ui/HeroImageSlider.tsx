@@ -20,7 +20,7 @@ export function HeroImageSlider({ slides, label }: { slides: HeroSlide[]; label:
   }, [slides.length])
 
   return (
-    <div className="relative rounded-card overflow-hidden h-56 sm:h-64 border border-[#1e3a52]">
+    <div className="relative rounded-card overflow-hidden aspect-video border border-[#1e3a52]">
       {slides.map((slide, i) => (
         <div
           key={slide.src}
