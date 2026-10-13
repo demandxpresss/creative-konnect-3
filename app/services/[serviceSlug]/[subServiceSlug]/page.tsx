@@ -11,7 +11,7 @@ import { getProductMedia } from '@/lib/product-images'
 import { getSubServiceContent } from '@/lib/sub-service-content'
 import { StickyCtaBar }        from '@/components/ui/StickyCtaBar'
 import { HeroImageSlider }     from '@/components/ui/HeroImageSlider'
-import { ReelOrPhotoTile }     from '@/components/ui/ReelOrPhotoTile'
+import { ReelsSlider }         from '@/components/ui/ReelsSlider'
 import { WhyChooseUsSteps, type WhyStep } from '@/components/ui/WhyChooseUsSteps'
 import { ClientLogos }         from '@/components/sections/ClientLogos'
 
@@ -66,6 +66,14 @@ const WHY_CK: WhyStep[] = [
 
 const TRUST_BADGES = ['500+ Events Completed','4.9★ Google Rating','ISO Certified Equipment','Insured & Licensed','Pan India Coverage','2-Hour Quote Response']
 
+// Outcome stats shown next to the hero image — deliberately not hardware specs (fps, MP,
+// screen size etc.), since those don't move a booking decision the way trust signals do.
+const HERO_STATS = [
+  { n: '500+', l: 'Events Delivered' },
+  { n: '4.9★', l: 'Google Rating' },
+  { n: '2-Hr', l: 'Quote Response' },
+]
+
 function PlayIcon() {
   return (
     <div className="play-btn absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%]">
@@ -80,6 +88,7 @@ export default function SubServicePage({ params }: Props) {
   if (!service || !sub) notFound()
   const media = getProductMedia(params.serviceSlug, params.subServiceSlug)
   const content = getSubServiceContent(sub.slug)
+  const otherSubs = (SUB_SERVICES[params.serviceSlug] || []).filter(s => s.slug !== sub.slug)
 
   const productSchema = {
     '@context': 'https://schema.org',
@@ -155,7 +164,7 @@ export default function SubServicePage({ params }: Props) {
               </div>
             )}
             <div className="grid grid-cols-3 gap-2.5">
-              {content.stats.map(s => (
+              {HERO_STATS.map(s => (
                 <div key={s.l} className="bg-ck-blue/12 border border-ck-electric/20 rounded-[8px] p-3 text-center">
                   <div className="text-lg font-black text-ck-electric">{s.n}</div>
                   <div className="text-[9px] text-[#4a7090] mt-1">{s.l}</div>
@@ -184,44 +193,19 @@ export default function SubServicePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Reels & gallery — a real clickable video when we have one (media.reelId),
-          plain photo tiles otherwise. No more decorative play buttons over static
-          images that do nothing when clicked. */}
-      <section className="section-dark">
-        <div className="max-w-7xl mx-auto">
-          <div className="eyebrow-light mb-1">See It In Action</div>
-          <h2 className="text-[20px] font-black text-white tracking-tight mb-1">
-            {media.reelId ? `${sub.name} Reels & Gallery` : `${sub.name} Gallery`}
-          </h2>
-          <p className="text-xs text-[#4a7090] mb-5">Real footage from actual events across India.</p>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-            {media.reelId && (
-              <ReelOrPhotoTile
-                youtubeId={media.reelId}
-                label={`${sub.name} Demo Reel`}
-                className="md:col-span-2"
-              />
-            )}
-            {media.gallery.slice(0, media.reelId ? 3 : 4).map((src, i) => (
-              <div
-                key={src}
-                className={`relative rounded-card overflow-hidden ${!media.reelId && i === 0 ? 'md:col-span-2' : ''}`}
-                style={{ minHeight: 140 }}
-              >
-                <Image
-                  src={src}
-                  alt={`${sub.name} at a real event`}
-                  fill
-                  quality={88}
-                  sizes={!media.reelId && i === 0 ? '(max-width: 1024px) 100vw, 50vw' : '(max-width: 1024px) 50vw, 25vw'}
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-transparent pointer-events-none" />
-              </div>
-            ))}
+      {/* Reels — only shown when we actually have real video for this product. No fallback
+          photos standing in for a video that doesn't exist, and no section at all when
+          there's nothing real to show. */}
+      {media.reelIds && media.reelIds.length > 0 && (
+        <section className="section-dark">
+          <div className="max-w-7xl mx-auto">
+            <div className="eyebrow-light mb-1">See It In Action</div>
+            <h2 className="text-[20px] font-black text-white tracking-tight mb-1">{sub.name} Reels</h2>
+            <p className="text-xs text-[#4a7090] mb-5">Real footage from actual events across India.</p>
+            <ReelsSlider youtubeIds={media.reelIds} label={`${sub.name} Demo Reel`} />
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Why CK — step-by-step process, each step with its own icon + accent color */}
       <section className="section-dark" style={{ paddingTop: 0 }}>
@@ -274,6 +258,39 @@ export default function SubServicePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Explore other booths in this category — internal links with a real thumbnail each */}
+      {otherSubs.length > 0 && (
+        <section className="section-ghost">
+          <div className="max-w-7xl mx-auto">
+            <div className="eyebrow mb-1">Explore More</div>
+            <h2 className="text-[20px] font-black text-ck-deep tracking-tight mb-5">Other {service.name}</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              {otherSubs.map(other => (
+                <Link
+                  key={other.slug}
+                  href={`/services/${params.serviceSlug}/${other.slug}`}
+                  className="card group overflow-hidden hover:border-ck-blue transition-all duration-150"
+                >
+                  <div className="relative h-24 overflow-hidden">
+                    <Image
+                      src={getProductMedia(params.serviceSlug, other.slug).hero}
+                      alt={other.name}
+                      fill
+                      quality={80}
+                      sizes="(max-width: 640px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-xs font-bold text-ck-deep group-hover:text-ck-blue transition-colors">{other.name}</h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* FAQ */}
       <section className="section-light">
