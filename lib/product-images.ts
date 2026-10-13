@@ -111,15 +111,31 @@ const subserviceMedia: Record<string, MediaSet> = {
     reelIds: ['YFgZo7l7U5U'], // "AI Photobooth" — real event footage
   },
   'ar-mind-reader': {
-    hero: `${ROOT}/ar-mind-reader.jpg`,
-    gallery: [`${ROOT}/ar-mind-reader.jpg`],
+    hero: `${ROOT}/ar-mind-reader-slider/ar-mind-reader-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/ar-mind-reader-slider/ar-mind-reader-hero-2.jpg`,
+      `${ROOT}/ar-mind-reader-slider/ar-mind-reader-hero-3.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/ar-mind-reader-slider/ar-mind-reader-hero-1.jpg`, alt: 'AR Mind Reader kiosk reading a guest\'s thoughts at a corporate conference' },
+      { src: `${ROOT}/ar-mind-reader-slider/ar-mind-reader-hero-2.jpg`, alt: 'Guests at a brand activation booth using the AR Mind Reader experience' },
+      { src: `${ROOT}/ar-mind-reader-slider/ar-mind-reader-hero-3.jpg`, alt: 'College fest attendees trying the AR Mind Reader kiosk' },
+    ],
     // "AR Mind Reader" is an exact title match; the two "AI Mind Reader" clips look like the
     // same activity filmed at other events (same AR "reveal" format, inconsistently titled).
     reelIds: ['bHOecjhRU4g', 'tEibwJl8S3Y', 'o9EPy_4Y9ik'],
   },
   'digital-sling-shot': {
-    hero: `${ROOT}/ar-mind-reader.jpg`,
-    gallery: [`${ROOT}/ar-mind-reader.jpg`],
+    hero: `${ROOT}/digital-sling-shot-slider/digital-sling-shot-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/digital-sling-shot-slider/digital-sling-shot-hero-2.jpg`,
+      `${ROOT}/digital-sling-shot-slider/digital-sling-shot-hero-3.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/digital-sling-shot-slider/digital-sling-shot-hero-1.jpg`, alt: 'Guest playing the Digital Sling Shot game at a corporate event booth' },
+      { src: `${ROOT}/digital-sling-shot-slider/digital-sling-shot-hero-2.jpg`, alt: 'Students lining up for the Digital Sling Shot game at a college fest' },
+      { src: `${ROOT}/digital-sling-shot-slider/digital-sling-shot-hero-3.jpg`, alt: 'Digital Sling Shot branded game booth at a large exhibition event' },
+    ],
     // No dedicated Digital Sling Shot reel in the channel yet.
   },
   'ai-photobooth': {
@@ -133,8 +149,16 @@ const subserviceMedia: Record<string, MediaSet> = {
     // No dedicated Laser Engraving reel in the channel yet.
   },
   'mosaic-wall': {
-    hero: `${ROOT}/ai-360.png`,
-    gallery: [`${ROOT}/ai-360.png`],
+    hero: `${ROOT}/mosaic-wall-slider/mosaic-wall-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/mosaic-wall-slider/mosaic-wall-hero-2.jpg`,
+      `${ROOT}/mosaic-wall-slider/mosaic-wall-hero-3.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/mosaic-wall-slider/mosaic-wall-hero-1.jpg`, alt: 'Guests capturing photos that build into a live Mosaic Wall at a corporate event' },
+      { src: `${ROOT}/mosaic-wall-slider/mosaic-wall-hero-2.jpg`, alt: 'Mosaic Wall built from hundreds of guest photos at a college fest' },
+      { src: `${ROOT}/mosaic-wall-slider/mosaic-wall-hero-3.jpg`, alt: 'Branded Mosaic Wall revealing a logo made of guest photos at a brand activation' },
+    ],
     reelIds: ['bOZX-vdwUL4', '6SUfbuCp1qw', 'CZuwZBDPBq4'], // "Mosaic Wall" + "Digital Mosaic"
   },
   'vr-games': {
