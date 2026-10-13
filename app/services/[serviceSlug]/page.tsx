@@ -8,6 +8,7 @@ import { CtaBanner } from '@/components/sections/CtaBanner'
 import { FaqAccordion } from '@/components/ui/FaqAccordion'
 import { getProductMedia } from '@/lib/product-images'
 import { getSubServiceContent } from '@/lib/sub-service-content'
+import { CategoryReelsGrid } from '@/components/ui/CategoryReelsGrid'
 
 interface Props { params: { serviceSlug: string } }
 
@@ -70,14 +71,6 @@ const DEFAULT_FAQS = [
   { q: 'What is included in the quote?',              a: 'All quotes include equipment, branding design, on-site operator, technical setup and breakdown. We provide fully transparent, itemised quotes with zero hidden costs.' },
 ]
 
-function PlayIcon() {
-  return (
-    <div className="play-btn absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%]">
-      <div className="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[11px] border-l-white ml-0.5" />
-    </div>
-  )
-}
-
 export default function ServiceCategoryPage({ params }: Props) {
   const service = SERVICES.find(s => s.slug === params.serviceSlug)
   if (!service) notFound()
@@ -85,6 +78,16 @@ export default function ServiceCategoryPage({ params }: Props) {
   const subServices = SUB_SERVICES[params.serviceSlug] || []
   const benefits    = BENEFITS[params.serviceSlug] || DEFAULT_BENEFITS
   const faqs        = DEFAULT_FAQS
+
+  // Real reels only — aggregate each sub-service's first real YouTube id (no fabricated
+  // "Event Highlight" placeholders). Hidden entirely when a category has no real reels yet.
+  const categoryReels = subServices
+    .map(sub => {
+      const reelIds = getProductMedia(params.serviceSlug, sub.slug).reelIds
+      return reelIds && reelIds.length > 0 ? { youtubeId: reelIds[0], label: sub.name } : null
+    })
+    .filter((r): r is { youtubeId: string; label: string } => r !== null)
+    .slice(0, 4)
 
   const serviceSchema = {
     '@context': 'https://schema.org',
@@ -157,7 +160,7 @@ export default function ServiceCategoryPage({ params }: Props) {
                 href={`/services/${params.serviceSlug}/${sub.slug}`}
                 className="card group hover:border-ck-blue hover:-translate-y-0.5 transition-all duration-150"
               >
-                <div className="h-44 sm:h-48 relative overflow-hidden bg-[#f8fbfe]">
+                <div className="aspect-video relative overflow-hidden bg-[#f8fbfe]">
                   <Image
                     src={getProductMedia(params.serviceSlug, sub.slug).hero}
                     alt={sub.name}
@@ -229,34 +232,49 @@ export default function ServiceCategoryPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Gallery */}
-      <section className="section-dark">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-5">
-            <div>
-              <div className="eyebrow-light">See It In Action</div>
-              <h2 className="text-[20px] font-black text-white tracking-tight">Gallery &amp; Reels</h2>
-            </div>
-            <Link href="/gallery" className="text-xs font-bold text-ck-electric hover:text-white transition-colors">View all →</Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className={`relative rounded-card overflow-hidden cursor-pointer ${i === 0 ? 'md:col-span-2' : ''}`} style={{ minHeight: 140 }}>
-                <div className={`absolute inset-0 bg-gradient-to-br ${i % 2 === 0 ? 'from-ck-blue to-ck-navy' : 'from-ck-electric to-ck-deep'}`} />
-                <PlayIcon />
-                <div className="absolute inset-0 flex flex-col justify-end p-3">
-                  <span className="reel-tag">{service.name.toUpperCase()}</span>
-                  <p className="text-xs font-bold text-white">Event Highlight {i + 1}</p>
-                  <p className="text-[10px] text-white/40">India · 2024</p>
-                </div>
+      {/* Gallery — real reels only, aggregated from this category's sub-services. No section
+          at all when none of them have real video yet (no fabricated placeholders). */}
+      {categoryReels.length > 0 && (
+        <section className="section-dark">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-end justify-between mb-5">
+              <div>
+                <div className="eyebrow-light">See It In Action</div>
+                <h2 className="text-[20px] font-black text-white tracking-tight">Gallery &amp; Reels</h2>
               </div>
+              <Link href="/gallery" className="text-xs font-bold text-ck-electric hover:text-white transition-colors">View all →</Link>
+            </div>
+            <CategoryReelsGrid reels={categoryReels} />
+          </div>
+        </section>
+      )}
+
+      {/* Testimonials */}
+      <TestimonialsSection />
+
+      {/* Related blog */}
+      <section className="section-ghost">
+        <div className="max-w-7xl mx-auto">
+          <div className="eyebrow mb-1">Related Reading</div>
+          <h2 className="text-[20px] font-black text-ck-deep tracking-tight mb-5">{service.name} Guides &amp; Articles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              { cat: service.name,    title: `${service.name}: A Complete Guide for Event Planners`,      read: '8 min' },
+              { cat: 'How It Works',  title: `How ${service.name} Creates Viral Social Media Content`,    read: '5 min' },
+              { cat: 'Pricing Guide', title: `${service.name} Hire Cost in India — What to Expect`,       read: '4 min' },
+            ].map((p, i) => (
+              <Link key={i} href="/blog" className="card group hover:border-ck-blue transition-all duration-150">
+                <div className={`h-16 bg-gradient-to-br ${i === 0 ? 'from-ck-blue to-ck-navy' : i === 1 ? 'from-ck-electric to-ck-deep' : 'from-ck-deep to-ck-navy'}`} />
+                <div className="p-4">
+                  <div className="text-[9px] font-bold text-ck-blue uppercase tracking-[1.5px] mb-1.5">{p.cat}</div>
+                  <h3 className="text-xs font-bold text-ck-deep leading-snug mb-1.5 group-hover:text-ck-blue transition-colors">{p.title}</h3>
+                  <div className="text-[10px] text-[#aac0d0]">{p.read} read</div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Testimonials */}
-      <TestimonialsSection />
 
       {/* FAQ */}
       <section className="section-ghost">
