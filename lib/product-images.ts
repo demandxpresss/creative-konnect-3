@@ -49,11 +49,11 @@ const serviceDefaults: Record<string, MediaSet> = {
     ],
   },
   'guest-engagement': {
-    hero: `${ROOT}/video-guest-book.jpg`,
+    hero: `${ROOT}/guest-engagement-category/guest-engagement-hero-1.jpg`,
     gallery: [
-      `${ROOT}/video-guest-book.jpg`,
-      `${ROOT}/video-guest-book.jpg`,
-      `${ROOT}/video-guest-book.jpg`,
+      `${ROOT}/guest-engagement-category/guest-engagement-hero-2.jpg`,
+      `${ROOT}/guest-engagement-category/guest-engagement-hero-3.jpg`,
+      `${ROOT}/video-guest-book-slider/video-guest-book-hero-1.jpg`,
     ],
   },
   'registration': {
@@ -294,13 +294,33 @@ const subserviceMedia: Record<string, MediaSet> = {
     reelIds: ['oDI77z8zqqk', 'ZXdF4nlDa78'], // "Bobble Head" — real event footage
   },
   'video-guest-book': {
-    hero: `${ROOT}/video-guest-book.jpg`,
-    gallery: [`${ROOT}/video-guest-book.jpg`],
+    hero: `${ROOT}/video-guest-book-slider/video-guest-book-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/video-guest-book-slider/video-guest-book-hero-2.jpg`,
+      `${ROOT}/video-guest-book-slider/video-guest-book-hero-3.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/video-guest-book-slider/video-guest-book-hero-1.jpg`, alt: 'Bride recording a message on the vintage Video Guest Book phone at a wedding' },
+      { src: `${ROOT}/video-guest-book-slider/video-guest-book-hero-2.jpg`, alt: 'Guest leaving a video message on the Video Guest Book at a corporate conference' },
+      { src: `${ROOT}/video-guest-book-slider/video-guest-book-hero-3.jpg`, alt: 'College fest student recording a video message on the Video Guest Book' },
+    ],
     reelIds: ['jH-QbMVPwF0', 'bLuZH1Ng2qo'], // "Video Guestbook" — real event footage
   },
   'audio-guest-book': {
-    hero: `${ROOT}/video-guest-book.jpg`,
-    gallery: [`${ROOT}/video-guest-book.jpg`],
+    hero: `${ROOT}/audio-guest-book-slider/audio-guest-book-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/audio-guest-book-slider/audio-guest-book-hero-2.jpg`,
+      `${ROOT}/audio-guest-book-slider/audio-guest-book-hero-3.jpg`,
+      `${ROOT}/audio-guest-book-slider/audio-guest-book-hero-4.jpg`,
+      `${ROOT}/audio-guest-book-slider/audio-guest-book-hero-5.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/audio-guest-book-slider/audio-guest-book-hero-1.jpg`, alt: 'Guest leaving a voice message on the vintage red Audio Guest Book phone at a corporate event' },
+      { src: `${ROOT}/audio-guest-book-slider/audio-guest-book-hero-2.jpg`, alt: 'College fest students recording a message on the Audio Guest Book' },
+      { src: `${ROOT}/audio-guest-book-slider/audio-guest-book-hero-3.jpg`, alt: 'Wedding guests leaving a voice message on the Audio Guest Book' },
+      { src: `${ROOT}/audio-guest-book-slider/audio-guest-book-hero-4.jpg`, alt: 'Audio Guest Book setup with vintage red rotary phone at an event' },
+      { src: `${ROOT}/audio-guest-book-slider/audio-guest-book-hero-5.jpg`, alt: 'Guest recording a voice message on the Audio Guest Book at an awards night' },
+    ],
     reelIds: ['NZaDTHgk0mE', 'XdxTxI-DtDo'], // "Audio Guest Book" — real event footage
   },
   'virtual-photobooth': {
