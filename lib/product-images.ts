@@ -17,11 +17,11 @@ const ROOT = '/images/products'
 
 const serviceDefaults: Record<string, MediaSet> = {
   'photo-video-booths': {
-    hero: `${ROOT}/ring-booth.jpg`,
+    hero: `${ROOT}/ring-booth-slider/ring-booth-hero-1.jpg`,
     gallery: [
-      `${ROOT}/mirror-booth.jpg`,
-      `${ROOT}/360-video-booth.jpg`,
-      `${ROOT}/glambot.png`,
+      `${ROOT}/mirror-booth-slider/mirror-booth-hero-1.jpg`,
+      `${ROOT}/single-photobooth-slider/single-photobooth-hero-1.jpg`,
+      `${ROOT}/glambot-slider/glambot-hero-1.jpg`,
     ],
   },
   'ai-tech-experiences': {
@@ -86,28 +86,80 @@ const subserviceMedia: Record<string, MediaSet> = {
     // video's real title) — Reels & Gallery section is hidden for this page until one is filmed.
   },
   'mirror-booth': {
-    hero: `${ROOT}/mirror-booth.jpg`,
-    gallery: [`${ROOT}/mirror-booth.jpg`],
+    hero: `${ROOT}/mirror-booth-slider/mirror-booth-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/mirror-booth-slider/mirror-booth-hero-2.jpg`,
+      `${ROOT}/mirror-booth-slider/mirror-booth-hero-3.jpg`,
+      `${ROOT}/mirror-booth-slider/mirror-booth-hero-4.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/mirror-booth-slider/mirror-booth-hero-1.jpg`, alt: 'Mirror Booth with colorful RGB border and touchscreen at a party' },
+      { src: `${ROOT}/mirror-booth-slider/mirror-booth-hero-2.jpg`, alt: 'Guests posing at the Mirror Booth with a countdown on screen' },
+      { src: `${ROOT}/mirror-booth-slider/mirror-booth-hero-3.jpg`, alt: 'Wedding guests taking a group photo at the Mirror Booth' },
+      { src: `${ROOT}/mirror-booth-slider/mirror-booth-hero-4.jpg`, alt: 'Corporate guests reviewing their photo on the Mirror Booth at an exhibition' },
+    ],
     reelIds: ['TZ7DMvKk2-c', 'XS6ktWGYJS0'], // "Mirror Photobooth" / "Mirror Booth" — real event footage
   },
   'single-photobooth': {
-    hero: `${ROOT}/360-video-booth.jpg`,
-    gallery: [`${ROOT}/360-video-booth.jpg`],
+    hero: `${ROOT}/single-photobooth-slider/single-photobooth-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/single-photobooth-slider/single-photobooth-hero-2.jpg`,
+      `${ROOT}/single-photobooth-slider/single-photobooth-hero-3.jpg`,
+      `${ROOT}/single-photobooth-slider/single-photobooth-hero-4.jpg`,
+      `${ROOT}/single-photobooth-slider/single-photobooth-hero-5.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-1.jpg`, alt: 'Guests posing on the 360 Booth platform at an awards night' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-2.jpg`, alt: '360 Booth spinning camera rig set up at a wedding reception' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-3.jpg`, alt: 'Friends taking a selfie video on the 360 Booth at a corporate event' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-4.jpg`, alt: 'Bridesmaids posing on the 360 Celebration Booth at a wedding' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-5.jpg`, alt: 'Wedding guests in traditional outfits on the 360 Celebration Booth' },
+    ],
     reelIds: ['HPAM-EcY3h4'], // "Introducing Multi Exposure Photobooth!" — closest real footage to this product
   },
   'glambot': {
-    hero: `${ROOT}/glambot.png`,
-    gallery: [`${ROOT}/glambot.png`],
+    hero: `${ROOT}/glambot-slider/glambot-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/glambot-slider/glambot-hero-2.jpg`,
+      `${ROOT}/glambot-slider/glambot-hero-3.jpg`,
+      `${ROOT}/glambot-slider/glambot-hero-4.jpg`,
+      `${ROOT}/glambot-slider/glambot-hero-5.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/glambot-slider/glambot-hero-1.jpg`, alt: 'Guests posing for the robotic arm Glambot camera at a birthday party' },
+      { src: `${ROOT}/glambot-slider/glambot-hero-2.jpg`, alt: 'Glambot robotic camera arm set up on a red carpet at an event' },
+      { src: `${ROOT}/glambot-slider/glambot-hero-3.jpg`, alt: 'Bride in a sparkling lehenga posing for the Glambot at a sangeet' },
+      { src: `${ROOT}/glambot-slider/glambot-hero-4.jpg`, alt: 'Wedding couple posing together for the Glambot slow-motion camera' },
+      { src: `${ROOT}/glambot-slider/glambot-hero-5.jpg`, alt: 'Corporate team posing for the Glambot robotic arm camera at a conference' },
+    ],
     reelIds: ['rE5tv4550tU', '_43q1Gbbqds', '4xWcGVJXCKo'], // "Glambot" — real event footage, 3 clips
   },
   'strip-photobooth': {
-    hero: `${ROOT}/ring-booth.jpg`,
-    gallery: [`${ROOT}/ring-booth.jpg`],
+    hero: `${ROOT}/strip-photobooth-slider/strip-photobooth-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/strip-photobooth-slider/strip-photobooth-hero-2.jpg`,
+      `${ROOT}/strip-photobooth-slider/strip-photobooth-hero-3.jpg`,
+      `${ROOT}/strip-photobooth-slider/strip-photobooth-hero-4.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/strip-photobooth-slider/strip-photobooth-hero-1.jpg`, alt: 'Guests posing at a ring-light Strip Photobooth at a corporate summit' },
+      { src: `${ROOT}/strip-photobooth-slider/strip-photobooth-hero-2.jpg`, alt: 'College fest friends posing for a classic photo strip at the Strip Photobooth' },
+      { src: `${ROOT}/strip-photobooth-slider/strip-photobooth-hero-3.jpg`, alt: 'Sangeet guests posing for a photo strip keepsake at the Strip Photobooth' },
+      { src: `${ROOT}/strip-photobooth-slider/strip-photobooth-hero-4.jpg`, alt: 'Classic vertical photo strip printed at the Strip Photobooth' },
+    ],
     reelIds: ['vicb2UkNnAs', 'xjyPYqCJ8kY'], // "Strip Photobooth" — real event footage
   },
   'ai-booths': {
-    hero: `${ROOT}/ai-celebrity.jpg`,
-    gallery: [`${ROOT}/ai-celebrity.jpg`],
+    hero: `${ROOT}/ai-booths-slider/ai-booths-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/ai-booths-slider/ai-booths-hero-2.jpg`,
+      `${ROOT}/ai-booths-slider/ai-booths-hero-3.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/ai-booths-slider/ai-booths-hero-1.jpg`, alt: 'Corporate team posing at the AI Booth, printout shows stylized illustrated portrait' },
+      { src: `${ROOT}/ai-booths-slider/ai-booths-hero-2.jpg`, alt: 'Wedding guests at the AI Booth with a stylized illustrated keepsake photo' },
+      { src: `${ROOT}/ai-booths-slider/ai-booths-hero-3.jpg`, alt: 'College fest friends transformed into superhero-style AI art at the AI Booth' },
+    ],
     reelIds: ['YFgZo7l7U5U'], // "AI Photobooth" — real event footage
   },
   'ar-mind-reader': {
@@ -139,8 +191,14 @@ const subserviceMedia: Record<string, MediaSet> = {
     // No dedicated Digital Sling Shot reel in the channel yet.
   },
   'ai-photobooth': {
-    hero: `${ROOT}/ai-celebrity.jpg`,
-    gallery: [`${ROOT}/ai-celebrity.jpg`],
+    hero: `${ROOT}/ai-photobooth-slider/ai-photobooth-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/ai-photobooth-slider/ai-photobooth-hero-2.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/ai-photobooth-slider/ai-photobooth-hero-1.jpg`, alt: 'Kids transformed into cartoon superhero and princess AI portraits at a birthday party' },
+      { src: `${ROOT}/ai-photobooth-slider/ai-photobooth-hero-2.jpg`, alt: 'AI Photobooth tablet kiosk generating a glamorous AI portrait at an event' },
+    ],
     reelIds: ['cMXRsJV_dis', 'mMfWxJOlrFw'], // "AI Bollywood Photobooth" + "Ghibli AI Photobooth"
   },
   'laser-engraving': {
@@ -329,14 +387,34 @@ const subserviceMedia: Record<string, MediaSet> = {
     // Still in development per Krishna — intentionally no reel or new hero images yet.
   },
   'green-screen-vfx': {
-    hero: `${ROOT}/vfx-booth.png`,
-    gallery: [`${ROOT}/vfx-booth.png`],
+    hero: `${ROOT}/green-screen-vfx-slider/green-screen-vfx-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/green-screen-vfx-slider/green-screen-vfx-hero-2.jpg`,
+      `${ROOT}/green-screen-vfx-slider/green-screen-vfx-hero-3.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/green-screen-vfx-slider/green-screen-vfx-hero-1.jpg`, alt: 'Corporate team posing in front of the Green Screen & VFX backdrop at a conference' },
+      { src: `${ROOT}/green-screen-vfx-slider/green-screen-vfx-hero-2.jpg`, alt: 'Guest posting on the Green Screen & VFX booth with custom scene backgrounds' },
+      { src: `${ROOT}/green-screen-vfx-slider/green-screen-vfx-hero-3.jpg`, alt: 'Branded Green Screen & VFX activation at a BTL brand event' },
+    ],
     // "Chroma Booth" / "VFX Booth" / "VFX Bhoot" — 6 real clips, all the same activation.
     reelIds: ['xkPuXdHPhMs', 'bRUXi0Ux5Ak', 'f4om07PkM-s', 'IYhtXnzK_ZA', 'sT5V26qOK00', '4MpECKgx2DA'],
   },
   'gif-boomerang': {
-    hero: `${ROOT}/boomerang-gif.jpg`,
-    gallery: [`${ROOT}/boomerang-gif.jpg`],
+    hero: `${ROOT}/gif-boomerang-slider/gif-boomerang-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/gif-boomerang-slider/gif-boomerang-hero-2.jpg`,
+      `${ROOT}/gif-boomerang-slider/gif-boomerang-hero-3.jpg`,
+      `${ROOT}/gif-boomerang-slider/gif-boomerang-hero-4.jpg`,
+      `${ROOT}/gif-boomerang-slider/gif-boomerang-hero-5.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/gif-boomerang-slider/gif-boomerang-hero-1.jpg`, alt: 'College fest friends posing for a GIF & Boomerang robotic arm camera' },
+      { src: `${ROOT}/gif-boomerang-slider/gif-boomerang-hero-2.jpg`, alt: 'Wedding couple dancing for a GIF & Boomerang robotic arm capture' },
+      { src: `${ROOT}/gif-boomerang-slider/gif-boomerang-hero-3.jpg`, alt: 'Brand activation GIF & Boomerang booth with a "Your Brand Here" backdrop' },
+      { src: `${ROOT}/gif-boomerang-slider/gif-boomerang-hero-4.jpg`, alt: 'Corporate guests posing for a GIF & Boomerang capture at a business summit' },
+      { src: `${ROOT}/gif-boomerang-slider/gif-boomerang-hero-5.jpg`, alt: 'GIF & Boomerang neon tunnel photo booth set up at an exhibition' },
+    ],
     reelIds: ['jtv2PpIN1D0', 'r4C9DbwwpWw'], // "Boomerang & Gif Booth" — real event footage
   },
   'customized-games-applications': {
