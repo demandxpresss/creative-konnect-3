@@ -64,23 +64,15 @@ const WHY_CK: WhyStep[] = [
   { title: '24/7 Support',          desc: 'WhatsApp support before, during, and after your event.',             icon: 'headset', accent: '#FF6B6B' },
 ]
 
-const TRUST_BADGES = ['500+ Events Completed','4.9★ Google Rating','ISO Certified Equipment','Insured & Licensed','Pan India Coverage','2-Hour Quote Response']
+const TRUST_BADGES = ['500+ Events Completed',`${SITE_CONFIG.googleRating}★ Google Rating`,'ISO Certified Equipment','Insured & Licensed','Pan India Coverage','2-Hour Quote Response']
 
 // Outcome stats shown next to the hero image — deliberately not hardware specs (fps, MP,
 // screen size etc.), since those don't move a booking decision the way trust signals do.
 const HERO_STATS = [
   { n: '500+', l: 'Events Delivered' },
-  { n: '4.9★', l: 'Google Rating' },
+  { n: `${SITE_CONFIG.googleRating}★`, l: 'Google Rating' },
   { n: '2-Hr', l: 'Quote Response' },
 ]
-
-function PlayIcon() {
-  return (
-    <div className="play-btn absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[65%]">
-      <div className="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[11px] border-l-white ml-0.5" />
-    </div>
-  )
-}
 
 export default function SubServicePage({ params }: Props) {
   const service = SERVICES.find(s => s.slug === params.serviceSlug)
@@ -146,7 +138,7 @@ export default function SubServicePage({ params }: Props) {
             {media.heroSlides && media.heroSlides.length > 0 ? (
               <HeroImageSlider slides={media.heroSlides} label={sub.name} />
             ) : (
-              <div className="relative rounded-card overflow-hidden aspect-video cursor-pointer border border-[#1e3a52]">
+              <div className="relative rounded-card overflow-hidden aspect-video border border-[#1e3a52]">
                 <Image
                   src={media.hero}
                   alt={sub.name}
@@ -157,9 +149,7 @@ export default function SubServicePage({ params }: Props) {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-                <PlayIcon />
-                <div className="absolute bottom-3 left-3 text-xs font-semibold text-white/60">{sub.name} Demo Reel</div>
-                <div className="absolute bottom-3 right-3 bg-black/60 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">2:34</div>
+                <div className="absolute bottom-3 left-3 text-xs font-semibold text-white/80">{sub.name}</div>
               </div>
             )}
             <div className="grid grid-cols-3 gap-2.5">

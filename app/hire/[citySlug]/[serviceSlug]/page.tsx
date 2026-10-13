@@ -179,7 +179,7 @@ export default function SeoPage({ params }: Props) {
               { icon: '✓',  title: 'Fully Branded',             desc: `Every ${service.name} is customised with your logo, brand colors and event messaging. We handle all design.` },
               { icon: '👤', title: 'On-Site Operator',          desc: `A dedicated operator arrives at your ${city} venue 2 hours early. Manages everything, troubleshoots everything.` },
               { icon: '📱', title: 'Instant Social Sharing',    desc: `Guests receive their content instantly via WhatsApp and email — shareable in seconds.` },
-              { icon: '★',  title: `4.9★ Rating Across India`,  desc: `Trusted by 50+ leading brands. 500+ events delivered. Rated 4.9 stars on Google.` },
+              { icon: '★',  title: `${SITE_CONFIG.googleRating}★ Rating Across India`,  desc: `Trusted by 50+ leading brands. 500+ events delivered. Rated ${SITE_CONFIG.googleRating} stars on Google.` },
             ].map((item, i) => (
               <div key={i} className="card p-4">
                 <div className="text-2xl mb-2.5">{item.icon}</div>

@@ -34,7 +34,7 @@ export function StickyCtaBar({ service, showAfter = 600 }: StickyCtaBarProps) {
 
           {/* Trust micro-pill */}
           <div className="hidden md:flex items-center gap-4">
-            {['4.9★ Rating', '500+ Events', 'On-Site Operator'].map(t => (
+            {[`${SITE_CONFIG.googleRating}★ Rating`, '500+ Events', 'On-Site Operator'].map(t => (
               <div key={t} className="flex items-center gap-1.5">
                 <div className="w-1.5 h-1.5 rounded-full bg-ck-electric flex-shrink-0" />
                 <span className="text-[10px] font-semibold text-[#5a8aaa]">{t}</span>
