@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { CITIES, SERVICES, SUB_SERVICES, SITE_CONFIG, PUNE_AREAS } from '@/lib/constants'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 import { FaqAccordion } from '@/components/ui/FaqAccordion'
 import { SubServiceQuoteButton } from '@/components/ui/SubServiceQuoteButton'
+import { HeroImageSlider } from '@/components/ui/HeroImageSlider'
+import { getProductMedia } from '@/lib/product-images'
 
 interface Props {
   params: { citySlug: string; serviceSlug: string }
@@ -126,6 +129,7 @@ export default function SeoPage({ params }: Props) {
 
   const faqs   = buildFaqs(service.name, city)
   const pageUrl = `${SITE_CONFIG.url}/hire/${params.citySlug}/${params.serviceSlug}`
+  const media   = getProductMedia(params.serviceSlug, params.serviceSlug)
 
   // Nearby cities for internal linking
   const nearbyCities = CITIES.filter(c => c !== city).slice(0, 5)
@@ -212,15 +216,24 @@ export default function SeoPage({ params }: Props) {
               View Full {service.name} Details →
             </Link>
           </div>
-          <div className="bg-gradient-to-br from-ck-blue to-ck-navy rounded-card-lg h-48 flex items-center justify-center relative">
-            <div className="play-btn">
-              <div className="w-0 h-0 border-t-[7px] border-t-transparent border-b-[7px] border-b-transparent border-l-[13px] border-l-white ml-0.5" />
+          {media.heroSlides && media.heroSlides.length > 0 ? (
+            <HeroImageSlider slides={media.heroSlides} label={`${service.name} in ${city}`} />
+          ) : (
+            <div className="relative rounded-card-lg overflow-hidden aspect-video border border-[#1e3a52]">
+              <Image
+                src={media.hero}
+                alt={`${service.name} setup at an event in ${city}`}
+                fill
+                quality={90}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-xs font-bold text-white">{service.name} in {city}</p>
+              </div>
             </div>
-            <div className="absolute bottom-4 left-4 right-4">
-              <span className="reel-tag">{service.name.toUpperCase()}</span>
-              <p className="text-xs font-bold text-white mt-1">See it in action in {city}</p>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 
