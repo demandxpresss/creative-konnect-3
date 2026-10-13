@@ -261,7 +261,7 @@ export default function SubServicePage({ params }: Props) {
                   href={`/services/${params.serviceSlug}/${other.slug}`}
                   className="card group overflow-hidden hover:border-ck-blue transition-all duration-150"
                 >
-                  <div className="relative h-24 overflow-hidden">
+                  <div className="relative aspect-video overflow-hidden">
                     <Image
                       src={getProductMedia(params.serviceSlug, other.slug).hero}
                       alt={other.name}

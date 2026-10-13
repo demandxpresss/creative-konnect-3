@@ -134,18 +134,6 @@ export default function ServiceCategoryPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Filter tabs */}
-      <div className="bg-white border-b border-[#e8f0f8] px-8 py-3.5 flex gap-2 overflow-x-auto">
-        <div className="max-w-7xl mx-auto flex gap-2 w-full">
-          <button className="ftab active text-xs">All</button>
-          {subServices.map(s => (
-            <Link key={s.slug} href={`/services/${params.serviceSlug}/${s.slug}`} className="ftab text-xs whitespace-nowrap">
-              {s.name}
-            </Link>
-          ))}
-        </div>
-      </div>
-
       {/* Sub-services grid */}
       <section className="section-light">
         <div className="max-w-7xl mx-auto">
