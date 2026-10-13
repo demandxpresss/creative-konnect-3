@@ -196,8 +196,16 @@ export default function SubServicePage({ params }: Props) {
         </section>
       )}
 
-      {/* Why CK — step-by-step process, each step with its own icon + accent color */}
-      <section className="section-dark" style={{ paddingTop: 0 }}>
+      {/* Why CK — step-by-step process, each step with its own icon + accent color.
+          Top padding is only zeroed when the Reels section directly above is also
+          dark (avoids a double gap between two same-color sections). When there's
+          no Reels section, this is the first dark section after a light one, so it
+          needs its own top padding — otherwise the heading sits flush against the
+          section above with no breathing room. */}
+      <section
+        className="section-dark"
+        style={media.reelIds && media.reelIds.length > 0 ? { paddingTop: 0 } : undefined}
+      >
         <div className="max-w-7xl mx-auto">
           <div className="eyebrow-light mb-1">Why Choose Us</div>
           <h2 className="text-[20px] font-black text-white tracking-tight mb-7">Why Creative Konnect?</h2>
