@@ -84,27 +84,32 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
       className="fixed inset-0 bg-ck-navy/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
-      <div className="bg-white rounded-card-lg w-full max-w-[440px] overflow-hidden shadow-popup animate-slide-up">
+      <div className="bg-white rounded-card-lg w-full max-w-[440px] max-h-[88vh] overflow-hidden shadow-popup animate-slide-up flex flex-col">
 
-        {/* Header */}
-        <div className="bg-ck-navy px-6 pt-5 pb-4 border-b-[2.5px] border-ck-blue relative">
-          <button onClick={onClose} className="absolute top-3.5 right-3.5 w-7 h-7 rounded-full bg-white/8 border border-[#1e3a52] flex items-center justify-center text-[#6a98b5] hover:bg-white/15 hover:text-white transition-colors">
+        {/* Header — fixed in place (flex-shrink-0) so the close button is
+            always on screen and tappable, even on a short phone where the
+            form below has to scroll. This is what was letting the modal
+            grow taller than the viewport with no way to close it. */}
+        <div className="bg-ck-navy px-5 pt-4 pb-3 border-b-[2.5px] border-ck-blue relative flex-shrink-0">
+          <button onClick={onClose} className="absolute top-3 right-3 w-7 h-7 rounded-full bg-white/8 border border-[#1e3a52] flex items-center justify-center text-[#6a98b5] hover:bg-white/15 hover:text-white transition-colors">
             <X size={14} />
           </button>
           {service && (
-            <div className="inline-flex items-center gap-1.5 bg-ck-electric/15 border border-ck-electric/30 text-ck-electric text-[9px] font-bold px-2.5 py-1 rounded-full mb-2 uppercase tracking-wide">
+            <div className="inline-flex items-center gap-1.5 bg-ck-electric/15 border border-ck-electric/30 text-ck-electric text-[9px] font-bold px-2.5 py-1 rounded-full mb-1.5 uppercase tracking-wide">
               {service}
             </div>
           )}
-          <h2 className="text-lg font-black text-white leading-tight">
-            Get a Free Quote<br />for Your Event
+          <h2 className="text-base font-black text-white leading-tight">
+            Get a Free Quote for Your Event
           </h2>
-          <p className="text-xs text-[#5a8aaa] mt-1.5">Fill in a few quick fields — we respond within 2 hours.</p>
+          <p className="text-[11px] text-[#5a8aaa] mt-1">Fill in a few quick fields — we respond within 2 hours.</p>
         </div>
 
         {!submitted ? (
           <>
-            <form onSubmit={handleSubmit} className="px-6 py-5 space-y-3.5">
+            {/* Scrolls on its own, capped by the card's max-h above — the
+                header and the submit button below stay put either side. */}
+            <form onSubmit={handleSubmit} className="px-5 py-4 space-y-3 overflow-y-auto flex-1 min-h-0">
               {/* Honeypot — invisible to real visitors, only a bot that blindly
                   fills every field it finds would populate this. Positioned
                   off-screen rather than display:none, which some bots skip. */}
@@ -120,7 +125,7 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
               />
               {/* Name */}
               <div>
-                <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
+                <label className="block text-[11px] font-semibold text-ck-deep mb-1">
                   Your Name <span className="text-ck-blue">*</span>
                 </label>
                 <input
@@ -135,10 +140,10 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
               </div>
 
               {/* Phone + City */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2.5">
                 <div>
-                  <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
-                    Phone / WhatsApp <span className="text-ck-blue">*</span>
+                  <label className="block text-[11px] font-semibold text-ck-deep mb-1">
+                    Phone <span className="text-ck-blue">*</span>
                   </label>
                   <div className="flex items-stretch bg-ck-ghost border border-[#dceaf5] rounded-[8px] overflow-hidden focus-within:border-ck-blue focus-within:bg-white transition-colors duration-150">
                     <span className="flex items-center pl-3 pr-2 text-xs text-ck-deep font-semibold border-r border-[#dceaf5] select-none">
@@ -168,8 +173,8 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
-                    Event City <span className="text-ck-blue">*</span>
+                  <label className="block text-[11px] font-semibold text-ck-deep mb-1">
+                    City <span className="text-ck-blue">*</span>
                   </label>
                   <select
                     required
@@ -185,7 +190,7 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
 
               {/* Event type */}
               <div>
-                <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
+                <label className="block text-[11px] font-semibold text-ck-deep mb-1">
                   Event Type <span className="text-ck-blue">*</span>
                 </label>
                 <select
@@ -200,9 +205,9 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
               </div>
 
               {/* Date + Duration */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2.5">
                 <div>
-                  <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
+                  <label className="block text-[11px] font-semibold text-ck-deep mb-1">
                     Event Date <span className="text-[10px] text-[#aac0d0] font-normal">(optional)</span>
                   </label>
                   <input
@@ -214,7 +219,7 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
+                  <label className="block text-[11px] font-semibold text-ck-deep mb-1">
                     Duration <span className="text-[10px] text-[#aac0d0] font-normal">(optional)</span>
                   </label>
                   <select
@@ -230,7 +235,7 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
 
               {/* Activities (multi-select) */}
               <div>
-                <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
+                <label className="block text-[11px] font-semibold text-ck-deep mb-1">
                   Activities <span className="text-[10px] text-[#aac0d0] font-normal">(optional, select any)</span>
                 </label>
                 <div className="flex flex-wrap gap-1.5">
@@ -254,20 +259,14 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
                 </div>
               </div>
 
-              {/* Trust pills */}
-              <div className="flex gap-2 pt-1">
-                {['Quote in 2 hrs', 'No hidden costs', 'No spam ever'].map(t => (
-                  <div key={t} className="trust-pill flex-1">
-                    <div className="w-4 h-4 rounded-full bg-ck-sky flex items-center justify-center flex-shrink-0">
-                      <span className="text-ck-blue text-[8px] font-bold">✓</span>
-                    </div>
-                    <span className="text-[9px] font-semibold text-[#5a7a92]">{t}</span>
-                  </div>
-                ))}
-              </div>
             </form>
 
-            <div className="px-6 pb-5 space-y-2">
+            {/* Footer — fixed below the scrolling form (flex-shrink-0), so
+                Submit is always visible without scrolling to the bottom.
+                The old "trust pills" row (Quote in 2 hrs / No hidden costs /
+                No spam ever) was dropped here — decorative, not a field,
+                and was adding a full extra row of height on small screens. */}
+            <div className="px-5 pt-3 pb-4 space-y-2 flex-shrink-0 border-t border-[#eef5fb]">
               <button
                 onClick={handleSubmit as any}
                 disabled={loading}
@@ -283,12 +282,12 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
               >
                 💬 WhatsApp Us Instead
               </a>
-              <p className="text-[10px] text-[#aac0d0] text-center">🔒 Your details are safe with us</p>
+              <p className="text-[10px] text-[#aac0d0] text-center">🔒 No spam, ever — your details are safe with us</p>
             </div>
           </>
         ) : (
           /* Success state */
-          <div className="px-6 py-10 flex flex-col items-center text-center">
+          <div className="px-6 py-10 flex flex-col items-center text-center overflow-y-auto">
             <div className="w-14 h-14 rounded-full bg-ck-sky border-2 border-ck-blue flex items-center justify-center mb-4">
               <CheckCircle className="text-ck-blue" size={26} />
             </div>
