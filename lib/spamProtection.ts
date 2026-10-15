@@ -10,8 +10,7 @@ import { SITE_CONFIG } from '@/lib/constants'
  *
  * This is NOT a substitute for something like reCAPTCHA if a more
  * determined bot (one that runs a real headless browser, so it gets a
- * legitimate Origin header and can wait out the timing check) shows up —
- * see the note in CLAUDE.md / ask the dev before adding anything heavier.
+ * legitimate Origin header and can wait out the timing check) shows up.
  */
 
 const SITE_HOST = new URL(SITE_CONFIG.url).hostname // "www.creative-konnect.com"
@@ -53,12 +52,19 @@ export function honeypotTripped(body: Record<string, unknown>): boolean {
 
 /**
  * Client stamps `formLoadedAt` (ms epoch) when the form first renders, and
- * we compare it to "now" on submit. No real person fills in a multi-field
- * quote form in under ~1.5s; a bot constructing the POST body in one shot
- * does it instantly.
+ * we compare it to "now" on submit. Kept short on purpose — a real visitor
+ * using browser autofill can select their saved details and hit submit in
+ * well under a second, and that's a GOOD lead, not a bot; we only want to
+ * catch a bot that builds and fires the whole POST body in one shot with
+ * no render/interaction delay at all.
  */
 export function submittedTooFast(formLoadedAt: unknown): boolean {
   const loadedAt = typeof formLoadedAt === 'number' ? formLoadedAt : Number(formLoadedAt)
   if (!loadedAt || Number.isNaN(loadedAt)) return true // missing/garbled timestamp is itself suspicious
-  return Date.now() - loadedAt < 1500
+  return Date.now() - loadedAt < 400
 }
+
+// Name/phone format validation lives in lib/validation.ts (no server-only
+// imports there) so the client-side forms can run the exact same checks
+// before submitting, instead of only finding out after a round-trip.
+export { normalizePhone, isValidPhone, isValidName } from '@/lib/validation'

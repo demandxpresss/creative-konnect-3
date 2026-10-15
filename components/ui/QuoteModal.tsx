@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { X, CheckCircle } from 'lucide-react'
 import { CITIES, EVENT_TYPES, ACTIVITIES, DURATION_OPTIONS, SITE_CONFIG } from '@/lib/constants'
+import { isValidName, isValidPhone } from '@/lib/validation'
 
 interface QuoteModalProps {
   isOpen: boolean
@@ -53,6 +54,14 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!isValidName(form.name)) {
+      alert('Please enter your name using letters only (no numbers or symbols).')
+      return
+    }
+    if (!isValidPhone(form.phone)) {
+      alert('Please enter a valid 10-digit phone number.')
+      return
+    }
     setLoading(true)
     try {
       await fetch('/api/quote', {
@@ -116,6 +125,8 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
                 </label>
                 <input
                   required
+                  name="name"
+                  autoComplete="name"
                   value={form.name}
                   onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                   className="form-input"
@@ -131,6 +142,11 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
                   </label>
                   <input
                     required
+                    type="tel"
+                    inputMode="numeric"
+                    name="tel"
+                    autoComplete="tel"
+                    maxLength={13}
                     value={form.phone}
                     onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
                     className="form-input"

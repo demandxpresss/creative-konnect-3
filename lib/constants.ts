@@ -19,6 +19,14 @@ export const SITE_CONFIG = {
   },
 }
 
+// Everyone who should get a copy of every new quote/contact lead — the
+// site's own inbox plus the DX team members handling these leads.
+export const LEAD_NOTIFICATION_EMAILS = [
+  SITE_CONFIG.email,
+  'krishna@demandxpress.com',
+  'durga@demandxpress.com',
+]
+
 export const CITIES = [
   'Hyderabad', 'Mumbai', 'Delhi NCR', 'Bangalore',
   'Chennai', 'Pune', 'Jaipur', 'Ahmedabad',

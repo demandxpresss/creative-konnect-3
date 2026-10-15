@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
-import { SITE_CONFIG } from '@/lib/constants'
+import { SITE_CONFIG, LEAD_NOTIFICATION_EMAILS } from '@/lib/constants'
 import { pushLeadToGoogleSheets } from '@/lib/googleSheets'
-import { hasValidOrigin, honeypotTripped, submittedTooFast } from '@/lib/spamProtection'
+import { hasValidOrigin, honeypotTripped, submittedTooFast, isValidName, isValidPhone, normalizePhone } from '@/lib/spamProtection'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -36,11 +36,22 @@ export async function POST(req: NextRequest) {
     if (!name || !phone) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
+    // Real-looking name (letters only, no digits/symbols) and a real
+    // 10-digit Indian mobile number — this is the other half of what was
+    // letting obvious junk ("zXvUyREtMvDAJvCTEPvlPWh", the same reused
+    // phone number) straight through.
+    if (!isValidName(name)) {
+      return NextResponse.json({ error: 'Please enter a valid name' }, { status: 400 })
+    }
+    if (!isValidPhone(phone)) {
+      return NextResponse.json({ error: 'Please enter a valid 10-digit phone number' }, { status: 400 })
+    }
+    const normalizedPhone = normalizePhone(phone)
 
     // ── 1. Send email notification via Resend ─────────────────────
     await resend.emails.send({
       from:    'Creative Konnect Website <noreply@creative-konnect.com>',
-      to:      [SITE_CONFIG.email],
+      to:      LEAD_NOTIFICATION_EMAILS,
       reply_to: email || undefined,
       subject: `New Quote Request — ${eventType || 'Event'} in ${city || 'India'}`,
       html: `
@@ -58,7 +69,7 @@ export async function POST(req: NextRequest) {
             <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
               ${[
                 ['Name',          name         || '—'],
-                ['Phone',         phone        || '—'],
+                ['Phone',         normalizedPhone || '—'],
                 ['Email',         email        || '—'],
                 ['Company',       company      || '—'],
                 ['Event Type',    eventType    || '—'],
@@ -147,7 +158,7 @@ export async function POST(req: NextRequest) {
             parent: { database_id: process.env.NOTION_DATABASE_ID },
             properties: {
               Name:        { title:  [{ text: { content: name || 'Unknown' } }] },
-              Phone:       { phone_number: phone || '' },
+              Phone:       { phone_number: normalizedPhone || '' },
               Email:       { email: email || '' },
               Company:     { rich_text: [{ text: { content: company || '' } }] },
               'Event Type':{ select: { name: eventType || 'Unknown' } },
@@ -173,7 +184,7 @@ export async function POST(req: NextRequest) {
         formType: 'quote',
         timestamp: new Date().toISOString(),
         name: name || '',
-        phone: phone || '',
+        phone: normalizedPhone || '',
         email: email || '',
         company: company || '',
         eventType: eventType || '',

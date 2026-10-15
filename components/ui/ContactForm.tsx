@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { CheckCircle } from 'lucide-react'
 import { CITIES, EVENT_TYPES, SITE_CONFIG } from '@/lib/constants'
+import { isValidName, isValidPhone } from '@/lib/validation'
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
@@ -19,6 +20,14 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!isValidName(form.name)) {
+      alert('Please enter your name using letters only (no numbers or symbols).')
+      return
+    }
+    if (!isValidPhone(form.phone)) {
+      alert('Please enter a valid 10-digit phone number.')
+      return
+    }
     setLoading(true)
     try {
       await fetch('/api/quote', {
@@ -77,14 +86,15 @@ export function ContactForm() {
           <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
             Your Name <span className="text-ck-blue">*</span>
           </label>
-          <input required value={form.name} onChange={e => set('name', e.target.value)}
+          <input required name="name" autoComplete="name" value={form.name} onChange={e => set('name', e.target.value)}
             className="form-input" placeholder="Rahul Sharma" />
         </div>
         <div>
           <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
             Phone / WhatsApp <span className="text-ck-blue">*</span>
           </label>
-          <input required value={form.phone} onChange={e => set('phone', e.target.value)}
+          <input required type="tel" inputMode="numeric" name="tel" autoComplete="tel" maxLength={13}
+            value={form.phone} onChange={e => set('phone', e.target.value)}
             className="form-input" placeholder="+91 84322 58944" />
         </div>
       </div>
@@ -94,7 +104,7 @@ export function ContactForm() {
         <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
           Email Address <span className="text-ck-blue">*</span>
         </label>
-        <input required type="email" value={form.email} onChange={e => set('email', e.target.value)}
+        <input required type="email" name="email" autoComplete="email" value={form.email} onChange={e => set('email', e.target.value)}
           className="form-input" placeholder="rahul@company.com" />
       </div>
 
