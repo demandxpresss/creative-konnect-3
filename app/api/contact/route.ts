@@ -42,7 +42,9 @@ export async function POST(req: NextRequest) {
     const servicesList = Array.isArray(services) ? services.join(', ') : services || '—'
 
     // ── Email to team ─────────────────────────────────────────────
-    await resend.emails.send({
+    // See app/api/quote/route.ts for why the { error } result has to be
+    // checked explicitly — the Resend SDK doesn't throw on a failed send.
+    const { data: notifyData, error: notifyError } = await resend.emails.send({
       from:    'Creative Konnect Website <noreply@creative-konnect.com>',
       to:      LEAD_NOTIFICATION_EMAILS,
       reply_to: email,
@@ -83,9 +85,14 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     })
+    if (notifyError) {
+      console.error('Resend error (contact → team notification):', JSON.stringify(notifyError))
+    } else {
+      console.log('Resend: team notification sent, id =', notifyData?.id)
+    }
 
     // ── Confirmation to client ────────────────────────────────────
-    await resend.emails.send({
+    const { error: confirmError } = await resend.emails.send({
       from:    'Creative Konnect <hello@creative-konnect.com>',
       to:      [email],
       subject: `Got your message! We'll reply within 2 hours — Creative Konnect`,
@@ -119,6 +126,9 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     })
+    if (confirmError) {
+      console.error('Resend error (contact → client confirmation):', JSON.stringify(confirmError))
+    }
 
     // ── Save to Notion ────────────────────────────────────────────
     if (process.env.NOTION_API_KEY && process.env.NOTION_DATABASE_ID) {

@@ -49,7 +49,13 @@ export async function POST(req: NextRequest) {
     const normalizedPhone = normalizePhone(phone)
 
     // ── 1. Send email notification via Resend ─────────────────────
-    await resend.emails.send({
+    // The Resend SDK does NOT throw on a failed send — a bad/unverified
+    // "from" domain, an invalid key, etc. all come back as `{ error }`
+    // on a resolved promise, not a rejection. Previously this was never
+    // checked, so a send could fail completely and the route would still
+    // report success to the browser. Capture and log it so failures are
+    // actually visible (check Vercel's function logs for "Resend error").
+    const { data: notifyData, error: notifyError } = await resend.emails.send({
       from:    'Creative Konnect Website <noreply@creative-konnect.com>',
       to:      LEAD_NOTIFICATION_EMAILS,
       reply_to: email || undefined,
@@ -102,10 +108,15 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     })
+    if (notifyError) {
+      console.error('Resend error (quote → team notification):', JSON.stringify(notifyError))
+    } else {
+      console.log('Resend: team notification sent, id =', notifyData?.id)
+    }
 
     // ── 2. Send confirmation email to client ──────────────────────
     if (email) {
-      await resend.emails.send({
+      const { error: confirmError } = await resend.emails.send({
         from:    'Creative Konnect <hello@creative-konnect.com>',
         to:      [email],
         subject: `We've received your quote request! — Creative Konnect`,
@@ -139,6 +150,9 @@ export async function POST(req: NextRequest) {
           </div>
         `,
       })
+      if (confirmError) {
+        console.error('Resend error (quote → client confirmation):', JSON.stringify(confirmError))
+      }
     }
 
     // ── 3. Save to Notion database ────────────────────────────────
