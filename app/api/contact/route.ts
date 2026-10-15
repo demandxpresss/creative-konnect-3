@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { SITE_CONFIG } from '@/lib/constants'
 import { pushLeadToGoogleSheets } from '@/lib/googleSheets'
+import { hasValidOrigin, honeypotTripped, submittedTooFast } from '@/lib/spamProtection'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -12,7 +13,16 @@ export async function POST(req: NextRequest) {
       name, phone, email, company,
       eventType, city, eventDate, guestCount,
       services, message,
+      formLoadedAt, // spam-defense field — never real form data (see lib/spamProtection.ts)
     } = body
+
+    // ── Spam defenses ───────────────────────────────────────────────
+    if (!hasValidOrigin(req)) {
+      return NextResponse.json({ error: 'Invalid request origin' }, { status: 403 })
+    }
+    if (honeypotTripped(body) || submittedTooFast(formLoadedAt)) {
+      return NextResponse.json({ success: true })
+    }
 
     // Validate required fields
     if (!name || !phone || !email || !eventType || !city) {

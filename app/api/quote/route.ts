@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { SITE_CONFIG } from '@/lib/constants'
 import { pushLeadToGoogleSheets } from '@/lib/googleSheets'
+import { hasValidOrigin, honeypotTripped, submittedTooFast } from '@/lib/spamProtection'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -13,8 +14,28 @@ export async function POST(req: NextRequest) {
       eventType, city, eventDate, guestCount,
       duration, activities,
       services, message, service,
+      formLoadedAt, // spam-defense field — never real form data (see lib/spamProtection.ts)
     } = body
     const activitiesStr = Array.isArray(activities) ? activities.join(', ') : (activities || '')
+
+    // ── Spam defenses ───────────────────────────────────────────────
+    // A direct script POSTing straight to this route (not a real visitor
+    // filling in the form on the site) won't have a matching Origin/
+    // Referer header. Reject those outright — they're not real leads.
+    if (!hasValidOrigin(req)) {
+      return NextResponse.json({ error: 'Invalid request origin' }, { status: 403 })
+    }
+    // Honeypot filled in, or submitted faster than a human could possibly
+    // fill the form: silently "succeed" without sending emails or writing
+    // anywhere, so the bot has no signal to adapt against.
+    if (honeypotTripped(body) || submittedTooFast(formLoadedAt)) {
+      return NextResponse.json({ success: true })
+    }
+    // Bare-minimum required fields — this route previously had zero
+    // server-side validation at all.
+    if (!name || !phone) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+    }
 
     // ── 1. Send email notification via Resend ─────────────────────
     await resend.emails.send({

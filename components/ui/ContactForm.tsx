@@ -10,6 +10,10 @@ export function ContactForm() {
     name: '', phone: '', email: '',
     eventType: '', city: '', eventDate: '',
   })
+  // Anti-spam: honeypot field + the moment the form mounted (see QuoteModal
+  // for why — same defense, same reasoning, both routes hit /api/quote).
+  const [website, setWebsite] = useState('')
+  const [formLoadedAt] = useState(() => Date.now())
 
   const set = (key: string, val: string) => setForm(f => ({ ...f, [key]: val }))
 
@@ -20,7 +24,7 @@ export function ContactForm() {
       await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, website, formLoadedAt }),
       })
       setSubmitted(true)
     } catch {
@@ -56,6 +60,17 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Honeypot — see QuoteModal.tsx for why this exists */}
+      <input
+        type="text"
+        name="website"
+        value={website}
+        onChange={e => setWebsite(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+      />
       {/* Name + Phone */}
       <div className="grid grid-cols-2 gap-3">
         <div>

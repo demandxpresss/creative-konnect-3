@@ -13,10 +13,20 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading]     = useState(false)
   const [form, setForm]           = useState({ name: '', phone: '', city: '', eventType: '', eventDate: '', duration: '', activities: [] as string[] })
+  // Anti-spam: honeypot field a real visitor never sees or fills, plus the
+  // moment the form opened so the API can reject anything submitted
+  // implausibly fast (a bot constructing the whole payload in one shot).
+  const [website, setWebsite]     = useState('')
+  const [formLoadedAt, setFormLoadedAt] = useState(0)
 
   // Reset on open
   useEffect(() => {
-    if (isOpen) { setSubmitted(false); setForm({ name: '', phone: '', city: '', eventType: '', eventDate: '', duration: '', activities: [] }) }
+    if (isOpen) {
+      setSubmitted(false)
+      setForm({ name: '', phone: '', city: '', eventType: '', eventDate: '', duration: '', activities: [] })
+      setWebsite('')
+      setFormLoadedAt(Date.now())
+    }
   }, [isOpen])
 
   const toggleActivity = (activity: string) => {
@@ -48,7 +58,7 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
       await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, service }),
+        body: JSON.stringify({ ...form, service, website, formLoadedAt }),
       })
       setSubmitted(true)
     } catch {
@@ -86,6 +96,19 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
         {!submitted ? (
           <>
             <form onSubmit={handleSubmit} className="px-6 py-5 space-y-3.5">
+              {/* Honeypot — invisible to real visitors, only a bot that blindly
+                  fills every field it finds would populate this. Positioned
+                  off-screen rather than display:none, which some bots skip. */}
+              <input
+                type="text"
+                name="website"
+                value={website}
+                onChange={e => setWebsite(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+              />
               {/* Name */}
               <div>
                 <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
