@@ -140,18 +140,32 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
                   <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
                     Phone / WhatsApp <span className="text-ck-blue">*</span>
                   </label>
-                  <input
-                    required
-                    type="tel"
-                    inputMode="numeric"
-                    name="tel"
-                    autoComplete="tel"
-                    maxLength={13}
-                    value={form.phone}
-                    onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-                    className="form-input"
-                    placeholder="+91 84322 58944"
-                  />
+                  <div className="flex items-stretch bg-ck-ghost border border-[#dceaf5] rounded-[8px] overflow-hidden focus-within:border-ck-blue focus-within:bg-white transition-colors duration-150">
+                    <span className="flex items-center pl-3 pr-2 text-xs text-ck-deep font-semibold border-r border-[#dceaf5] select-none">
+                      +91
+                    </span>
+                    <input
+                      required
+                      type="tel"
+                      inputMode="numeric"
+                      name="tel"
+                      autoComplete="tel"
+                      maxLength={10}
+                      value={form.phone}
+                      onChange={e => {
+                        // Strip everything but digits, drop a leading "91" that
+                        // autofill sometimes inserts (the +91 is now a fixed
+                        // prefix shown separately, not part of this value),
+                        // and hard-cap at 10 digits — can't type an 11th.
+                        let digits = e.target.value.replace(/\D/g, '')
+                        if (digits.length > 10 && digits.startsWith('91')) digits = digits.slice(2)
+                        digits = digits.slice(0, 10)
+                        setForm(f => ({ ...f, phone: digits }))
+                      }}
+                      className="flex-1 min-w-0 bg-transparent px-3 py-2.5 text-xs text-ck-deep font-medium outline-none"
+                      placeholder="98765 43210"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold text-ck-deep mb-1.5">
@@ -192,10 +206,11 @@ export function QuoteModal({ isOpen, onClose, service }: QuoteModalProps) {
                     Event Date <span className="text-[10px] text-[#aac0d0] font-normal">(optional)</span>
                   </label>
                   <input
+                    type="date"
+                    min={new Date().toISOString().slice(0, 10)}
                     value={form.eventDate}
                     onChange={e => setForm(f => ({ ...f, eventDate: e.target.value }))}
                     className="form-input"
-                    placeholder="e.g. 15 March 2025"
                   />
                 </div>
                 <div>
