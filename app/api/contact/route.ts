@@ -3,6 +3,7 @@ import { Resend } from 'resend'
 import { SITE_CONFIG, LEAD_NOTIFICATION_EMAILS } from '@/lib/constants'
 import { pushLeadToGoogleSheets } from '@/lib/googleSheets'
 import { hasValidOrigin, honeypotTripped, submittedTooFast, isValidName, isValidPhone, normalizePhone } from '@/lib/spamProtection'
+import { istTimestamp } from '@/lib/datetime'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -163,7 +164,7 @@ export async function POST(req: NextRequest) {
     try {
       await pushLeadToGoogleSheets({
         formType: 'contact',
-        timestamp: new Date().toISOString(),
+        timestamp: istTimestamp(),
         name,
         phone: normalizedPhone,
         email,
