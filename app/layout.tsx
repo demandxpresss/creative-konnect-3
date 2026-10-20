@@ -4,10 +4,15 @@ import './globals.css'
 import { Navbar }         from '@/components/layout/Navbar'
 import { Footer }         from '@/components/layout/Footer'
 import { SITE_CONFIG }    from '@/lib/constants'
+// Imported statically (not via next/dynamic) and WITHOUT ssr:false — this
+// is the <noscript> fallback for visitors with JavaScript disabled, so it
+// has to actually be present in the server-rendered HTML to do its job.
+// Everything else below is fine as a client-only dynamic import since it
+// requires JS to do anything useful anyway.
+import { GTMBodyNoscript } from '@/lib/gtm'
 
 const Analytics = dynamic(() => import('@/lib/analytics').then((m) => m.Analytics), { ssr: false })
 const GTMHeadScript = dynamic(() => import('@/lib/gtm').then((m) => m.GTMHeadScript), { ssr: false })
-const GTMBodyNoscript = dynamic(() => import('@/lib/gtm').then((m) => m.GTMBodyNoscript), { ssr: false })
 const Clarity = dynamic(() => import('@/lib/clarity').then((m) => m.Clarity), { ssr: false })
 const WhatsAppWidget = dynamic(() => import('@/components/ui/WhatsAppWidget').then((m) => m.WhatsAppWidget), { ssr: false })
 const ScrollToTop = dynamic(() => import('@/components/ui/ScrollToTop').then((m) => m.ScrollToTop), { ssr: false })
