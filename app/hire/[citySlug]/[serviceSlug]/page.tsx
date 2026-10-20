@@ -73,8 +73,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = findServiceBySlug(params.serviceSlug)
   if (!city || !service) return {}
 
-  const title       = `${service.name} in ${city} | Hire for Events | Creative Konnect`
-  const description = `Book ${service.name} in ${city} for your event. Fully branded, on-site operator, instant social sharing. Get a free quote in 2 hours. Pan India event engagement specialists.`
+  // Title intentionally does NOT include "Creative Konnect" — the root
+  // layout's title template already appends " | Creative Konnect", so adding
+  // it here produced a doubled "... | Creative Konnect | Creative Konnect".
+  // Phrasing ("on rent", "for weddings & corporate events") mirrors how people
+  // actually search these terms rather than internal service-catalogue names.
+  const title       = `${service.name} in ${city} on Rent | For Weddings & Corporate Events`
+  const description = `Hire ${service.name} in ${city} for weddings, corporate events & parties. Fully branded, on-site operator included, instant social sharing. Free quote in 2 hours.`
 
   return {
     title,
@@ -119,7 +124,20 @@ const localBusinessSchema = (serviceName: string, city: string, url: string) => 
   telephone: SITE_CONFIG.phone[0],
   areaServed: city,
   address: { '@type': 'PostalAddress', addressLocality: city, addressCountry: 'IN' },
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: SITE_CONFIG.googleRating, reviewCount: '120' },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: SITE_CONFIG.googleRating, reviewCount: SITE_CONFIG.googleReviewCount },
+})
+
+// FAQPage schema built from the same FAQs shown on the page — makes the page
+// eligible for FAQ rich results (expandable Q&A directly in Google), which eat
+// up extra SERP space for free. The questions must match the visible ones.
+const faqSchema = (faqs: { question: string; answer: string }[]) => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
 })
 
 export default function SeoPage({ params }: Props) {
@@ -140,6 +158,7 @@ export default function SeoPage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema(service.name, city, pageUrl)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }} />
 
       {/* Hero */}
       <div className="bg-ck-navy border-b-[3px] border-ck-blue px-8 py-12">
@@ -178,7 +197,7 @@ export default function SeoPage({ params }: Props) {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { icon: '📍', title: `Local {city} Team`,         desc: `Our operators are based in and around ${city} — we know the venues, the traffic, and the setup requirements.` },
+              { icon: '📍', title: `Local ${city} Team`,         desc: `Our operators are based in and around ${city} — we know the venues, the traffic, and the setup requirements.` },
               { icon: '⏱',  title: 'Quote in 2 Hours',          desc: `Send us your event details and receive a full itemised quote for ${city} within 2 hours. No waiting.` },
               { icon: '✓',  title: 'Fully Branded',             desc: `Every ${service.name} is customised with your logo, brand colors and event messaging. We handle all design.` },
               { icon: '👤', title: 'On-Site Operator',          desc: `A dedicated operator arrives at your ${city} venue 2 hours early. Manages everything, troubleshoots everything.` },

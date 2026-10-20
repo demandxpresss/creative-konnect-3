@@ -36,8 +36,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = findService(params.serviceSlug)
   if (!area || !service) return {}
 
-  const title       = `${service.name} in ${area.name}, Pune | Creative Konnect`
-  const description = `Book ${service.name} in ${area.name}, Pune. Fully branded, on-site operator, instant social sharing. Free quote in 2 hours from Pune's own event engagement team.`
+  // No "Creative Konnect" here — the root layout appends it (avoids a doubled
+  // suffix). Phrasing matches real local search intent ("on rent", named area).
+  const title       = `${service.name} in ${area.name}, Pune on Rent | Weddings & Events`
+  const description = `Hire ${service.name} in ${area.name}, Pune for weddings, corporate events & parties. Pune-based team, no travel charge within the city, free quote in 2 hours.`
   const url         = `${SITE_CONFIG.url}/hire/pune/${params.areaSlug}/${params.serviceSlug}`
 
   return {
@@ -82,7 +84,19 @@ const localBusinessSchema = (serviceName: string, areaName: string, url: string)
   telephone: SITE_CONFIG.phone[0],
   areaServed: `${areaName}, Pune`,
   address: { '@type': 'PostalAddress', addressLocality: 'Pune', addressRegion: areaName, addressCountry: 'IN' },
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: SITE_CONFIG.googleRating, reviewCount: '120' },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: SITE_CONFIG.googleRating, reviewCount: SITE_CONFIG.googleReviewCount },
+})
+
+// FAQPage schema — makes the page eligible for FAQ rich results. Questions
+// must match the visible FAQ accordion content below.
+const faqSchema = (faqs: { question: string; answer: string }[]) => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
 })
 
 export default function PuneAreaSeoPage({ params }: Props) {
@@ -100,6 +114,7 @@ export default function PuneAreaSeoPage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema(service.name, area.name, pageUrl)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }} />
 
       {/* Hero */}
       <div className="bg-ck-navy border-b-[3px] border-ck-blue px-8 py-12">
