@@ -53,7 +53,7 @@ const DEFAULT_FAQS = [
   { question: 'Can it be fully branded with our logo?',         answer: 'Absolutely. We add your logo, event name, custom overlays, and colors to everything. Your guests share branded content organically.' },
   { question: 'How quickly do guests receive their content?',   answer: 'Within 30 seconds of capture, guests receive their content via WhatsApp, SMS, or email for instant sharing.' },
   { question: 'Is an operator included?',                       answer: 'Always. A trained operator arrives 2 hours before your event and manages everything throughout.' },
-  { question: 'What cities are you available in?',              answer: 'We operate across Hyderabad, Mumbai, Delhi NCR, Bangalore, Chennai, Pune, Jaipur and more. Contact us for other cities.' },
+  { question: 'What cities are you available in?',              answer: 'We\'re a Pune-based team and operate across Pune, Mumbai, Bangalore, Delhi NCR, Chennai, Hyderabad, Jaipur and more. Contact us for other cities.' },
   { question: 'What does the price include?',                   answer: 'All quotes include equipment, branding design, on-site operator, setup and breakdown. Fully transparent — no hidden costs.' },
 ]
 

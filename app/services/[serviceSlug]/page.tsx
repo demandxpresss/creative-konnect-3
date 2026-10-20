@@ -67,7 +67,7 @@ const DEFAULT_FAQS = [
   { q: 'How far in advance should I book?',           a: 'We recommend booking at least 2 weeks in advance for standard events, and 4-6 weeks for large corporate events or weddings. However, we can accommodate last-minute bookings subject to availability.' },
   { q: 'Do you provide an operator at the event?',    a: 'Yes, always. Every service comes with a trained on-site operator who handles setup, operation, and pack-down. You just focus on your event.' },
   { q: 'Can the services be custom branded?',         a: 'Absolutely. All our services are fully customisable with your logo, brand colors, custom overlays, and messaging. We handle all the design work.' },
-  { q: 'Which cities do you operate in?',             a: 'We operate across Hyderabad, Mumbai, Delhi NCR, Bangalore, Chennai, Pune, Jaipur, Ahmedabad, and many more. Contact us for your specific city.' },
+  { q: 'Which cities do you operate in?',             a: 'We\'re a Pune-based team and operate across Pune, Mumbai, Bangalore, Delhi NCR, Chennai, Hyderabad, Jaipur, Ahmedabad, and many more. Contact us for your specific city.' },
   { q: 'What is included in the quote?',              a: 'All quotes include equipment, branding design, on-site operator, technical setup and breakdown. We provide fully transparent, itemised quotes with zero hidden costs.' },
 ]
 

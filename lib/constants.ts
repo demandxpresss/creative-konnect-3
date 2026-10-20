@@ -27,9 +27,11 @@ export const LEAD_NOTIFICATION_EMAILS = [
   'durga@demandxpress.com',
 ]
 
+// Pune leads — it's Creative Konnect's home city. The rest are cities we
+// serve (each has its own /hire/<city>/<service> pages), kept in the list.
 export const CITIES = [
-  'Hyderabad', 'Mumbai', 'Delhi NCR', 'Bangalore',
-  'Chennai', 'Pune', 'Jaipur', 'Ahmedabad',
+  'Pune', 'Mumbai', 'Bangalore', 'Delhi NCR',
+  'Chennai', 'Hyderabad', 'Jaipur', 'Ahmedabad',
   'Goa', 'Kolkata', 'Kochi', 'Chandigarh',
   'Surat', 'Lucknow', 'Indore',
 ]

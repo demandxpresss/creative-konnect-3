@@ -137,7 +137,7 @@ export default function BlogArticlePage({ params }: Props) {
             <p className="text-sm font-semibold text-ck-deep leading-relaxed italic">
               "Our 360 booth reel from the product launch hit 1.2 million views on Instagram within 48 hours — without a single rupee of paid promotion."
             </p>
-            <p className="text-[10px] text-[#7aaccc] mt-2">— Marketing Head, Tech Company · Hyderabad</p>
+            <p className="text-[10px] text-[#7aaccc] mt-2">— Marketing Head, Tech Company · Pune</p>
           </div>
 
           <h2 className="text-base font-black text-ck-deep tracking-tight mb-3">What Is a Glambot?</h2>

@@ -143,7 +143,7 @@ export const galleryItem = defineType({
     }),
     defineField({
       name: 'city', title: 'City', type: 'string',
-      options: { list: ['Hyderabad', 'Mumbai', 'Delhi NCR', 'Bangalore', 'Chennai', 'Pune', 'Jaipur', 'Other'] },
+      options: { list: ['Pune', 'Mumbai', 'Bangalore', 'Delhi NCR', 'Chennai', 'Hyderabad', 'Jaipur', 'Other'] },
     }),
     defineField({ name: 'year',       title: 'Year',            type: 'number' }),
     defineField({ name: 'views',      title: 'Views (e.g. 1.2M)', type: 'string' }),

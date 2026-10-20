@@ -10,7 +10,7 @@ interface GoogleMapProps {
 }
 
 export function GoogleMap({
-  address = 'Hyderabad, Telangana, India',
+  address = 'Warje, Pune, Maharashtra, India',
   height = 280,
   className = '',
 }: GoogleMapProps) {

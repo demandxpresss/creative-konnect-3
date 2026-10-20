@@ -145,7 +145,7 @@ export async function POST(req: NextRequest) {
                 💬 WhatsApp Us Now
               </a>
               <p style="color: #aac0d0; font-size: 11px; text-align: center; margin-top: 16px;">
-                Creative Konnect · Hyderabad, India · ${SITE_CONFIG.email}
+                Creative Konnect · Pune, India · ${SITE_CONFIG.email}
               </p>
             </div>
           </div>

@@ -8,7 +8,7 @@ export function MapSection() {
     <section className="section-light">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Real Google Map */}
-        <GoogleMap address="Hyderabad, Telangana, India" height={240} />
+        <GoogleMap address="Warje, Pune, Maharashtra, India" height={240} />
 
         {/* Contact info */}
         <div>

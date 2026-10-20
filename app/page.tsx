@@ -28,17 +28,19 @@ const localBusinessSchema = {
   email: SITE_CONFIG.email,
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Hyderabad',
-    addressRegion: 'Telangana',
+    streetAddress: 'Japonica B, Aditya Garden City, Warje',
+    addressLocality: 'Pune',
+    addressRegion: 'Maharashtra',
+    postalCode: '411058',
     addressCountry: 'IN',
   },
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: SITE_CONFIG.googleRating,
-    reviewCount: '120',
+    reviewCount: SITE_CONFIG.googleReviewCount,
     bestRating: '5',
   },
-  areaServed: ['Hyderabad', 'Mumbai', 'Delhi', 'Bangalore', 'Chennai', 'Pune'],
+  areaServed: ['Pune', 'Mumbai', 'Bangalore', 'Delhi', 'Chennai', 'Hyderabad'],
   priceRange: '₹₹',
 }
 

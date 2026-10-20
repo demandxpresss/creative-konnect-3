@@ -71,8 +71,10 @@ const organizationSchema = {
   description: SITE_CONFIG.description,
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Hyderabad',
-    addressRegion: 'Telangana',
+    streetAddress: 'Japonica B, Aditya Garden City, Warje',
+    addressLocality: 'Pune',
+    addressRegion: 'Maharashtra',
+    postalCode: '411058',
     addressCountry: 'IN',
   },
   contactPoint: [

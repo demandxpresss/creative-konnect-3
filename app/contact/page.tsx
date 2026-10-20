@@ -95,7 +95,7 @@ export default function ContactPage() {
             <div className="text-2xl mb-1">🗺️</div>
             <div className="text-sm font-black text-ck-deep mb-1">We Serve Pan India</div>
             <p className="text-xs text-[#5a7a92]">
-              From Mumbai to Hyderabad, Delhi to Bangalore — wherever your event is, we'll be there with ❤️
+              Pune-based, serving pan India — from Mumbai to Bangalore, Delhi to Hyderabad, wherever your event is, we'll be there with ❤️
             </p>
           </div>
         </div>
