@@ -94,11 +94,6 @@ export default function SubServicePage({ params }: Props) {
       availability: 'https://schema.org/InStock',
       seller: { '@type': 'Organization', name: SITE_CONFIG.name },
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: SITE_CONFIG.googleRating,
-      reviewCount: '120',
-    },
   }
 
   return (
