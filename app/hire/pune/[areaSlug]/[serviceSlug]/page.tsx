@@ -8,6 +8,7 @@ import { FaqAccordion } from '@/components/ui/FaqAccordion'
 import { SubServiceQuoteButton } from '@/components/ui/SubServiceQuoteButton'
 import { HeroImageSlider } from '@/components/ui/HeroImageSlider'
 import { getProductMedia } from '@/lib/product-images'
+import { getSubServiceContent } from '@/lib/sub-service-content'
 
 interface Props {
   params: { areaSlug: string; serviceSlug: string }
@@ -107,6 +108,7 @@ export default function PuneAreaSeoPage({ params }: Props) {
   const faqs    = buildFaqs(service.name, area.name)
   const pageUrl = `${SITE_CONFIG.url}/hire/pune/${params.areaSlug}/${params.serviceSlug}`
   const media   = getProductMedia(params.serviceSlug, params.serviceSlug)
+  const content = getSubServiceContent(params.serviceSlug)
 
   const otherAreas       = PUNE_AREAS.filter(a => a.slug !== area.slug).slice(0, 6)
   const relatedServices  = SERVICES.filter(s => s.slug !== service.slug).slice(0, 4)
@@ -182,12 +184,13 @@ export default function PuneAreaSeoPage({ params }: Props) {
               {service.name} for {area.name} Events
             </h2>
             <p className="text-sm text-[#5a7a92] leading-relaxed mb-4">
-              {area.blurb}
+              {content.intro}
             </p>
             <p className="text-sm text-[#5a7a92] leading-relaxed mb-5">
-              Creative Konnect has delivered {service.name.toLowerCase()} experiences across hundreds of events
-              throughout Pune — from {area.name} to every other corner of the city — with the same Pune-based
-              team handling setup, operation and breakdown every time.
+              We've set up {service.name.toLowerCase()} right across Pune — from {area.name} to
+              every other corner of the city — with the same Pune-based team handling setup,
+              operation and breakdown every time, and no inter-city travel charge for your
+              {' '}{area.name} event.
             </p>
             <Link href={`/services/${service.slug}`} className="btn-primary text-sm">
               View Full {service.name} Details →

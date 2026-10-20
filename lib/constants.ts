@@ -137,6 +137,7 @@ export const PUNE_AREAS = [
 
 export const SUB_SERVICES: Record<string, { name: string; slug: string }[]> = {
   'photo-video-booths': [
+    { name: '360 Booth',          slug: '360-booth' },
     { name: 'Ring Booth',         slug: 'ring-booth' },
     { name: 'Mirror Booth',       slug: 'mirror-booth' },
     { name: 'Single Photobooth',  slug: 'single-photobooth' },

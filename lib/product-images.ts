@@ -100,6 +100,25 @@ const subserviceMedia: Record<string, MediaSet> = {
     ],
     reelIds: ['TZ7DMvKk2-c', 'XS6ktWGYJS0'], // "Mirror Photobooth" / "Mirror Booth" — real event footage
   },
+  // The slider images under single-photobooth-slider are actually the 360
+  // spinning-booth photos (see their alt text) — reused here for the dedicated
+  // 360 Booth page. Swap in cleaner 360-only media when available.
+  '360-booth': {
+    hero: `${ROOT}/single-photobooth-slider/single-photobooth-hero-1.jpg`,
+    gallery: [
+      `${ROOT}/single-photobooth-slider/single-photobooth-hero-2.jpg`,
+      `${ROOT}/single-photobooth-slider/single-photobooth-hero-3.jpg`,
+      `${ROOT}/single-photobooth-slider/single-photobooth-hero-4.jpg`,
+      `${ROOT}/single-photobooth-slider/single-photobooth-hero-5.jpg`,
+    ],
+    heroSlides: [
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-1.jpg`, alt: '360 video booth platform set up at an awards night in Pune' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-2.jpg`, alt: '360 booth spinning camera arm at a wedding reception in Pune' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-3.jpg`, alt: 'Guests recording a slow-motion 360 video at a corporate event' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-4.jpg`, alt: 'Bridesmaids on the 360 booth platform at a Pune wedding' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-5.jpg`, alt: 'Guests in traditional outfits on the 360 spinning booth' },
+    ],
+  },
   'single-photobooth': {
     hero: `${ROOT}/single-photobooth-slider/single-photobooth-hero-1.jpg`,
     gallery: [
@@ -109,11 +128,11 @@ const subserviceMedia: Record<string, MediaSet> = {
       `${ROOT}/single-photobooth-slider/single-photobooth-hero-5.jpg`,
     ],
     heroSlides: [
-      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-1.jpg`, alt: 'Guests posing on the 360 Booth platform at an awards night' },
-      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-2.jpg`, alt: '360 Booth spinning camera rig set up at a wedding reception' },
-      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-3.jpg`, alt: 'Friends taking a selfie video on the 360 Booth at a corporate event' },
-      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-4.jpg`, alt: 'Bridesmaids posing on the 360 Celebration Booth at a wedding' },
-      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-5.jpg`, alt: 'Wedding guests in traditional outfits on the 360 Celebration Booth' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-1.jpg`, alt: 'Enclosed photo booth with props at an awards night' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-2.jpg`, alt: 'Classic photo booth set up at a wedding reception' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-3.jpg`, alt: 'Friends taking a photo-strip in the booth at a corporate event' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-4.jpg`, alt: 'Bridesmaids posing in the photo booth at a wedding' },
+      { src: `${ROOT}/single-photobooth-slider/single-photobooth-hero-5.jpg`, alt: 'Wedding guests in traditional outfits in the photo booth' },
     ],
     reelIds: ['HPAM-EcY3h4'], // "Introducing Multi Exposure Photobooth!" — closest real footage to this product
   },

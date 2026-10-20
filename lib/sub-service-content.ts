@@ -24,6 +24,10 @@ export const SUB_SERVICE_CONTENT: Record<string, SubServiceContent> = {
     tagline: 'Interactive full-length mirror booth with touch animations',
     intro: 'A full-length mirror booth that guests pose in front of, with a touchscreen overlay that plays animations, countdowns, and branded flourishes before and after capture. The mirror format naturally draws a crowd and gives full-body shots that standard booths can\'t.',
   },
+  '360-booth': {
+    tagline: 'The spinning 360° video booth guests queue up for all night',
+    intro: 'A raised platform guests stand on while a camera arm spins around them, capturing a slow-motion 360° video from every angle. It\'s the single most shared, most queued-for activation at Pune weddings, sangeets and corporate parties — guests get a dramatic, social-ready clip (branded with your logo and music) on their phone within seconds. Handles 1–4 people per spin, runs all event long, and always draws a crowd.',
+  },
   'single-photobooth': {
     tagline: 'Our original enclosed photo booth — props, instant prints, pure nostalgia',
     intro: 'The classic enclosed photo booth that started Creative Konnect in 2018 — a curtained booth with a DSLR camera, flash lighting, and a prop box, printing strips or 4×6 photos on the spot. It\'s the simplest activation we offer and still one of the most loved, especially at weddings and family events.',

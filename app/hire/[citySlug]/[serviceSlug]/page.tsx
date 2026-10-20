@@ -8,6 +8,7 @@ import { FaqAccordion } from '@/components/ui/FaqAccordion'
 import { SubServiceQuoteButton } from '@/components/ui/SubServiceQuoteButton'
 import { HeroImageSlider } from '@/components/ui/HeroImageSlider'
 import { getProductMedia } from '@/lib/product-images'
+import { getSubServiceContent } from '@/lib/sub-service-content'
 
 interface Props {
   params: { citySlug: string; serviceSlug: string }
@@ -148,6 +149,10 @@ export default function SeoPage({ params }: Props) {
   const faqs   = buildFaqs(service.name, city)
   const pageUrl = `${SITE_CONFIG.url}/hire/${params.citySlug}/${params.serviceSlug}`
   const media   = getProductMedia(params.serviceSlug, params.serviceSlug)
+  // Real, product-specific description for THIS booth (not the generic
+  // "popular event engagement solution" boilerplate) — this is what makes
+  // each booth×city page genuinely unique content instead of near-duplicate.
+  const content = getSubServiceContent(params.serviceSlug)
 
   // Nearby cities for internal linking
   const nearbyCities = CITIES.filter(c => c !== city).slice(0, 5)
@@ -223,13 +228,13 @@ export default function SeoPage({ params }: Props) {
               What is {service.name}?
             </h2>
             <p className="text-sm text-[#5a7a92] leading-relaxed mb-4">
-              {service.name} is one of the most popular event engagement solutions in {city}.
-              Guests love the experience, share the content instantly, and your brand gets organic
-              reach with zero ad spend.
+              {content.intro}
             </p>
             <p className="text-sm text-[#5a7a92] leading-relaxed mb-5">
-              Creative Konnect has delivered {service.name} experiences across hundreds of events
-              in {city} and across India — from intimate 50-guest dinners to 5000-person conferences.
+              In {city}, Creative Konnect has set up {service.name.toLowerCase()} at weddings,
+              corporate town halls, college fests and brand activations — our on-site operator
+              handles delivery, setup and breakdown at your {city} venue, so the experience runs
+              smoothly from the first guest to the last.
             </p>
             <Link href={service.href} className="btn-primary text-sm">
               View Full {service.name} Details →
