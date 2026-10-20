@@ -6,6 +6,9 @@ import { Footer }         from '@/components/layout/Footer'
 import { SITE_CONFIG }    from '@/lib/constants'
 
 const Analytics = dynamic(() => import('@/lib/analytics').then((m) => m.Analytics), { ssr: false })
+const GTMHeadScript = dynamic(() => import('@/lib/gtm').then((m) => m.GTMHeadScript), { ssr: false })
+const GTMBodyNoscript = dynamic(() => import('@/lib/gtm').then((m) => m.GTMBodyNoscript), { ssr: false })
+const Clarity = dynamic(() => import('@/lib/clarity').then((m) => m.Clarity), { ssr: false })
 const WhatsAppWidget = dynamic(() => import('@/components/ui/WhatsAppWidget').then((m) => m.WhatsAppWidget), { ssr: false })
 const ScrollToTop = dynamic(() => import('@/components/ui/ScrollToTop').then((m) => m.ScrollToTop), { ssr: false })
 const CookieBanner = dynamic(() => import('@/components/ui/CookieBanner').then((m) => m.CookieBanner), { ssr: false })
@@ -44,6 +47,12 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || '',
+    // Bing Webmaster Tools meta-tag verification. If you verify via the
+    // "import from Search Console" option instead (recommended — no code
+    // change needed), leave NEXT_PUBLIC_BING_VERIFICATION unset.
+    other: process.env.NEXT_PUBLIC_BING_VERIFICATION
+      ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION }
+      : undefined,
   },
 }
 
@@ -83,9 +92,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
+        <GTMHeadScript />
       </head>
       <body>
+        {/* GTM's noscript fallback must be the very first thing in <body> per
+            Google's own install instructions — fires for users with JS off. */}
+        <GTMBodyNoscript />
         <Analytics />
+        <Clarity />
         <Navbar />
         <main>{children}</main>
         <Footer />
